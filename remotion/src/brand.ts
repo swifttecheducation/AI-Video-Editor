@@ -19,27 +19,27 @@ export const BRAND = {
 
 export const COLORS = {
   // roles
-  accent: '#6366F1', // indigo — primary
-  accent2: '#9b7cc4', // violet — secondary
-  signal: '#4db8a8', // teal — success / "free"
-  signalAlt: '#4ecdc4', // teal-green companion
-  warn: '#f5d76e', // yellow — attention
-  danger: '#e8879f', // pink — contrast / error
-  ink: '#1a1a2e', // primary text on light
-  muted: '#6b6b7b', // secondary text
-  paper: '#fffef7', // light surface / bg
-  cream: '#faf8f5', // alt light band
-  line: '#e7e3da', // 1px borders on light
-  // dark UI / terminal scale (GitHub-ink)
-  d900: '#0d1117',
-  d800: '#161b22',
-  d600: '#30363d',
-  d400: '#8b949e',
-  d300: '#c9d1d9',
+  accent: '#720000', // Wine — primary brand accent
+  accent2: '#798466', // Olive — secondary brand accent
+  signal: '#798466', // Olive — success / highlights
+  signalAlt: '#8A9775', // lighter Olive companion
+  warn: '#D49B44', // warm amber — attention
+  danger: '#8B1818', // deep crimson — contrast / error
+  ink: '#1F1616', // deep charcoal-wine primary text on light
+  muted: '#6C655F', // secondary text
+  paper: '#F8F5F2', // Warm Ivory — light surface / bg
+  cream: '#EFEBE4', // Soft Beige light tint
+  line: '#D4CABE', // Soft Beige — borders & dividers on light
+  // dark UI / terminal scale (Warm dark tones)
+  d900: '#151313',
+  d800: '#1D1A1A',
+  d600: '#342F2F',
+  d400: '#8A8179',
+  d300: '#D4CABE',
 } as const;
 
-// signature gradient: indigo -> violet -> teal
-export const GRADIENT = `linear-gradient(120deg, ${COLORS.accent}, ${COLORS.accent2}, ${COLORS.signal})`;
+// signature gradient: Wine -> Olive transition
+export const GRADIENT = `linear-gradient(120deg, ${COLORS.accent}, #962828, ${COLORS.accent2})`;
 
 export const RADIUS = { card: 16, panel: 14, window: 10, pill: 999 } as const;
 

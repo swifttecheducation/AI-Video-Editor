@@ -63,3 +63,19 @@ media/library/faces/*.webp
 .idea/
 .DS_Store
 Thumbs.db
+
+# Local generated runs & downloaded reference media
+media/raw_clips/
+media/trimmed_clips/
+media/audio/
+media/frames/
+media/ref_frames/
+media/scene_frames/
+media/transcripts/
+media/*.png
+media/*.mp4
+media/*.m4a
+media/*.wav
+media/*.json
+media/reference_*
+remotion/public/

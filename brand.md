@@ -27,33 +27,30 @@
 
 | Role | Name | Hex | Use in video |
 |---|---|---|---|
-| **Primary accent** | indigo | `#6366F1` | key words, highlights, active state, progress, CTAs, the accent word |
-| Secondary accent | violet | `#9b7cc4` | pairs with indigo in gradients, secondary emphasis |
-| Success / positive | teal | `#4db8a8` | "free", confirms, checkmarks, positive callouts |
-| Success alt | green | `#4ecdc4` | teal companion for gradients/success |
-| Warn / attention | yellow | `#f5d76e` | highlight sweeps, "watch this", attention pops |
-| Danger / contrast | pink | `#e8879f` | errors, "the hard/expensive way", negative contrast |
-| Ink (text/dark) | ink | `#1a1a2e` | primary text on light; base dark bg |
-| Muted text | muted | `#6b6b7b` | secondary text, captions |
-| Surface (paper) | paper | `#fffef7` | light full-screen bg, cards |
-| Surface 2 (cream) | cream | `#faf8f5` | alt light band |
+| **Primary accent** | wine | `#720000` | key words, highlights, active state, headlines, CTAs |
+| Secondary accent | olive | `#798466` | pairs with wine in gradients, highlights, positive callouts |
+| Success / positive | olive | `#798466` | "free", confirms, checkmarks, positive callouts |
+| Success alt | light olive | `#8A9775` | olive companion for gradients/success |
+| Warn / attention | amber | `#D49B44` | highlight sweeps, "watch this", attention pops |
+| Danger / contrast | crimson | `#8B1818` | errors, negative contrast |
+| Ink (text/dark) | deep wine | `#1F1616` | primary text on light; base dark bg |
+| Muted text | warm gray | `#6C655F` | secondary text, captions |
+| Surface (paper) | warm ivory | `#F8F5F2` | light full-screen bg, cards |
+| Surface 2 (cream) | soft beige | `#D4CABE` | borders, dividers, secondary surface |
 
-**Dark UI / terminal scale** (GitHub-ink — for Claude Code terminal & code mockups):
-`#0d1117` (bg) · `#161b22` (panel) · `#30363d` (border) · `#8b949e` (dim text) · `#c9d1d9` (text).
-
-**Signature gradient:** indigo → violet → teal (`#6366F1 → #9b7cc4 → #4db8a8`). Used for dividers and
+**Signature gradient:** Wine → Deep Red → Olive (`#720000 → #962828 → #798466`). Used for dividers and
 full-screen animated backgrounds.
 
 ## 4. Typography (3-font system)
 
 | Role | Font | Weights | Use |
 |---|---|---|---|
-| **Display / headlines** | **Space Grotesk** | 500 / 600 / 700 | titles, big statements, section cards, the wordmark |
-| **Body / UI** | **Inter** | 400 / 500 / 600 | subtitles, labels, body text, lower-third detail |
+| **Display / headlines** | **Alegreya** | 500 / 600 / 700 / 800 | titles, big statements, section cards, the wordmark |
+| **Body / UI** | **Be Vietnam Pro** | 400 / 500 / 600 | subtitles, labels, body text, lower-third detail |
 | **Code / mono** | **JetBrains Mono** | 400 / 500 / 700 | terminal mockups, code, prompts, file paths, tech labels |
-| **Claude wordmark serif** | **Source Serif 4** (`FONT_EDITORIAL`) | 600 | "Claude …" wordmark clones (Claude Editor, Claude Code) — the Copernicus stand-in |
+| **Claude wordmark serif** | **Source Serif 4** (`FONT_EDITORIAL`) | 600 | "Claude …" wordmark clones (Claude Editor, Claude Code) |
 
-All load from `@remotion/google-fonts` (see `remotion/src/fonts.ts`) — nothing to install.
+All load from `@remotion/google-fonts` (see `remotion/src/fonts.ts`) — nothing to install. Both Alegreya and Be Vietnam Pro have full Vietnamese diacritics support.
 Headlines tight tracking; body normal; mono for anything literally code/terminal/paths.
 **Wordmark rule (video-5 creator feedback):** Claude wordmarks use Source Serif 4 at 600 — Spectral
 (`FONT_SERIF`) reads too thin/bookish next to the real Copernicus and is retired for wordmarks.

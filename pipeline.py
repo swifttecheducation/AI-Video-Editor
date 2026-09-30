@@ -26,8 +26,12 @@ DEFAULT_CONFIG = {
         "export_capcut_draft": True
     },
     "brand": {
-        "primary_color": "#38BDF8",
-        "accent_color": "#F43F5E",
+        "primary_color": "#720000",       # Wine
+        "accent_color": "#798466",        # Olive
+        "bg_color": "#F8F5F2",            # Warm Ivory
+        "border_color": "#D4CABE",        # Soft Beige
+        "heading_font": "Alegreya",
+        "body_font": "Be Vietnam Pro",
         "cta_text": "Comment IM để nhận lịch Mock Interview 1-1"
     }
 }
