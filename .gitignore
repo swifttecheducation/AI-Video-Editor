@@ -24,17 +24,25 @@ videos/*/*.mp4
 videos/*/*.MOV
 videos/*/*.mov
 videos/*/reference/
+media/projects/*/*.mp4
+media/projects/*/*.MP4
+media/projects/*/*.mov
+media/projects/*/*.MOV
+media/projects/*/*.wav
 
 # heavy / regenerable per-video artifacts (rebuilt by the pipeline)
 videos/*/work/audio/
 videos/*/work/render/
 videos/*/work/editor/*.mp4
 videos/*/work/editor/*.png
+videos/*/work/temp_segments/
+videos/*/work/temp_segments_scratch_color/
 videos/*/output/
 *.wav
 *.aac
-
 *.mp4
+*.MOV
+*.mov
 
 # rendered thumbnails show the presenter's face — keep the .txt/.json recipes, drop the images
 videos/*/packaging/thumbs/*.png

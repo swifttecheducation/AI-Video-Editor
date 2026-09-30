@@ -1,0 +1,1149 @@
+{
+  "events": [
+    {
+      "timestamp": 1.12,
+      "z_score": 1.55,
+      "effect": {
+        "type": "text_spring",
+        "zoom_scale": 1.03,
+        "duration_s": 0.2,
+        "sfx": "click",
+        "vfx": "subtle_glow"
+      }
+    },
+    {
+      "timestamp": 3.18,
+      "z_score": 1.82,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 4.0,
+      "z_score": 2.6,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 4.8,
+      "z_score": 4.49,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 6.04,
+      "z_score": 1.44,
+      "effect": {
+        "type": "text_spring",
+        "zoom_scale": 1.03,
+        "duration_s": 0.2,
+        "sfx": "click",
+        "vfx": "subtle_glow"
+      }
+    },
+    {
+      "timestamp": 7.26,
+      "z_score": 2.65,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 8.2,
+      "z_score": 3.43,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 12.0,
+      "z_score": 3.46,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 13.86,
+      "z_score": 1.69,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 14.98,
+      "z_score": 2.61,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 16.56,
+      "z_score": 2.38,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 22.86,
+      "z_score": 1.9,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 24.4,
+      "z_score": 2.04,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 25.22,
+      "z_score": 3.37,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 26.16,
+      "z_score": 2.59,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 27.14,
+      "z_score": 1.88,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 29.1,
+      "z_score": 3.41,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 30.94,
+      "z_score": 1.77,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 32.18,
+      "z_score": 2.64,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 33.14,
+      "z_score": 2.8,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 34.48,
+      "z_score": 1.76,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 35.38,
+      "z_score": 1.76,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 36.28,
+      "z_score": 2.88,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 37.6,
+      "z_score": 1.33,
+      "effect": {
+        "type": "text_spring",
+        "zoom_scale": 1.03,
+        "duration_s": 0.2,
+        "sfx": "click",
+        "vfx": "subtle_glow"
+      }
+    },
+    {
+      "timestamp": 38.42,
+      "z_score": 2.33,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 39.9,
+      "z_score": 2.61,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 41.44,
+      "z_score": 1.43,
+      "effect": {
+        "type": "text_spring",
+        "zoom_scale": 1.03,
+        "duration_s": 0.2,
+        "sfx": "click",
+        "vfx": "subtle_glow"
+      }
+    },
+    {
+      "timestamp": 42.58,
+      "z_score": 2.67,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 43.96,
+      "z_score": 2.7,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 46.18,
+      "z_score": 2.55,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 48.48,
+      "z_score": 4.53,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 50.62,
+      "z_score": 1.38,
+      "effect": {
+        "type": "text_spring",
+        "zoom_scale": 1.03,
+        "duration_s": 0.2,
+        "sfx": "click",
+        "vfx": "subtle_glow"
+      }
+    },
+    {
+      "timestamp": 51.64,
+      "z_score": 3.13,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 52.46,
+      "z_score": 2.5,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 53.32,
+      "z_score": 3.32,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 54.84,
+      "z_score": 6.05,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 56.1,
+      "z_score": 2.02,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 57.14,
+      "z_score": 3.49,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 58.1,
+      "z_score": 2.71,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 60.08,
+      "z_score": 2.65,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 61.66,
+      "z_score": 2.92,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 63.08,
+      "z_score": 3.4,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 63.92,
+      "z_score": 1.7,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 65.14,
+      "z_score": 3.71,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 65.94,
+      "z_score": 2.77,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 68.36,
+      "z_score": 2.3,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 69.46,
+      "z_score": 3.32,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 70.66,
+      "z_score": 2.0,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 71.62,
+      "z_score": 2.58,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 72.84,
+      "z_score": 2.62,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 73.9,
+      "z_score": 5.11,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 74.98,
+      "z_score": 2.63,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 76.0,
+      "z_score": 2.04,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 76.86,
+      "z_score": 2.76,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 77.86,
+      "z_score": 1.55,
+      "effect": {
+        "type": "text_spring",
+        "zoom_scale": 1.03,
+        "duration_s": 0.2,
+        "sfx": "click",
+        "vfx": "subtle_glow"
+      }
+    },
+    {
+      "timestamp": 80.32,
+      "z_score": 2.8,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 82.26,
+      "z_score": 2.49,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 83.6,
+      "z_score": 1.37,
+      "effect": {
+        "type": "text_spring",
+        "zoom_scale": 1.03,
+        "duration_s": 0.2,
+        "sfx": "click",
+        "vfx": "subtle_glow"
+      }
+    },
+    {
+      "timestamp": 85.7,
+      "z_score": 2.18,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 86.72,
+      "z_score": 1.33,
+      "effect": {
+        "type": "text_spring",
+        "zoom_scale": 1.03,
+        "duration_s": 0.2,
+        "sfx": "click",
+        "vfx": "subtle_glow"
+      }
+    },
+    {
+      "timestamp": 87.7,
+      "z_score": 2.05,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 89.74,
+      "z_score": 2.25,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 91.38,
+      "z_score": 3.04,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 92.64,
+      "z_score": 2.13,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 93.52,
+      "z_score": 7.25,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 94.96,
+      "z_score": 2.65,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 96.48,
+      "z_score": 2.64,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 99.04,
+      "z_score": 2.72,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 99.86,
+      "z_score": 1.43,
+      "effect": {
+        "type": "text_spring",
+        "zoom_scale": 1.03,
+        "duration_s": 0.2,
+        "sfx": "click",
+        "vfx": "subtle_glow"
+      }
+    },
+    {
+      "timestamp": 102.12,
+      "z_score": 1.89,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 103.3,
+      "z_score": 2.59,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 104.92,
+      "z_score": 1.9,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 107.62,
+      "z_score": 1.57,
+      "effect": {
+        "type": "text_spring",
+        "zoom_scale": 1.03,
+        "duration_s": 0.2,
+        "sfx": "click",
+        "vfx": "subtle_glow"
+      }
+    },
+    {
+      "timestamp": 108.42,
+      "z_score": 3.15,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 110.6,
+      "z_score": 1.55,
+      "effect": {
+        "type": "text_spring",
+        "zoom_scale": 1.03,
+        "duration_s": 0.2,
+        "sfx": "click",
+        "vfx": "subtle_glow"
+      }
+    },
+    {
+      "timestamp": 111.6,
+      "z_score": 3.51,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 115.36,
+      "z_score": 1.66,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 117.06,
+      "z_score": 2.65,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 118.28,
+      "z_score": 2.06,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 119.2,
+      "z_score": 1.37,
+      "effect": {
+        "type": "text_spring",
+        "zoom_scale": 1.03,
+        "duration_s": 0.2,
+        "sfx": "click",
+        "vfx": "subtle_glow"
+      }
+    },
+    {
+      "timestamp": 120.42,
+      "z_score": 1.91,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 122.86,
+      "z_score": 2.25,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 124.78,
+      "z_score": 2.76,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 126.14,
+      "z_score": 2.11,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 127.9,
+      "z_score": 4.23,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 128.74,
+      "z_score": 1.32,
+      "effect": {
+        "type": "text_spring",
+        "zoom_scale": 1.03,
+        "duration_s": 0.2,
+        "sfx": "click",
+        "vfx": "subtle_glow"
+      }
+    },
+    {
+      "timestamp": 130.48,
+      "z_score": 1.48,
+      "effect": {
+        "type": "text_spring",
+        "zoom_scale": 1.03,
+        "duration_s": 0.2,
+        "sfx": "click",
+        "vfx": "subtle_glow"
+      }
+    },
+    {
+      "timestamp": 131.86,
+      "z_score": 1.39,
+      "effect": {
+        "type": "text_spring",
+        "zoom_scale": 1.03,
+        "duration_s": 0.2,
+        "sfx": "click",
+        "vfx": "subtle_glow"
+      }
+    },
+    {
+      "timestamp": 132.66,
+      "z_score": 2.11,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 136.56,
+      "z_score": 2.41,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 137.9,
+      "z_score": 2.09,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 139.16,
+      "z_score": 1.84,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 140.02,
+      "z_score": 2.35,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 141.52,
+      "z_score": 1.74,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 142.7,
+      "z_score": 3.71,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 144.58,
+      "z_score": 1.96,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 145.92,
+      "z_score": 1.86,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 147.28,
+      "z_score": 1.39,
+      "effect": {
+        "type": "text_spring",
+        "zoom_scale": 1.03,
+        "duration_s": 0.2,
+        "sfx": "click",
+        "vfx": "subtle_glow"
+      }
+    },
+    {
+      "timestamp": 149.12,
+      "z_score": 2.3,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 150.22,
+      "z_score": 2.51,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 152.46,
+      "z_score": 2.16,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    },
+    {
+      "timestamp": 153.76,
+      "z_score": 2.23,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 155.06,
+      "z_score": 2.44,
+      "effect": {
+        "type": "impact_punch",
+        "zoom_scale": 1.08,
+        "duration_s": 0.35,
+        "sfx": "bass_thud",
+        "vfx": "color_burst"
+      }
+    },
+    {
+      "timestamp": 156.04,
+      "z_score": 2.0,
+      "effect": {
+        "type": "micro_zoom",
+        "zoom_scale": 1.05,
+        "duration_s": 0.25,
+        "sfx": "pop",
+        "vfx": "text_highlight"
+      }
+    }
+  ],
+  "count": 104
+}

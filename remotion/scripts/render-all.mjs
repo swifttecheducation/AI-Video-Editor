@@ -48,6 +48,7 @@ for (const shot of manifest) {
       proResProfile: transparent ? '4444' : undefined,
       pixelFormat: transparent ? 'yuva444p10le' : 'yuv420p',
       imageFormat: transparent ? 'png' : 'jpeg',
+      colorSpace: 'bt709',
       crf: transparent ? undefined : 18,
       onProgress: ({ progress }) => process.stdout.write(`\r  ${shot.id}: ${Math.round(progress * 100)}%   `),
     });

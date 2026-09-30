@@ -1,0 +1,134 @@
+{
+  "video_title": "Tại sao nhiều bạn học BA mãi không xin được việc? (Thợ Tool vs BA thực chiến)",
+  "duration": 157.62,
+  "resolution": "1080x1920",
+  "fps": 30,
+  "segments": [
+    {
+      "clip_id": "0142",
+      "text": "Tuần trước mình lại phải từ chối một bạn đã đăng ký chương trình Interview Master của bên mình.",
+      "start": 0.16,
+      "end": 4.3
+    },
+    {
+      "clip_id": "0142",
+      "text": "Không phải vì bạn ấy không cố gắng, ngược lại là bạn ấy học rất là nhiều, bạn ấy biết dùng Jira này, biết viết Use Story này, biết vẽ Flow Chart, rồi cũng có thể viết được document theo một cái template mà mình thấy là cũng tương đối đầy đủ.",
+      "start": 4.3,
+      "end": 15.6
+    },
+    {
+      "clip_id": "0142",
+      "text": "Đó, nhưng mà trong cái lúc mà mình interview bạn ấy chuyền sâu hơn thì mình hỏi bạn ấy là tại sao trong cái trường hợp này em lại chọn hỏi những cái câu hỏi đó? Thì bạn ấy bắt đầu lúng túng.",
+      "start": 15.6,
+      "end": 23.54
+    },
+    {
+      "clip_id": "0144",
+      "text": "Và lúc đó là lúc mà mình nhận ra rằng rất nhiều bạn đang học BA theo cái cách biến mình thành một người thợ dùng công cụ, chứ không phải là một cái người thực sự là đang làm phân tích.",
+      "start": 24.06,
+      "end": 32.48
+    },
+    {
+      "clip_id": "0144",
+      "text": "Nhiều người cứ nghĩ là có thể vẽ flow chat đẹp này, rồi viết user story theo template này, dùng Jira, Figma hay là một số các cái tool thật là thành thạo thì bạn có thể trở thành BA.",
+      "start": 32.92,
+      "end": 42.92
+    },
+    {
+      "clip_id": "0144",
+      "text": "Nhưng mà từ từ đó thì nó chỉ là công cụ thôi, nó giống như việc các bạn biết hát, các bạn cầm mic lên không có nghĩa các bạn sẽ trở thành ca sĩ đúng không?",
+      "start": 43.26,
+      "end": 50.74
+    },
+    {
+      "clip_id": "0145",
+      "text": "Một người thợ ấy thì khi mà làm BA, người ta sẽ ghi lại chính xác những cái gì mà khách hàng yêu cầu này.",
+      "start": 51.26,
+      "end": 56.68
+    },
+    {
+      "clip_id": "0145",
+      "text": "Còn một BA thật sự thì sẽ luôn tự hỏi, tại sao họ lại cần tính năng này? Râu thật sự là gì? Có cách nào giải quyết cái vấn đề này tốt hơn không?",
+      "start": 56.84,
+      "end": 64.06
+    },
+    {
+      "clip_id": "0145",
+      "text": "Và nếu như mà thay đổi như thế này thì hiện tại cái hệ thống nó sẽ bị ảnh hưởng những cái gì?",
+      "start": 64.34,
+      "end": 68.56
+    },
+    {
+      "clip_id": "0145",
+      "text": "Bản chất của BA ấy, nó chưa bao giờ là cái nghề mà viết document, viết tài liệu hay là vẽ sơ đồ.",
+      "start": 68.94,
+      "end": 74.24
+    },
+    {
+      "clip_id": "0145",
+      "text": "BA là một cái nghề giải quyết cái bài toán kinh doanh bằng công nghệ.",
+      "start": 74.7,
+      "end": 78.26
+    },
+    {
+      "clip_id": "0153",
+      "text": "Có một cái xu hướng tất yếu mà mình đã quan sát được từ thời điểm trước và đến bây giờ mọi người có thể nhìn là trong cái thời đại AI thì nó càng thúc đẩy cái xu hướng đó hơn.",
+      "start": 78.8,
+      "end": 86.54
+    },
+    {
+      "clip_id": "0153",
+      "text": "Đó là công cụ sẽ càng ngày càng dễ sử dụng hơn, hay cái việc học tool á, nó có thể nó sẽ chỉ mất vài tuần đến một tháng thôi.",
+      "start": 86.54,
+      "end": 92.23
+    },
+    {
+      "clip_id": "0153",
+      "text": "Nhưng mà cái tư duy, phân tích với là cái thứ cần rất nhiều thời gian để mà có thể mài giũa.",
+      "start": 92.23,
+      "end": 96.91
+    },
+    {
+      "clip_id": "0154",
+      "text": "Và đó cũng là cái lý do mà mình thường nhận rất là ít mỗi năm cho cái chương trình Interview Master.",
+      "start": 97.44,
+      "end": 102.67
+    },
+    {
+      "clip_id": "0154",
+      "text": "Vì thực tế á là rất nhiều bạn từ học BA hoặc là các bạn có thể học ở những bên khác nhưng mà không có người định hướng rõ ràng hoặc giải thích những cái cơ chế hay nguyên lý phía sau mỗi cái quyết định.",
+      "start": 103.02,
+      "end": 111.53
+    },
+    {
+      "clip_id": "0154",
+      "text": "nên là cái khả năng phân tích của bạn thường sẽ bị yếu.",
+      "start": 111.53,
+      "end": 114.16
+    },
+    {
+      "clip_id": "0154",
+      "text": "Trong khi đó thì Interview Master nó là một trong những cái chương trình duy nhất của chúng mình mà chúng mình sẽ không dạy lại từ đầu hay là truyền đạt kiến thức nền tảng nữa mà sẽ chỉ tập trung vào hỗ trợ ứng tuyển này, mock interview này, rồi cả tối ưu những cái chiến lược tìm việc nữa.",
+      "start": 114.57,
+      "end": 126.92
+    },
+    {
+      "clip_id": "0154",
+      "text": "Nên tụi mình buộc phải yêu cầu đầu vào cao để có thể đảm bảo là các bạn đã có cái nền tảng tư duy BA trước khi tham gia.",
+      "start": 127.15,
+      "end": 133.79
+    },
+    {
+      "clip_id": "0155",
+      "text": "Nếu bạn đã và đang tự học BA hoặc là cũng có thể đã học qua một vài khóa BA, nhưng mà vẫn chưa tìm được một cái công việc ưng ý nào, thường xuyên bị từ chối thì có thể là cái vấn đề không nằm ở việc bạn chưa đủ cố gắng mà nằm ở cái việc là bạn đang học sai trọng tâm rồi.",
+      "start": 134.33,
+      "end": 147.63
+    },
+    {
+      "clip_id": "0156",
+      "text": "Vậy thì hãy comment email để chúng mình hẹn một lịch mock interview cũng như là để đánh giá chi tiết và đưa ra những cái định hướng một lộ trình thực chiến phù hợp hơn dành cho bạn nha.",
+      "start": 148.19,
+      "end": 157.61
+    }
+  ]
+}

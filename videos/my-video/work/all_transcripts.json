@@ -1,0 +1,182 @@
+{
+  "0138": {
+    "segments": [
+      {
+        "start": 0.0,
+        "end": 6.0,
+        "text": "Mình vừa từ chối bạn đã học BI gần một năm, chỉ vì bạn ý chưa thực sự hiểu BI là gì."
+      }
+    ],
+    "full_text": "Mình vừa từ chối bạn đã học BI gần một năm, chỉ vì bạn ý chưa thực sự hiểu BI là gì.",
+    "clip_id": "0138"
+  },
+  "0142": {
+    "segments": [
+      {
+        "start": 2.21,
+        "end": 6.35,
+        "text": "Tuần trước mình lại phải từ chối một bạn đã đăng ký chương trình Interview Master của bên mình."
+      },
+      {
+        "start": 6.35,
+        "end": 17.65,
+        "text": "Không phải vì bạn ấy không cố gắng, ngược lại là bạn ấy học rất là nhiều, bạn ấy biết dùng Jira này, biết viết Use Story này, biết vẽ Flow Chart, rồi cũng có thể viết được document theo một cái template mà mình thấy là cũng tương đối đầy đủ."
+      },
+      {
+        "start": 17.65,
+        "end": 25.59,
+        "text": "Đó, nhưng mà trong cái lúc mà mình interview bạn ấy chuyền sâu hơn thì mình hỏi bạn ấy là tại sao trong cái trường hợp này em lại chọn hỏi những cái câu hỏi đó? Thì bạn ấy bắt đầu lúng túng."
+      }
+    ],
+    "full_text": "Tuần trước mình lại phải từ chối một bạn đã đăng ký chương trình Interview Master của bên mình. Không phải vì bạn ấy không cố gắng, ngược lại là bạn ấy học rất là nhiều, bạn ấy biết dùng Jira này, biết viết Use Story này, biết vẽ Flow Chart, rồi cũng có thể viết được document theo một cái template mà mình thấy là cũng tương đối đầy đủ. Đó, nhưng mà trong cái lúc mà mình interview bạn ấy chuyền sâu hơn thì mình hỏi bạn ấy là tại sao trong cái trường hợp này em lại chọn hỏi những cái câu hỏi đó? Thì bạn ấy bắt đầu lúng túng.",
+    "clip_id": "0142"
+  },
+  "0144": {
+    "segments": [
+      {
+        "start": 2.16,
+        "end": 10.58,
+        "text": "Và lúc đó là lúc mà mình nhận ra rằng rất nhiều bạn đang học BA theo cái cách biến mình thành một người thợ dùng công cụ, chứ không phải là một cái người thực sự là đang làm phân tích."
+      },
+      {
+        "start": 11.02,
+        "end": 21.02,
+        "text": "Nhiều người cứ nghĩ là có thể vẽ flow chat đẹp này, rồi viết user story theo template này, dùng Jira, Figma hay là một số các cái tool thật là thành thạo thì bạn có thể trở thành BA."
+      },
+      {
+        "start": 21.36,
+        "end": 28.84,
+        "text": "Nhưng mà từ từ đó thì nó chỉ là công cụ thôi, nó giống như việc các bạn biết hát, các bạn cầm mic lên không có nghĩa các bạn sẽ trở thành ca sĩ đúng không?"
+      }
+    ],
+    "full_text": "Và lúc đó là lúc mà mình nhận ra rằng rất nhiều bạn đang học BA theo cái cách biến mình thành một người thợ dùng công cụ, chứ không phải là một cái người thực sự là đang làm phân tích. Nhiều người cứ nghĩ là có thể vẽ flow chat đẹp này, rồi viết user story theo template này, dùng Jira, Figma hay là một số các cái tool thật là thành thạo thì bạn có thể trở thành BA. Nhưng mà từ từ đó thì nó chỉ là công cụ thôi, nó giống như việc các bạn biết hát, các bạn cầm mic lên không có nghĩa các bạn sẽ trở thành ca sĩ đúng không?",
+    "clip_id": "0144"
+  },
+  "0145": {
+    "segments": [
+      {
+        "start": 8.86,
+        "end": 14.28,
+        "text": "Một người thợ ấy thì khi mà làm BA, người ta sẽ ghi lại chính xác những cái gì mà khách hàng yêu cầu này."
+      },
+      {
+        "start": 14.44,
+        "end": 21.66,
+        "text": "Còn một BA thật sự thì sẽ luôn tự hỏi, tại sao họ lại cần tính năng này? Râu thật sự là gì? Có cách nào giải quyết cái vấn đề này tốt hơn không?"
+      },
+      {
+        "start": 21.94,
+        "end": 26.16,
+        "text": "Và nếu như mà thay đổi như thế này thì hiện tại cái hệ thống nó sẽ bị ảnh hưởng những cái gì?"
+      },
+      {
+        "start": 26.54,
+        "end": 31.84,
+        "text": "Bản chất của BA ấy, nó chưa bao giờ là cái nghề mà viết document, viết tài liệu hay là vẽ sơ đồ."
+      },
+      {
+        "start": 32.3,
+        "end": 35.86,
+        "text": "BA là một cái nghề giải quyết cái bài toán kinh doanh bằng công nghệ."
+      }
+    ],
+    "full_text": "Một người thợ ấy thì khi mà làm BA, người ta sẽ ghi lại chính xác những cái gì mà khách hàng yêu cầu này. Còn một BA thật sự thì sẽ luôn tự hỏi, tại sao họ lại cần tính năng này? Râu thật sự là gì? Có cách nào giải quyết cái vấn đề này tốt hơn không? Và nếu như mà thay đổi như thế này thì hiện tại cái hệ thống nó sẽ bị ảnh hưởng những cái gì? Bản chất của BA ấy, nó chưa bao giờ là cái nghề mà viết document, viết tài liệu hay là vẽ sơ đồ. BA là một cái nghề giải quyết cái bài toán kinh doanh bằng công nghệ.",
+    "clip_id": "0145"
+  },
+  "0153": {
+    "segments": [
+      {
+        "start": 3.497,
+        "end": 11.237,
+        "text": "Có một cái xu hướng tất yếu mà mình đã quan sát được từ thời điểm trước và đến bây giờ mọi người có thể nhìn là trong cái thời đại AI thì nó càng thúc đẩy cái xu hướng đó hơn."
+      },
+      {
+        "start": 11.237,
+        "end": 16.927,
+        "text": "Đó là công cụ sẽ càng ngày càng dễ sử dụng hơn, hay cái việc học tool á, nó có thể nó sẽ chỉ mất vài tuần đến một tháng thôi."
+      },
+      {
+        "start": 16.927,
+        "end": 21.607,
+        "text": "Nhưng mà cái tư duy, phân tích với là cái thứ cần rất nhiều thời gian để mà có thể mài giũa."
+      }
+    ],
+    "full_text": "Có một cái xu hướng tất yếu mà mình đã quan sát được từ thời điểm trước và đến bây giờ mọi người có thể nhìn là trong cái thời đại AI thì nó càng thúc đẩy cái xu hướng đó hơn. Đó là công cụ sẽ càng ngày càng dễ sử dụng hơn, hay cái việc học tool á, nó có thể nó sẽ chỉ mất vài tuần đến một tháng thôi. Nhưng mà cái tư duy, phân tích với là cái thứ cần rất nhiều thời gian để mà có thể mài giũa.",
+    "clip_id": "0153"
+  },
+  "0154": {
+    "segments": [
+      {
+        "start": 4.19,
+        "end": 9.42,
+        "text": "Và đó cũng là cái lý do mà mình thường nhận rất là ít mỗi năm cho cái chương trình Interview Master."
+      },
+      {
+        "start": 9.77,
+        "end": 18.28,
+        "text": "Vì thực tế á là rất nhiều bạn từ học BA hoặc là các bạn có thể học ở những bên khác nhưng mà không có người định hướng rõ ràng hoặc giải thích những cái cơ chế hay nguyên lý phía sau mỗi cái quyết định."
+      },
+      {
+        "start": 18.28,
+        "end": 20.91,
+        "text": "nên là cái khả năng phân tích của bạn thường sẽ bị yếu."
+      },
+      {
+        "start": 21.32,
+        "end": 33.67,
+        "text": "Trong khi đó thì Interview Master nó là một trong những cái chương trình duy nhất của chúng mình mà chúng mình sẽ không dạy lại từ đầu hay là truyền đạt kiến thức nền tảng nữa mà sẽ chỉ tập trung vào hỗ trợ ứng tuyển này, mock interview này, rồi cả tối ưu những cái chiến lược tìm việc nữa."
+      },
+      {
+        "start": 33.9,
+        "end": 40.54,
+        "text": "Nên tụi mình buộc phải yêu cầu đầu vào cao để có thể đảm bảo là các bạn đã có cái nền tảng tư duy BA trước khi tham gia."
+      }
+    ],
+    "full_text": "Và đó cũng là cái lý do mà mình thường nhận rất là ít mỗi năm cho cái chương trình Interview Master. Vì thực tế á là rất nhiều bạn từ học BA hoặc là các bạn có thể học ở những bên khác nhưng mà không có người định hướng rõ ràng hoặc giải thích những cái cơ chế hay nguyên lý phía sau mỗi cái quyết định. nên là cái khả năng phân tích của bạn thường sẽ bị yếu. Trong khi đó thì Interview Master nó là một trong những cái chương trình duy nhất của chúng mình mà chúng mình sẽ không dạy lại từ đầu hay là truyền đạt kiến thức nền tảng nữa mà sẽ chỉ tập trung vào hỗ trợ ứng tuyển này, mock interview này, rồi cả tối ưu những cái chiến lược tìm việc nữa. Nên tụi mình buộc phải yêu cầu đầu vào cao để có thể đảm bảo là các bạn đã có cái nền tảng tư duy BA trước khi tham gia.",
+    "clip_id": "0154"
+  },
+  "0155": {
+    "segments": [
+      {
+        "start": 6.035,
+        "end": 19.335,
+        "text": "Nếu bạn đã và đang tự học BA hoặc là cũng có thể đã học qua một vài khóa BA, nhưng mà vẫn chưa tìm được một cái công việc ưng ý nào, thường xuyên bị từ chối thì có thể là cái vấn đề không nằm ở việc bạn chưa đủ cố gắng mà nằm ở cái việc là bạn đang học sai trọng tâm rồi."
+      }
+    ],
+    "full_text": "Nếu bạn đã và đang tự học BA hoặc là cũng có thể đã học qua một vài khóa BA, nhưng mà vẫn chưa tìm được một cái công việc ưng ý nào, thường xuyên bị từ chối thì có thể là cái vấn đề không nằm ở việc bạn chưa đủ cố gắng mà nằm ở cái việc là bạn đang học sai trọng tâm rồi.",
+    "clip_id": "0155"
+  },
+  "0156": {
+    "segments": [
+      {
+        "start": 4.14,
+        "end": 13.56,
+        "text": "Vậy thì hãy comment email để chúng mình hẹn một lịch mock interview cũng như là để đánh giá chi tiết và đưa ra những cái định hướng một lộ trình thực chiến phù hợp hơn dành cho bạn nha."
+      }
+    ],
+    "full_text": "Vậy thì hãy comment email để chúng mình hẹn một lịch mock interview cũng như là để đánh giá chi tiết và đưa ra những cái định hướng một lộ trình thực chiến phù hợp hơn dành cho bạn nha.",
+    "clip_id": "0156"
+  },
+  "0157": {
+    "segments": [
+      {
+        "start": 0.0,
+        "end": 6.0,
+        "text": "Bao giờ thì AI sẽ bắt đầu thay thế BA?"
+      }
+    ],
+    "full_text": "Bao giờ thì AI sẽ bắt đầu thay thế BA?",
+    "clip_id": "0157"
+  },
+  "0158": {
+    "segments": [
+      {
+        "start": 1.74,
+        "end": 4.1,
+        "text": "PA cần làm gì để có thể cạnh tranh được với AI?"
+      }
+    ],
+    "full_text": "PA cần làm gì để có thể cạnh tranh được với AI?",
+    "clip_id": "0158"
+  }
+}
