@@ -2,7 +2,6 @@ import React from 'react';
 import {
   AbsoluteFill,
   Video,
-  Img,
   Audio,
   Sequence,
   staticFile,
@@ -11,7 +10,7 @@ import {
   useVideoConfig,
   interpolate,
 } from 'remotion';
-import { FONT_DISPLAY, FONT_BODY } from '../../fonts';
+import { FONT_DISPLAY, FONT_BODY, FONT_HANDWRITING } from '../../fonts';
 
 export const compositionConfig = {
   id: 'LifeFirstBusinessMaster',
@@ -19,6 +18,21 @@ export const compositionConfig = {
   fps: 30,
   width: 1080,
   height: 1920,
+};
+
+// Brand Guide Palette
+const BRAND = {
+  wine: '#720000',
+  wineDark: '#38060A',
+  wineDeep: '#200204',
+  olive: '#798466',
+  oliveDark: '#4D583F',
+  oliveLight: '#94A080',
+  ivory: '#F8F5F2',
+  beige: '#D4CABE',
+  beigeSoft: '#EBE5DC',
+  gold: '#C29B38',
+  white: '#FFFFFF',
 };
 
 // 100% Exact word-for-word transcript from master audio
@@ -77,96 +91,17 @@ const SUBTITLES = [
   { s: 111.44, e: 116.32, text: 'follow mình nhé, mình sẽ ghi lại cái hành trình mình tìm kiếm cũng như là chia sẻ lại với mọi người nha!' },
 ];
 
-// 8 Formal, Highly Relevant Illustrative B-Roll Scenes (No Robots, Pure Editorial Lifestyle/Business)
-interface BRollClip {
-  s: number; // start in seconds
-  e: number; // end in seconds
-  src: string;
-  tag: string;
-  headline: string;
-}
-
-const BROLL_CLIPS: BRollClip[] = [
-  // 1. Hook: Overwhelmed at desk vs freedom
-  {
-    s: 1.0,
-    e: 5.2,
-    src: 'library/life_first_broll/broll_life_overwhelm.jpg',
-    tag: 'ÁP LỰC CÔNG VIỆC',
-    headline: 'Không để kinh doanh nuốt trọn cuộc sống',
-  },
-  // 2. Intro: Asian mother entrepreneur at sunlit home desk
-  {
-    s: 6.2,
-    e: 11.0,
-    src: 'library/life_first_broll/broll_mom_entrepreneur.jpg',
-    tag: 'SOLO BUSINESS FOUNDER',
-    headline: 'Mẹ nhóc 2 tuổi • Tự do thời gian',
-  },
-  // 3. Method 1: 1-on-1 strategy video consultation
-  {
-    s: 26.5,
-    e: 32.5,
-    src: 'library/life_first_broll/broll_consulting_1on1.jpg',
-    tag: 'MÔ HÌNH 01',
-    headline: 'Tư vấn 1-1 chuyên sâu cho khách hàng',
-  },
-  // 4. Method 2: Productized service scope & deliverables
-  {
-    s: 34.5,
-    e: 39.8,
-    src: 'library/life_first_broll/broll_productized_service.jpg',
-    tag: 'MÔ HÌNH 02',
-    headline: 'Dịch vụ đóng gói • 1 phạm vi rõ ràng',
-  },
-  // 5. Method 3: Micro-workshop / cohort class
-  {
-    s: 41.5,
-    e: 47.8,
-    src: 'library/life_first_broll/broll_micro_workshop.jpg',
-    tag: 'MÔ HÌNH 03',
-    headline: 'Micro-Workshop • Lớp học chuyên sâu nhỏ',
-  },
-  // 6. Method 4: Digital products (Templates, Notion, Ebooks)
-  {
-    s: 50.5,
-    e: 59.5,
-    src: 'library/life_first_broll/broll_digital_products.jpg',
-    tag: 'MÔ HÌNH 04',
-    headline: 'Sản phẩm số • Đóng gói 1 lần, bán nhiều lần',
-  },
-  // 7. Alternative: Flexible remote work & cafe terrace
-  {
-    s: 67.5,
-    e: 76.5,
-    src: 'library/life_first_broll/broll_remote_work.jpg',
-    tag: 'BƯỚC ĐỆM',
-    headline: 'Remote Work • Freelance linh hoạt tự chủ',
-  },
-  // 8. Advice: Minimalist desk, small steps & tea
-  {
-    s: 85.5,
-    e: 93.5,
-    src: 'library/life_first_broll/broll_small_steps.jpg',
-    tag: 'LỜI KHUYÊN',
-    headline: 'Bắt đầu từ việc nhỏ nhất vừa sức',
-  },
-];
-
 export interface LifeFirstBusinessMasterProps {
   enableBRoll?: boolean;
   visualMode?: 'broll' | 'text_only' | 'pip';
   activeBRollIds?: number[];
   enableSFX?: boolean;
   enableBGM?: boolean;
-  primaryColor?: string;
-  accentColor?: string;
 }
 
 export const LifeFirstBusinessMaster: React.FC<LifeFirstBusinessMasterProps> = ({
-  enableBRoll = true,
-  visualMode = 'broll',
-  activeBRollIds = [0, 1, 2, 3, 4, 5, 6, 7],
+  enableBRoll = false,
+  visualMode = 'text_only',
   enableSFX = true,
   enableBGM = true,
 }) => {
@@ -177,23 +112,23 @@ export const LifeFirstBusinessMaster: React.FC<LifeFirstBusinessMasterProps> = (
   // Active Subtitle
   const activeSub = SUBTITLES.find((s) => currentTime >= s.s && currentTime <= s.e);
 
-  // 1. Natural Handheld Camera Drift
-  const driftX = Math.sin(frame / 38) * 3;
-  const driftY = Math.cos(frame / 48) * 2;
-  const driftRotate = Math.sin(frame / 60) * 0.15;
+  // 1. Organic Natural Handheld Drift
+  const driftX = Math.sin(frame / 42) * 2.5;
+  const driftY = Math.cos(frame / 52) * 1.8;
+  const driftRotate = Math.sin(frame / 65) * 0.12;
 
-  // 2. Editorial Multi-Cam Punch-Ins (Dynamic zoom at key storytelling beats)
+  // 2. Punch-Ins on storytelling turns
   let baseZoom = 1.0;
   if (currentTime >= 0.0 && currentTime < 5.6) {
-    baseZoom = 1.06; // Hook punch
+    baseZoom = 1.05; // Hook punch
   } else if (currentTime >= 20.74 && currentTime < 24.58) {
-    baseZoom = 1.10; // Question punch
+    baseZoom = 1.08; // Question punch
   } else if (currentTime >= 62.06 && currentTime < 65.5) {
-    baseZoom = 1.08; // Honest pivot
+    baseZoom = 1.07; // Honest pivot
   } else if (currentTime >= 88.94 && currentTime < 94.94) {
-    baseZoom = 1.09; // Advice punch
+    baseZoom = 1.08; // Advice punch
   } else if (currentTime >= 111.44) {
-    baseZoom = 1.12; // Final CTA punch
+    baseZoom = 1.10; // Final CTA punch
   }
 
   const makeSpring = (startFrame: number, damping = 16, stiffness = 140) => {
@@ -204,33 +139,34 @@ export const LifeFirstBusinessMaster: React.FC<LifeFirstBusinessMasterProps> = (
     });
   };
 
-  // Triggers for Formal & Lively Illustrative Editorial Overlays
+  // 13 Beat Timings mapped exactly to speech and hand gestures
   const showHookCard = currentTime >= 0.6 && currentTime <= 5.2;
   const showBioPill = currentTime >= 6.2 && currentTime <= 11.2;
   const showEp3Banner = currentTime >= 12.2 && currentTime <= 17.0;
-  const showQuestionCard = currentTime >= 19.5 && currentTime <= 24.5;
-  const showMethod1 = currentTime >= 26.0 && currentTime <= 32.5;
-  const showMethod2 = currentTime >= 34.0 && currentTime <= 39.8;
-  const showMethod3 = currentTime >= 41.0 && currentTime <= 47.8;
-  const showMethod4 = currentTime >= 49.5 && currentTime <= 60.8;
+  const showQuestionCard = currentTime >= 19.2 && currentTime <= 24.5;
+  const showMethod1 = currentTime >= 25.8 && currentTime <= 32.5;
+  const showMethod2 = currentTime >= 33.6 && currentTime <= 39.8;
+  const showMethod3 = currentTime >= 40.5 && currentTime <= 47.8;
+  const showMethod4 = currentTime >= 49.2 && currentTime <= 60.8;
   const showPivotCard = currentTime >= 62.2 && currentTime <= 65.5;
-  const showRemoteCard = currentTime >= 67.0 && currentTime <= 80.5;
+  const showRemoteCard = currentTime >= 66.8 && currentTime <= 80.5;
   const showParentAdvice = currentTime >= 83.0 && currentTime <= 94.8;
   const showValidationRule = currentTime >= 96.5 && currentTime <= 104.0;
   const showCtaFollow = currentTime >= 106.0 && currentTime <= 116.0;
 
-  // Very subtle white flash entry on major shifts
-  const isCutawayEntry =
-    (frame >= 18 && frame <= 21) ||
-    (frame >= 360 && frame <= 363) ||
-    (frame >= 780 && frame <= 783) ||
-    (frame >= 1485 && frame <= 1488) ||
-    (frame >= 1860 && frame <= 1863) ||
-    (frame >= 3180 && frame <= 3183);
+  // Flash transition at beat shifts
+  const isFlash =
+    (frame >= 18 && frame <= 20) ||
+    (frame >= 366 && frame <= 368) ||
+    (frame >= 775 && frame <= 777) ||
+    (frame >= 1010 && frame <= 1012) ||
+    (frame >= 1475 && frame <= 1477) ||
+    (frame >= 1866 && frame <= 1868) ||
+    (frame >= 3180 && frame <= 3182);
 
   return (
-    <AbsoluteFill style={{ backgroundColor: '#0B1120', overflow: 'hidden', fontFamily: FONT_BODY }}>
-      {/* ─── 1. MASTER VIDEO FOOTAGE (PROPERLY TONEMAPPED & NATURALLY GRADED) ─── */}
+    <AbsoluteFill style={{ backgroundColor: BRAND.wineDark, overflow: 'hidden', fontFamily: FONT_BODY }}>
+      {/* ─── 1. MASTER VIDEO FOOTAGE (100% TALKING HEAD FOR YAPPING) ─── */}
       <AbsoluteFill style={{ overflow: 'hidden' }}>
         <div
           style={{
@@ -246,151 +182,98 @@ export const LifeFirstBusinessMaster: React.FC<LifeFirstBusinessMasterProps> = (
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
 
-          {/* Clean subtle bottom gradient for subtitle legibility without darkening face */}
+          {/* Vignette & Soft Gradient for Text Readability without Darkening Skin */}
           <AbsoluteFill
             style={{
               background:
-                'linear-gradient(to top, rgba(11, 17, 32, 0.70) 0%, rgba(11, 17, 32, 0) 28%)',
+                'linear-gradient(to top, rgba(32, 2, 4, 0.75) 0%, rgba(32, 2, 4, 0) 30%)',
               pointerEvents: 'none',
             }}
           />
         </div>
       </AbsoluteFill>
 
-      {/* ─── 1.5 DYNAMIC FORMAL B-ROLL CUTAWAYS (LIVELY EDITORIAL B-ROLL) ─── */}
-      {enableBRoll && visualMode !== 'text_only' && BROLL_CLIPS.map((clip, idx) => {
-        if (!activeBRollIds.includes(idx)) return null;
-        const startFrame = Math.round(clip.s * fps);
-        const endFrame = Math.round(clip.e * fps);
-        if (frame < startFrame || frame > endFrame) return null;
+      {/* ─── 2. 13 GESTURE-SYNCED BRAND GRAPHIC OVERLAYS ─── */}
 
-        const dur = endFrame - startFrame;
-        const progress = (frame - startFrame) / Math.max(1, dur);
-
-        // Smooth crossfade entry and exit
-        const opacity = interpolate(
-          frame,
-          [startFrame, startFrame + 6, endFrame - 6, endFrame],
-          [0, 1, 1, 0],
-          { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }
-        );
-
-        // Subtle Ken Burns slow push-in
-        const scale = interpolate(progress, [0, 1], [1.0, 1.08]);
-        const translateY = interpolate(progress, [0, 1], [0, -12]);
-
-        return (
-          <AbsoluteFill
-            key={idx}
-            style={{
-              zIndex: 20,
-              opacity,
-              overflow: 'hidden',
-              backgroundColor: '#0B1120',
-            }}
-          >
-            {/* The B-Roll Image */}
-            <Img
-              src={staticFile(clip.src)}
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                transform: `scale(${scale}) translateY(${translateY}px)`,
-                transformOrigin: 'center center',
-              }}
-            />
-
-            {/* Cinematic gradient overlays for badges and subtitles */}
-            <AbsoluteFill
-              style={{
-                background:
-                  'linear-gradient(to bottom, rgba(11, 17, 32, 0.80) 0%, rgba(11, 17, 32, 0) 22%, rgba(11, 17, 32, 0) 65%, rgba(11, 17, 32, 0.85) 100%)',
-                pointerEvents: 'none',
-              }}
-            />
-
-            {/* Formal Editorial B-Roll Tag */}
-            <div
-              style={{
-                position: 'absolute',
-                top: 75,
-                left: 50,
-                display: 'flex',
-                alignItems: 'center',
-                gap: 10,
-                background: 'rgba(15, 23, 42, 0.85)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                borderRadius: 20,
-                padding: '8px 18px',
-                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.5)',
-              }}
-            >
-              <span
-                style={{
-                  width: 8,
-                  height: 8,
-                  borderRadius: '50%',
-                  backgroundColor: '#10B981',
-                  boxShadow: '0 0 10px #10B981',
-                }}
-              />
-              <span
-                style={{
-                  color: '#CBD5E1',
-                  fontSize: 13,
-                  fontWeight: 800,
-                  letterSpacing: 1.5,
-                  textTransform: 'uppercase',
-                }}
-              >
-                MINH HỌA • {clip.tag}
-              </span>
-            </div>
-          </AbsoluteFill>
-        );
-      })}
-
-      {/* ─── 2. FORMAL & LIVELY ILLUSTRATIVE EDITORIAL OVERLAYS ─── */}
-
-      {/* BEAT 1: THE CORE HOOK CONTRAST (0.6s - 5.2s) */}
+      {/* BEAT 1: HOOK (0.6s - 5.2s) — Hai bàn tay cân bằng */}
       {showHookCard && (() => {
         const spr = makeSpring(18);
         return (
           <div
             style={{
               position: 'absolute',
-              top: 140,
+              top: 130,
               left: 45,
               right: 45,
-              transform: `translateY(${(1 - spr) * -25}px) scale(${interpolate(spr, [0, 1], [0.92, 1.0])})`,
+              transform: `translateY(${(1 - spr) * -25}px) scale(${interpolate(spr, [0, 1], [0.94, 1.0])})`,
               opacity: spr,
               zIndex: 35,
             }}
           >
             <div
               style={{
-                background: 'rgba(15, 23, 42, 0.96)',
+                background: BRAND.ivory,
                 borderRadius: 28,
                 padding: '26px 32px',
-                border: '1.5px solid rgba(16, 185, 129, 0.4)',
-                boxShadow: '0 25px 70px rgba(0, 0, 0, 0.85)',
+                border: `2px solid ${BRAND.wine}`,
+                boxShadow: '0 25px 60px rgba(0, 0, 0, 0.55)',
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <span style={{ background: 'rgba(16, 185, 129, 0.2)', color: '#10B981', padding: '4px 12px', borderRadius: 20, fontSize: 13, fontWeight: 800, letterSpacing: 1.5 }}>
-                  TRIẾT LÝ LIFE-FIRST 🌿
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span
+                  style={{
+                    background: BRAND.wine,
+                    color: BRAND.ivory,
+                    padding: '4px 14px',
+                    borderRadius: 20,
+                    fontFamily: FONT_BODY,
+                    fontSize: 13,
+                    fontWeight: 800,
+                    letterSpacing: 1.5,
+                  }}
+                >
+                  LIFE-FIRST BUSINESS 🌿
                 </span>
-                <span style={{ color: '#94A3B8', fontSize: 14, fontWeight: 700 }}>BÀI TOÁN CÂN BẰNG</span>
+                <span style={{ fontFamily: FONT_HANDWRITING, color: BRAND.olive, fontSize: 24, fontWeight: 700 }}>
+                  bài toán cân bằng ~
+                </span>
               </div>
-              <div style={{ color: '#FFFFFF', fontSize: 24, fontWeight: 900, marginTop: 10, lineHeight: 1.35 }}>
-                Kiếm tiền từ kinh doanh — Nhưng KHÔNG để kinh doanh nuốt chửng cuộc sống!
+              <div
+                style={{
+                  fontFamily: FONT_DISPLAY,
+                  color: BRAND.wine,
+                  fontSize: 27,
+                  fontWeight: 800,
+                  marginTop: 10,
+                  lineHeight: 1.3,
+                }}
+              >
+                Kiếm tiền từ kinh doanh ≠ Nuốt mất cuộc sống
               </div>
               <div style={{ marginTop: 14, display: 'flex', gap: 10 }}>
-                <span style={{ background: 'rgba(239, 68, 68, 0.15)', color: '#EF4444', padding: '6px 14px', borderRadius: 16, fontSize: 14, fontWeight: 700 }}>
+                <span
+                  style={{
+                    background: 'rgba(114, 0, 0, 0.10)',
+                    color: BRAND.wine,
+                    border: `1px solid ${BRAND.wine}`,
+                    padding: '6px 14px',
+                    borderRadius: 16,
+                    fontSize: 14,
+                    fontWeight: 700,
+                  }}
+                >
                   ✕ Kiệt sức & Mất thời gian
                 </span>
-                <span style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10B981', padding: '6px 14px', borderRadius: 16, fontSize: 14, fontWeight: 700 }}>
+                <span
+                  style={{
+                    background: BRAND.olive,
+                    color: BRAND.ivory,
+                    padding: '6px 14px',
+                    borderRadius: 16,
+                    fontSize: 14,
+                    fontWeight: 700,
+                  }}
+                >
                   ✓ Tự do & Bền vững
                 </span>
               </div>
@@ -399,27 +282,27 @@ export const LifeFirstBusinessMaster: React.FC<LifeFirstBusinessMasterProps> = (
         );
       })()}
 
-      {/* BEAT 2: SIA SPEAKER BIO PILL (6.2s - 11.2s) */}
+      {/* BEAT 2: BIO PILL (6.2s - 11.2s) — Giới thiệu bản thân */}
       {showBioPill && (() => {
         const spr = makeSpring(186);
         return (
           <div
             style={{
               position: 'absolute',
-              top: 150,
-              left: 50,
-              transform: `translateX(${(1 - spr) * -50}px)`,
+              top: 140,
+              left: 45,
+              transform: `translateX(${(1 - spr) * -40}px)`,
               opacity: spr,
               zIndex: 35,
             }}
           >
             <div
               style={{
-                background: 'rgba(15, 23, 42, 0.95)',
+                background: BRAND.ivory,
                 borderRadius: 24,
                 padding: '16px 26px',
-                border: '1.5px solid rgba(255, 255, 255, 0.18)',
-                boxShadow: '0 20px 50px rgba(0, 0, 0, 0.75)',
+                border: `2px solid ${BRAND.olive}`,
+                boxShadow: '0 20px 45px rgba(0, 0, 0, 0.45)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: 16,
@@ -427,24 +310,29 @@ export const LifeFirstBusinessMaster: React.FC<LifeFirstBusinessMasterProps> = (
             >
               <div
                 style={{
-                  width: 48,
-                  height: 48,
+                  width: 50,
+                  height: 50,
                   borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #10B981 0%, #0284C7 100%)',
+                  background: `linear-gradient(135deg, ${BRAND.wine} 0%, ${BRAND.olive} 100%)`,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: '#FFFFFF',
-                  fontWeight: 900,
-                  fontSize: 20,
-                  boxShadow: '0 0 16px rgba(16, 185, 129, 0.5)',
+                  color: BRAND.ivory,
+                  fontFamily: FONT_DISPLAY,
+                  fontWeight: 800,
+                  fontSize: 24,
+                  boxShadow: `0 4px 14px rgba(114, 0, 0, 0.4)`,
                 }}
               >
                 S
               </div>
               <div>
-                <div style={{ color: '#FFFFFF', fontWeight: 900, fontSize: 20 }}>Sia • Solo Business Founder</div>
-                <div style={{ color: '#94A3B8', fontSize: 14, marginTop: 2, fontWeight: 600 }}>Mẹ nhóc 2 tuổi • Tự do thời gian</div>
+                <div style={{ fontFamily: FONT_DISPLAY, color: BRAND.wine, fontWeight: 800, fontSize: 22 }}>
+                  Sia • Solo Business Founder
+                </div>
+                <div style={{ fontFamily: FONT_HANDWRITING, color: BRAND.oliveDark, fontSize: 20, marginTop: 2, fontWeight: 700 }}>
+                  Mẹ nhóc 2 tuổi & sống chậm ✨
+                </div>
               </div>
             </div>
           </div>
@@ -458,45 +346,68 @@ export const LifeFirstBusinessMaster: React.FC<LifeFirstBusinessMasterProps> = (
           <div
             style={{
               position: 'absolute',
-              top: 140,
+              top: 130,
               left: 45,
               right: 45,
-              transform: `scale(${interpolate(spr, [0, 1], [0.92, 1.0])})`,
+              transform: `scale(${interpolate(spr, [0, 1], [0.93, 1.0])})`,
               opacity: spr,
               zIndex: 35,
             }}
           >
             <div
               style={{
-                background: 'rgba(15, 23, 42, 0.96)',
+                background: BRAND.wine,
                 borderRadius: 26,
                 padding: '24px 30px',
-                border: '1.5px solid #F59E0B',
-                boxShadow: '0 0 50px rgba(245, 158, 11, 0.35), 0 20px 60px rgba(0,0,0,0.85)',
+                border: `2px solid ${BRAND.gold}`,
+                boxShadow: `0 0 40px rgba(194, 155, 56, 0.35), 0 20px 50px rgba(0,0,0,0.65)`,
               }}
             >
-              <div style={{ color: '#F59E0B', fontWeight: 900, fontSize: 14, letterSpacing: 2 }}>
-                SERIES: LIFE-FIRST BUSINESS • TẬP 03
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span style={{ color: BRAND.gold, fontWeight: 800, fontSize: 13, letterSpacing: 2 }}>
+                  SERIES: LIFE-FIRST BUSINESS
+                </span>
+                <span
+                  style={{
+                    background: BRAND.gold,
+                    color: BRAND.wineDark,
+                    padding: '3px 10px',
+                    borderRadius: 12,
+                    fontWeight: 900,
+                    fontSize: 12,
+                  }}
+                >
+                  TẬP 03
+                </span>
               </div>
-              <div style={{ color: '#FFFFFF', fontWeight: 900, fontSize: 24, marginTop: 8 }}>
-                Xây dựng mô hình kinh doanh từ cuộc sống mong muốn trước
+              <div
+                style={{
+                  fontFamily: FONT_DISPLAY,
+                  color: BRAND.ivory,
+                  fontSize: 25,
+                  fontWeight: 800,
+                  marginTop: 8,
+                  lineHeight: 1.35,
+                }}
+              >
+                Xây dựng mô hình từ cuộc sống mong muốn trước!
               </div>
-              <div style={{ color: '#CBD5E1', fontSize: 15, marginTop: 8 }}>
-                ➔ Định hình phong cách sống trước, chọn mô hình công việc sau.
+              <div style={{ fontFamily: FONT_HANDWRITING, color: BRAND.beigeSoft, fontSize: 22, marginTop: 6 }}>
+                ~ Bắt đầu từ lối sống, không phải ngược lại ~
               </div>
             </div>
           </div>
         );
       })()}
 
-      {/* BEAT 4: QUESTION SPOTLIGHT (19.5s - 24.5s) */}
+      {/* BEAT 4: PRACTICAL QUESTION (19.2s - 24.5s) — Nghiêng đầu, đặt câu hỏi */}
       {showQuestionCard && (() => {
-        const spr = makeSpring(585);
+        const spr = makeSpring(576);
         return (
           <div
             style={{
               position: 'absolute',
-              top: 140,
+              top: 135,
               left: 45,
               right: 45,
               transform: `translateY(${(1 - spr) * -20}px)`,
@@ -506,17 +417,31 @@ export const LifeFirstBusinessMaster: React.FC<LifeFirstBusinessMasterProps> = (
           >
             <div
               style={{
-                background: 'rgba(15, 23, 42, 0.96)',
+                background: BRAND.ivory,
                 borderRadius: 26,
                 padding: '26px 34px',
-                border: '2px solid rgba(56, 189, 248, 0.65)',
-                boxShadow: '0 0 50px rgba(56, 189, 248, 0.4), 0 25px 70px rgba(0,0,0,0.85)',
+                border: `2px solid ${BRAND.wine}`,
+                boxShadow: '0 25px 60px rgba(0,0,0,0.5)',
               }}
             >
-              <div style={{ color: '#38BDF8', fontWeight: 900, fontSize: 15, letterSpacing: 2 }}>
-                BÀI TOÁN THỰC TẾ 💡
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span style={{ color: BRAND.wine, fontWeight: 900, fontSize: 14, letterSpacing: 2 }}>
+                  BÀI TOÁN THỰC TẾ 💡
+                </span>
+                <span style={{ fontFamily: FONT_HANDWRITING, color: BRAND.olive, fontSize: 22 }}>
+                  nói chuyện thực tế nhé...
+                </span>
               </div>
-              <div style={{ color: '#FFFFFF', fontWeight: 900, fontSize: 28, marginTop: 8, lineHeight: 1.35 }}>
+              <div
+                style={{
+                  fontFamily: FONT_DISPLAY,
+                  color: BRAND.wineDark,
+                  fontWeight: 800,
+                  fontSize: 26,
+                  marginTop: 8,
+                  lineHeight: 1.35,
+                }}
+              >
                 "Kiếm tiền từ chuyên môn của bản thân bằng những cách nào?"
               </div>
             </div>
@@ -524,142 +449,9 @@ export const LifeFirstBusinessMaster: React.FC<LifeFirstBusinessMasterProps> = (
         );
       })()}
 
-      {/* BEAT 5: METHOD 1 - TƯ VẤN 1-1 (26.0s - 32.5s) */}
+      {/* BEAT 5: METHOD 1 — TƯ VẤN 1-1 (25.8s - 32.5s) — Giơ 1 ngón tay ☝️ */}
       {showMethod1 && (() => {
-        const spr = makeSpring(780);
-        return (
-          <div
-            style={{
-              position: 'absolute',
-              top: 130,
-              left: 45,
-              right: 45,
-              transform: `scale(${interpolate(spr, [0, 1], [0.92, 1.0])})`,
-              opacity: spr,
-              zIndex: 35,
-            }}
-          >
-            <div
-              style={{
-                background: 'rgba(15, 23, 42, 0.97)',
-                borderRadius: 26,
-                padding: '24px 30px',
-                border: '1.5px solid #38BDF8',
-                boxShadow: '0 25px 70px rgba(0,0,0,0.85)',
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <span style={{ background: '#0284C7', color: '#FFF', padding: '4px 12px', borderRadius: 8, fontSize: 13, fontWeight: 900 }}>
-                  CÁCH 01
-                </span>
-                <span style={{ color: '#38BDF8', fontSize: 18, fontWeight: 900 }}>TƯ VẤN 1-1 (1-on-1 Consulting)</span>
-              </div>
-              <div style={{ marginTop: 14, display: 'flex', flexDirection: 'column', gap: 10 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, color: '#F1F5F9', fontSize: 17, fontWeight: 700 }}>
-                  <span style={{ color: '#10B981' }}>✓</span> Chuyên môn đủ sâu giải quyết 1 vấn đề cụ thể
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, color: '#F1F5F9', fontSize: 17, fontWeight: 700 }}>
-                  <span style={{ color: '#10B981' }}>✓</span> Cách tạo ra doanh thu và kiểm chứng NHANH NHẤT
-                </div>
-              </div>
-              <div style={{ marginTop: 12, background: 'rgba(56, 189, 248, 0.12)', borderRadius: 12, padding: '8px 14px', color: '#93C5FD', fontSize: 14 }}>
-                Phù hợp: Chuyên gia, mentor, cố vấn chiến lược
-              </div>
-            </div>
-          </div>
-        );
-      })()}
-
-      {/* BEAT 6: METHOD 2 - DỊCH VỤ ĐÓNG GÓI (34.0s - 39.8s) */}
-      {showMethod2 && (() => {
-        const spr = makeSpring(1020);
-        return (
-          <div
-            style={{
-              position: 'absolute',
-              top: 130,
-              left: 45,
-              right: 45,
-              transform: `scale(${interpolate(spr, [0, 1], [0.92, 1.0])})`,
-              opacity: spr,
-              zIndex: 35,
-            }}
-          >
-            <div
-              style={{
-                background: 'rgba(15, 23, 42, 0.97)',
-                borderRadius: 26,
-                padding: '24px 30px',
-                border: '1.5px solid #10B981',
-                boxShadow: '0 25px 70px rgba(0,0,0,0.85)',
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <span style={{ background: '#059669', color: '#FFF', padding: '4px 12px', borderRadius: 8, fontSize: 13, fontWeight: 900 }}>
-                  CÁCH 02
-                </span>
-                <span style={{ color: '#10B981', fontSize: 18, fontWeight: 900 }}>DỊCH VỤ ĐÓNG GÓI (Productized Service)</span>
-              </div>
-              <div style={{ marginTop: 14, display: 'flex', flexDirection: 'column', gap: 10 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, color: '#F1F5F9', fontSize: 17, fontWeight: 700 }}>
-                  <span style={{ color: '#10B981' }}>✓</span> 1 Vấn đề rõ ràng • 1 Phạm vi (Scope) xác định
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10, color: '#F1F5F9', fontSize: 17, fontWeight: 700 }}>
-                  <span style={{ color: '#10B981' }}>✓</span> Làm xong là BÀN GIAO & KẾT THÚC (Không kéo dài)
-                </div>
-              </div>
-              <div style={{ marginTop: 12, background: 'rgba(16, 185, 129, 0.12)', borderRadius: 12, padding: '8px 14px', color: '#6EE7B7', fontSize: 14 }}>
-                Tránh bẫy làm thêm việc không tên, kiểm soát 100% thời gian
-              </div>
-            </div>
-          </div>
-        );
-      })()}
-
-      {/* BEAT 7: METHOD 3 - LỚP HỌC NHỎ / WORKSHOP (41.0s - 47.8s) */}
-      {showMethod3 && (() => {
-        const spr = makeSpring(1230);
-        return (
-          <div
-            style={{
-              position: 'absolute',
-              top: 130,
-              left: 45,
-              right: 45,
-              transform: `scale(${interpolate(spr, [0, 1], [0.92, 1.0])})`,
-              opacity: spr,
-              zIndex: 35,
-            }}
-          >
-            <div
-              style={{
-                background: 'rgba(15, 23, 42, 0.97)',
-                borderRadius: 26,
-                padding: '24px 30px',
-                border: '1.5px solid #F59E0B',
-                boxShadow: '0 25px 70px rgba(0,0,0,0.85)',
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <span style={{ background: '#D97706', color: '#FFF', padding: '4px 12px', borderRadius: 8, fontSize: 13, fontWeight: 900 }}>
-                  CÁCH 03
-                </span>
-                <span style={{ color: '#F59E0B', fontSize: 18, fontWeight: 900 }}>MICRO-WORKSHOP / LỚP HỌC NHỎ</span>
-              </div>
-              <div style={{ color: '#FFFFFF', fontSize: 20, fontWeight: 800, marginTop: 12 }}>
-                Đóng gói kiến thức bạn thường xuyên phải giải thích
-              </div>
-              <div style={{ color: '#CBD5E1', fontSize: 16, marginTop: 8, lineHeight: 1.4 }}>
-                ➔ Biến những câu hỏi lặp đi lặp lại từ khách hàng/bạn bè thành buổi học chuyên sâu có nhiều người sẵn sàng trả phí!
-              </div>
-            </div>
-          </div>
-        );
-      })()}
-
-      {/* BEAT 8: METHOD 4 - SẢN PHẨM SỐ (49.5s - 60.8s) */}
-      {showMethod4 && (() => {
-        const spr = makeSpring(1485);
+        const spr = makeSpring(775);
         return (
           <div
             style={{
@@ -674,46 +466,288 @@ export const LifeFirstBusinessMaster: React.FC<LifeFirstBusinessMasterProps> = (
           >
             <div
               style={{
-                background: 'rgba(15, 23, 42, 0.97)',
+                background: BRAND.ivory,
                 borderRadius: 26,
                 padding: '24px 30px',
-                border: '1.5px solid #A855F7',
-                boxShadow: '0 0 50px rgba(168, 85, 247, 0.35), 0 25px 70px rgba(0,0,0,0.85)',
+                border: `2px solid ${BRAND.wine}`,
+                boxShadow: '0 25px 60px rgba(0,0,0,0.5)',
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <span style={{ background: '#7C3AED', color: '#FFF', padding: '4px 12px', borderRadius: 8, fontSize: 13, fontWeight: 900 }}>
-                  CÁCH 04
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <span
+                    style={{
+                      background: BRAND.wine,
+                      color: BRAND.ivory,
+                      padding: '4px 12px',
+                      borderRadius: 10,
+                      fontSize: 13,
+                      fontWeight: 900,
+                    }}
+                  >
+                    CÁCH 01
+                  </span>
+                  <span style={{ fontFamily: FONT_DISPLAY, color: BRAND.wine, fontSize: 22, fontWeight: 800 }}>
+                    TƯ VẤN 1:1
+                  </span>
+                </div>
+                <span style={{ fontFamily: FONT_HANDWRITING, color: BRAND.oliveDark, fontSize: 22, fontWeight: 700 }}>
+                  cách nhanh nhất ⚡
                 </span>
-                <span style={{ color: '#A855F7', fontSize: 18, fontWeight: 900 }}>SẢN PHẨM SỐ (Digital Products)</span>
               </div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 14 }}>
-                <span style={{ background: 'rgba(255,255,255,0.08)', color: '#F1F5F9', padding: '6px 14px', borderRadius: 16, fontSize: 15, fontWeight: 700 }}>
-                  📄 Templates
-                </span>
-                <span style={{ background: 'rgba(255,255,255,0.08)', color: '#F1F5F9', padding: '6px 14px', borderRadius: 16, fontSize: 15, fontWeight: 700 }}>
-                  📚 Ebooks
-                </span>
-                <span style={{ background: 'rgba(255,255,255,0.08)', color: '#F1F5F9', padding: '6px 14px', borderRadius: 16, fontSize: 15, fontWeight: 700 }}>
-                  🛠️ Bộ Hướng Dẫn Thực Chiến
-                </span>
+              <div style={{ marginTop: 14, display: 'flex', flexDirection: 'column', gap: 8 }}>
+                <div style={{ color: BRAND.wineDark, fontSize: 17, fontWeight: 700 }}>
+                  <span style={{ color: BRAND.olive, fontWeight: 900 }}>✓</span> Chuyên môn đủ sâu giải quyết 1 vấn đề cụ thể
+                </div>
+                <div style={{ color: BRAND.wineDark, fontSize: 17, fontWeight: 700 }}>
+                  <span style={{ color: BRAND.olive, fontWeight: 900 }}>✓</span> Kiểm chứng nhu cầu thị trường nhanh nhất
+                </div>
               </div>
-              <div style={{ marginTop: 14, background: 'rgba(168, 85, 247, 0.15)', borderRadius: 14, padding: '10px 16px', color: '#E9D5FF', fontSize: 16, fontWeight: 800 }}>
-                💡 ĐÓNG GÓI 1 LẦN ➔ BÁN NHIỀU LẦN (Khả năng mở rộng không giới hạn)
+              <div
+                style={{
+                  marginTop: 12,
+                  background: 'rgba(121, 132, 102, 0.15)',
+                  borderRadius: 12,
+                  padding: '8px 14px',
+                  color: BRAND.oliveDark,
+                  fontSize: 14,
+                  fontWeight: 600,
+                }}
+              >
+                Phù hợp: Chuyên gia, mentor, cố vấn chiến lược
               </div>
             </div>
           </div>
         );
       })()}
 
-      {/* BEAT 9: HONEST PIVOT (62.2s - 65.5s) */}
+      {/* BEAT 6: METHOD 2 — DỊCH VỤ ĐÓNG GÓI (33.6s - 39.8s) — Giơ 2 ngón tay ✌️ */}
+      {showMethod2 && (() => {
+        const spr = makeSpring(1008);
+        return (
+          <div
+            style={{
+              position: 'absolute',
+              top: 125,
+              left: 45,
+              right: 45,
+              transform: `scale(${interpolate(spr, [0, 1], [0.92, 1.0])})`,
+              opacity: spr,
+              zIndex: 35,
+            }}
+          >
+            <div
+              style={{
+                background: BRAND.ivory,
+                borderRadius: 26,
+                padding: '24px 30px',
+                border: `2px solid ${BRAND.olive}`,
+                boxShadow: '0 25px 60px rgba(0,0,0,0.5)',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <span
+                    style={{
+                      background: BRAND.olive,
+                      color: BRAND.ivory,
+                      padding: '4px 12px',
+                      borderRadius: 10,
+                      fontSize: 13,
+                      fontWeight: 900,
+                    }}
+                  >
+                    CÁCH 02
+                  </span>
+                  <span style={{ fontFamily: FONT_DISPLAY, color: BRAND.wineDark, fontSize: 22, fontWeight: 800 }}>
+                    DỊCH VỤ ĐÓNG GÓI
+                  </span>
+                </div>
+                <span style={{ fontFamily: FONT_HANDWRITING, color: BRAND.wine, fontSize: 22, fontWeight: 700 }}>
+                  Productized Service ~
+                </span>
+              </div>
+              <div style={{ marginTop: 14, display: 'flex', gap: 8, justifyContent: 'center' }}>
+                <span style={{ background: BRAND.beigeSoft, color: BRAND.wineDark, padding: '8px 14px', borderRadius: 12, fontWeight: 700, fontSize: 15 }}>
+                  1 Vấn Đề Rõ
+                </span>
+                <span style={{ alignSelf: 'center', color: BRAND.olive, fontWeight: 900 }}>➔</span>
+                <span style={{ background: BRAND.beigeSoft, color: BRAND.wineDark, padding: '8px 14px', borderRadius: 12, fontWeight: 700, fontSize: 15 }}>
+                  1 Phạm Vi Rõ
+                </span>
+                <span style={{ alignSelf: 'center', color: BRAND.olive, fontWeight: 900 }}>➔</span>
+                <span style={{ background: BRAND.wine, color: BRAND.ivory, padding: '8px 14px', borderRadius: 12, fontWeight: 800, fontSize: 15 }}>
+                  Bàn Giao & Kết Thúc!
+                </span>
+              </div>
+              <div
+                style={{
+                  marginTop: 12,
+                  textAlign: 'center',
+                  fontFamily: FONT_HANDWRITING,
+                  color: BRAND.oliveDark,
+                  fontSize: 20,
+                }}
+              >
+                Tránh bẫy làm thêm việc không tên, bảo vệ quỹ thời gian gia đình
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* BEAT 7: METHOD 3 — LỚP HỌC NHỎ / WORKSHOP (40.5s - 47.8s) — Giơ 3 ngón tay 🤟 */}
+      {showMethod3 && (() => {
+        const spr = makeSpring(1215);
+        return (
+          <div
+            style={{
+              position: 'absolute',
+              top: 125,
+              left: 45,
+              right: 45,
+              transform: `scale(${interpolate(spr, [0, 1], [0.92, 1.0])})`,
+              opacity: spr,
+              zIndex: 35,
+            }}
+          >
+            <div
+              style={{
+                background: BRAND.ivory,
+                borderRadius: 26,
+                padding: '24px 30px',
+                border: `2px solid ${BRAND.gold}`,
+                boxShadow: '0 25px 60px rgba(0,0,0,0.5)',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <span
+                    style={{
+                      background: BRAND.gold,
+                      color: BRAND.wineDark,
+                      padding: '4px 12px',
+                      borderRadius: 10,
+                      fontSize: 13,
+                      fontWeight: 900,
+                    }}
+                  >
+                    CÁCH 03
+                  </span>
+                  <span style={{ fontFamily: FONT_DISPLAY, color: BRAND.wineDark, fontSize: 22, fontWeight: 800 }}>
+                    WORKSHOP / LỚP HỌC NHỎ
+                  </span>
+                </div>
+                <span style={{ fontFamily: FONT_HANDWRITING, color: BRAND.oliveDark, fontSize: 22 }}>
+                  micro-cohort ~
+                </span>
+              </div>
+              <div
+                style={{
+                  fontFamily: FONT_DISPLAY,
+                  color: BRAND.wine,
+                  fontSize: 20,
+                  fontWeight: 700,
+                  marginTop: 12,
+                  lineHeight: 1.35,
+                }}
+              >
+                Đóng gói điều bạn thường xuyên phải giải thích cho khách hàng & bạn bè!
+              </div>
+              <div style={{ color: BRAND.oliveDark, fontSize: 15, marginTop: 8, fontWeight: 600 }}>
+                ➔ Trở thành buổi học chuyên sâu có nhiều người sẵn sàng trả phí.
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* BEAT 8: METHOD 4 — SẢN PHẨM SỐ (49.2s - 60.8s) — Giơ 4 ngón tay ✋ */}
+      {showMethod4 && (() => {
+        const spr = makeSpring(1476);
+        return (
+          <div
+            style={{
+              position: 'absolute',
+              top: 125,
+              left: 45,
+              right: 45,
+              transform: `scale(${interpolate(spr, [0, 1], [0.92, 1.0])})`,
+              opacity: spr,
+              zIndex: 35,
+            }}
+          >
+            <div
+              style={{
+                background: BRAND.ivory,
+                borderRadius: 26,
+                padding: '24px 30px',
+                border: `2px solid ${BRAND.wine}`,
+                boxShadow: '0 25px 60px rgba(0,0,0,0.5)',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <span
+                    style={{
+                      background: BRAND.wine,
+                      color: BRAND.ivory,
+                      padding: '4px 12px',
+                      borderRadius: 10,
+                      fontSize: 13,
+                      fontWeight: 900,
+                    }}
+                  >
+                    CÁCH 04
+                  </span>
+                  <span style={{ fontFamily: FONT_DISPLAY, color: BRAND.wine, fontSize: 22, fontWeight: 800 }}>
+                    SẢN PHẨM SỐ (Digital Products)
+                  </span>
+                </div>
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 14 }}>
+                <span style={{ background: BRAND.beigeSoft, color: BRAND.wineDark, padding: '6px 14px', borderRadius: 14, fontSize: 14, fontWeight: 700 }}>
+                  📄 Templates
+                </span>
+                <span style={{ background: BRAND.beigeSoft, color: BRAND.wineDark, padding: '6px 14px', borderRadius: 14, fontSize: 14, fontWeight: 700 }}>
+                  📚 Ebooks
+                </span>
+                <span style={{ background: BRAND.beigeSoft, color: BRAND.wineDark, padding: '6px 14px', borderRadius: 14, fontSize: 14, fontWeight: 700 }}>
+                  🛠️ Bộ Hướng Dẫn
+                </span>
+              </div>
+              <div
+                style={{
+                  marginTop: 14,
+                  background: BRAND.wine,
+                  borderRadius: 14,
+                  padding: '10px 16px',
+                  color: BRAND.ivory,
+                  fontSize: 16,
+                  fontWeight: 800,
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                }}
+              >
+                <span>💡 ĐÓNG GÓI 1 LẦN ➔ BÁN NHIỀU LẦN</span>
+                <span style={{ fontFamily: FONT_HANDWRITING, color: BRAND.gold, fontSize: 22 }}>
+                  thu nhập thụ động ✨
+                </span>
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* BEAT 9: HONEST PIVOT (62.2s - 65.5s) — Lắc tay nhẹ */}
       {showPivotCard && (() => {
         const spr = makeSpring(1866);
         return (
           <div
             style={{
               position: 'absolute',
-              top: 150,
+              top: 145,
               left: 45,
               right: 45,
               transform: `translateY(${(1 - spr) * -20}px)`,
@@ -723,18 +757,26 @@ export const LifeFirstBusinessMaster: React.FC<LifeFirstBusinessMasterProps> = (
           >
             <div
               style={{
-                background: 'rgba(15, 23, 42, 0.96)',
+                background: BRAND.ivory,
                 borderRadius: 24,
                 padding: '24px 32px',
-                border: '1.5px solid rgba(250, 204, 21, 0.7)',
-                boxShadow: '0 20px 60px rgba(0,0,0,0.85)',
+                border: `2px solid ${BRAND.olive}`,
+                boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
                 textAlign: 'center',
               }}
             >
-              <div style={{ color: '#FACC15', fontWeight: 900, fontSize: 15, letterSpacing: 2 }}>
-                LỜI KHUYÊN GIẢM ÁP LỰC 💡
+              <div style={{ fontFamily: FONT_HANDWRITING, color: BRAND.oliveDark, fontSize: 24, fontWeight: 700 }}>
+                nhưng thật ra ấy...
               </div>
-              <div style={{ color: '#FFFFFF', fontWeight: 900, fontSize: 26, marginTop: 8 }}>
+              <div
+                style={{
+                  fontFamily: FONT_DISPLAY,
+                  color: BRAND.wine,
+                  fontWeight: 800,
+                  fontSize: 26,
+                  marginTop: 6,
+                }}
+              >
                 "Bạn không nhất thiết phải mở business ngay!"
               </div>
             </div>
@@ -742,14 +784,14 @@ export const LifeFirstBusinessMaster: React.FC<LifeFirstBusinessMasterProps> = (
         );
       })()}
 
-      {/* BEAT 10: ALTERNATIVE STEPPING STONES (67.0s - 80.5s) */}
+      {/* BEAT 10: ALTERNATIVE STEPPING STONES (66.8s - 80.5s) — 2 tay mở rộng */}
       {showRemoteCard && (() => {
-        const spr = makeSpring(2010);
+        const spr = makeSpring(2004);
         return (
           <div
             style={{
               position: 'absolute',
-              top: 130,
+              top: 125,
               left: 45,
               right: 45,
               transform: `scale(${interpolate(spr, [0, 1], [0.92, 1.0])})`,
@@ -759,36 +801,49 @@ export const LifeFirstBusinessMaster: React.FC<LifeFirstBusinessMasterProps> = (
           >
             <div
               style={{
-                background: 'rgba(15, 23, 42, 0.97)',
+                background: BRAND.ivory,
                 borderRadius: 26,
                 padding: '24px 30px',
-                border: '1.5px solid #38BDF8',
-                boxShadow: '0 25px 70px rgba(0,0,0,0.85)',
+                border: `2px solid ${BRAND.olive}`,
+                boxShadow: '0 25px 60px rgba(0,0,0,0.5)',
               }}
             >
-              <div style={{ color: '#38BDF8', fontWeight: 900, fontSize: 14, letterSpacing: 2 }}>
-                BƯỚC ĐỆM BỀN VỮNG
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span style={{ color: BRAND.oliveDark, fontWeight: 800, fontSize: 13, letterSpacing: 2 }}>
+                  BƯỚC ĐỆM BỀN VỮNG
+                </span>
+                <span style={{ fontFamily: FONT_HANDWRITING, color: BRAND.wine, fontSize: 22 }}>
+                  linh hoạt tự chủ ~
+                </span>
               </div>
-              <div style={{ color: '#FFFFFF', fontWeight: 900, fontSize: 22, marginTop: 6 }}>
+              <div
+                style={{
+                  fontFamily: FONT_DISPLAY,
+                  color: BRAND.wine,
+                  fontWeight: 800,
+                  fontSize: 23,
+                  marginTop: 6,
+                }}
+              >
                 Remote Work • Freelance • Online Part-Time
               </div>
-              <div style={{ marginTop: 14, display: 'flex', flexDirection: 'column', gap: 10, color: '#E2E8F0', fontSize: 16 }}>
+              <div style={{ marginTop: 12, display: 'flex', flexDirection: 'column', gap: 8, color: BRAND.wineDark, fontSize: 16 }}>
                 <div>• Chỉ cần công việc cho bạn <strong>nhiều quyền chủ động hơn</strong></div>
-                <div>• Đã là bước chuyển dịch lớn để tiến tới <strong>Life-First Business</strong>!</div>
+                <div>• Đã là bước chuyển dịch lớn để tiến gần tới <strong>Life-First Business</strong>!</div>
               </div>
             </div>
           </div>
         );
       })()}
 
-      {/* BEAT 11: ADVICE FOR BUSY PARENTS (83.0s - 94.8s) */}
+      {/* BEAT 11: ADVICE FOR BUSY PARENTS (83.0s - 94.8s) — Tay chụm lại nhấn mạnh */}
       {showParentAdvice && (() => {
         const spr = makeSpring(2490);
         return (
           <div
             style={{
               position: 'absolute',
-              top: 130,
+              top: 125,
               left: 45,
               right: 45,
               transform: `scale(${interpolate(spr, [0, 1], [0.92, 1.0])})`,
@@ -798,35 +853,45 @@ export const LifeFirstBusinessMaster: React.FC<LifeFirstBusinessMasterProps> = (
           >
             <div
               style={{
-                background: 'rgba(15, 23, 42, 0.97)',
+                background: BRAND.ivory,
                 borderRadius: 26,
                 padding: '24px 32px',
-                border: '1.5px solid #10B981',
-                boxShadow: '0 0 50px rgba(16, 185, 129, 0.35), 0 25px 70px rgba(0,0,0,0.85)',
+                border: `2px solid ${BRAND.wine}`,
+                boxShadow: '0 25px 60px rgba(0,0,0,0.5)',
               }}
             >
-              <div style={{ color: '#10B981', fontWeight: 900, fontSize: 14, letterSpacing: 2 }}>
-                LỜI KHUYÊN CHO NGƯỜI CÓ CON NHỎ & ÍT THỜI GIAN 👶
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span style={{ color: BRAND.wine, fontWeight: 800, fontSize: 13, letterSpacing: 1.5 }}>
+                  DÀNH CHO NGƯỜI CÓ CON NHỎ & ÍT THỜI GIAN 👶
+                </span>
               </div>
-              <div style={{ color: '#FFFFFF', fontWeight: 900, fontSize: 24, marginTop: 8 }}>
+              <div
+                style={{
+                  fontFamily: FONT_DISPLAY,
+                  color: BRAND.wineDark,
+                  fontWeight: 800,
+                  fontSize: 26,
+                  marginTop: 8,
+                }}
+              >
                 Hãy bắt đầu từ việc NHỎ NHẤT!
               </div>
-              <div style={{ color: '#CBD5E1', fontSize: 16, marginTop: 8, lineHeight: 1.4 }}>
-                Một việc đủ nhỏ để kỹ năng hiện tại làm được, không ôm đồm, không gây kiệt sức.
+              <div style={{ fontFamily: FONT_HANDWRITING, color: BRAND.oliveDark, fontSize: 24, marginTop: 6 }}>
+                "Một việc đủ nhỏ để kỹ năng hiện tại làm được ngay, không gây quá tải."
               </div>
             </div>
           </div>
         );
       })()}
 
-      {/* BEAT 12: MARKET VALIDATION RULE (96.5s - 104.0s) */}
+      {/* BEAT 12: MARKET VALIDATION (96.5s - 104.0s) — Chỉ ngón tay đếm 2 điều */}
       {showValidationRule && (() => {
         const spr = makeSpring(2895);
         return (
           <div
             style={{
               position: 'absolute',
-              top: 130,
+              top: 125,
               left: 45,
               right: 45,
               transform: `scale(${interpolate(spr, [0, 1], [0.92, 1.0])})`,
@@ -836,21 +901,23 @@ export const LifeFirstBusinessMaster: React.FC<LifeFirstBusinessMasterProps> = (
           >
             <div
               style={{
-                background: 'rgba(15, 23, 42, 0.97)',
+                background: BRAND.wine,
                 borderRadius: 26,
                 padding: '24px 32px',
-                border: '2px solid #F59E0B',
-                boxShadow: '0 0 50px rgba(245, 158, 11, 0.35), 0 25px 70px rgba(0,0,0,0.85)',
+                border: `2px solid ${BRAND.gold}`,
+                boxShadow: '0 25px 60px rgba(0,0,0,0.65)',
               }}
             >
-              <div style={{ color: '#F59E0B', fontWeight: 900, fontSize: 15, letterSpacing: 2 }}>
-                2 TIÊU CHÍ KIỂM CHỨNG THỰC TẾ ⚖️
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span style={{ color: BRAND.gold, fontWeight: 900, fontSize: 14, letterSpacing: 2 }}>
+                  2 TIÊU CHÍ KIỂM CHỨNG THỰC TẾ ⚖️
+                </span>
               </div>
               <div style={{ marginTop: 12, display: 'flex', flexDirection: 'column', gap: 10 }}>
-                <div style={{ background: 'rgba(255,255,255,0.06)', borderRadius: 12, padding: '10px 16px', color: '#FFFFFF', fontSize: 16, fontWeight: 700 }}>
-                  1. Có ai thực sự trả tiền không? (Nhu cầu thị trường)
+                <div style={{ background: 'rgba(255,255,255,0.12)', borderRadius: 12, padding: '10px 16px', color: BRAND.ivory, fontSize: 16, fontWeight: 700 }}>
+                  1. Có ai thực sự trả tiền không? (Nhu cầu thật)
                 </div>
-                <div style={{ background: 'rgba(16, 185, 129, 0.15)', borderRadius: 12, padding: '10px 16px', color: '#10B981', fontSize: 16, fontWeight: 800 }}>
+                <div style={{ background: BRAND.gold, borderRadius: 12, padding: '10px 16px', color: BRAND.wineDark, fontSize: 16, fontWeight: 800 }}>
                   2. Cách làm đó có FIT với cuộc sống của bạn không?
                 </div>
               </div>
@@ -859,14 +926,14 @@ export const LifeFirstBusinessMaster: React.FC<LifeFirstBusinessMasterProps> = (
         );
       })()}
 
-      {/* BEAT 13: CALL TO ACTION (106.0s - 116.0s) */}
+      {/* BEAT 13: CALL TO ACTION (106.0s - 116.0s) — Cười & vẫy tay chào */}
       {showCtaFollow && (() => {
         const spr = makeSpring(3180);
         return (
           <div
             style={{
               position: 'absolute',
-              top: 130,
+              top: 125,
               left: 45,
               right: 45,
               transform: `scale(${interpolate(spr, [0, 1], [0.92, 1.0])})`,
@@ -876,65 +943,71 @@ export const LifeFirstBusinessMaster: React.FC<LifeFirstBusinessMasterProps> = (
           >
             <div
               style={{
-                background: 'rgba(15, 23, 42, 0.98)',
+                background: BRAND.ivory,
                 borderRadius: 28,
                 padding: '28px 36px',
-                border: '2.5px solid #10B981',
-                boxShadow: '0 0 60px rgba(16, 185, 129, 0.5), 0 25px 80px rgba(0, 0, 0, 0.9)',
+                border: `2.5px solid ${BRAND.wine}`,
+                boxShadow: `0 0 50px rgba(114, 0, 0, 0.35), 0 25px 70px rgba(0,0,0,0.55)`,
                 textAlign: 'center',
               }}
             >
-              <div style={{ fontSize: 15, fontWeight: 900, color: '#10B981', letterSpacing: 2, textTransform: 'uppercase' }}>
+              <div style={{ fontSize: 14, fontWeight: 800, color: BRAND.olive, letterSpacing: 2, textTransform: 'uppercase' }}>
                 ĐỒNG HÀNH CÙNG SIA 🌿
               </div>
-              <div style={{ fontSize: 32, fontWeight: 900, color: '#FFFFFF', marginTop: 8 }}>
+              <div
+                style={{
+                  fontFamily: FONT_DISPLAY,
+                  fontSize: 32,
+                  fontWeight: 900,
+                  color: BRAND.wine,
+                  marginTop: 8,
+                }}
+              >
                 FOLLOW ĐỂ THEO DÕI HÀNH TRÌNH
               </div>
-              <div style={{ color: '#94A3B8', fontSize: 17, marginTop: 8 }}>
-                Cùng nhau tìm kiếm và xây dựng mô hình Life-First Business bền vững!
+              <div style={{ fontFamily: FONT_HANDWRITING, color: BRAND.oliveDark, fontSize: 24, marginTop: 8 }}>
+                Ghi lại hành trình tìm kiếm & chia sẻ cùng bạn nha ✨
               </div>
             </div>
           </div>
         );
       })()}
 
-      {/* ─── 3. SUBTLE FLASH TRANSITION AT MAJOR BEATS ─── */}
-      {isCutawayEntry && (
+      {/* ─── 3. FLASH TRANSITION AT MAJOR TURNS ─── */}
+      {isFlash && (
         <AbsoluteFill
           style={{
-            backgroundColor: 'rgba(255, 255, 255, 0.20)',
+            backgroundColor: 'rgba(255, 255, 255, 0.18)',
             zIndex: 45,
             pointerEvents: 'none',
           }}
         />
       )}
 
-      {/* ─── 4. NATURAL & SUBTLE AUDIO PIPELINE ─── */}
-      {/* Warm Ambient Lofi Background Music */}
+      {/* ─── 4. NATURAL SFX & LOFI BGM ─── */}
       {enableBGM && (
         <Audio src={staticFile('library/music/clips/lofi-warm.mp3')} volume={0.05} loop />
       )}
 
-      {/* Gentle & Organic SFX at Section Entries (Volume 0.16 - 0.20) */}
       {enableSFX && (
         <>
           <Sequence from={18} durationInFrames={30}><Audio src={staticFile('sfx/ui-click-soft.wav')} volume={0.20} /></Sequence>
           <Sequence from={186} durationInFrames={30}><Audio src={staticFile('sfx/page-flip.wav')} volume={0.18} /></Sequence>
           <Sequence from={366} durationInFrames={30}><Audio src={staticFile('sfx/warm-shimmer.wav')} volume={0.18} /></Sequence>
-          <Sequence from={585} durationInFrames={30}><Audio src={staticFile('sfx/impact-soft.wav')} volume={0.18} /></Sequence>
-          <Sequence from={780} durationInFrames={30}><Audio src={staticFile('sfx/ui-click-soft.wav')} volume={0.18} /></Sequence>
-          <Sequence from={1020} durationInFrames={30}><Audio src={staticFile('sfx/ui-click-soft.wav')} volume={0.18} /></Sequence>
-          <Sequence from={1230} durationInFrames={30}><Audio src={staticFile('sfx/warm-shimmer.wav')} volume={0.18} /></Sequence>
-          <Sequence from={1485} durationInFrames={30}><Audio src={staticFile('sfx/sparkle-soft.wav')} volume={0.20} /></Sequence>
+          <Sequence from={576} durationInFrames={30}><Audio src={staticFile('sfx/ui-click-soft.wav')} volume={0.18} /></Sequence>
+          <Sequence from={775} durationInFrames={30}><Audio src={staticFile('sfx/ui-click-soft.wav')} volume={0.18} /></Sequence>
+          <Sequence from={1008} durationInFrames={30}><Audio src={staticFile('sfx/ui-click-soft.wav')} volume={0.18} /></Sequence>
+          <Sequence from={1215} durationInFrames={30}><Audio src={staticFile('sfx/warm-shimmer.wav')} volume={0.18} /></Sequence>
+          <Sequence from={1476} durationInFrames={30}><Audio src={staticFile('sfx/sparkle-soft.wav')} volume={0.20} /></Sequence>
           <Sequence from={1866} durationInFrames={30}><Audio src={staticFile('sfx/page-flip.wav')} volume={0.18} /></Sequence>
-          <Sequence from={2010} durationInFrames={30}><Audio src={staticFile('sfx/whoosh-soft.wav')} volume={0.16} /></Sequence>
+          <Sequence from={2004} durationInFrames={30}><Audio src={staticFile('sfx/whoosh-soft.wav')} volume={0.16} /></Sequence>
           <Sequence from={2490} durationInFrames={30}><Audio src={staticFile('sfx/warm-shimmer.wav')} volume={0.18} /></Sequence>
           <Sequence from={2895} durationInFrames={30}><Audio src={staticFile('sfx/page-flip.wav')} volume={0.18} /></Sequence>
           <Sequence from={3180} durationInFrames={30}><Audio src={staticFile('sfx/sparkle-soft.wav')} volume={0.22} /></Sequence>
         </>
       )}
 
-      {/* ─── 5. KINETIC WORD-BY-WORD POP SUBTITLE PILL (100% ACCURATE) ─── */}
+      {/* ─── 5. WARM EDITORIAL SUBTITLE PILL (100% ACCURATE SYNC) ─── */}
       {activeSub && (() => {
         const subDuration = Math.max(0.1, activeSub.e - activeSub.s);
         const progress = Math.max(0, Math.min(1, (currentTime - activeSub.s) / subDuration));
@@ -955,11 +1028,11 @@ export const LifeFirstBusinessMaster: React.FC<LifeFirstBusinessMasterProps> = (
           >
             <div
               style={{
-                background: 'rgba(11, 17, 33, 0.95)',
+                background: 'rgba(248, 245, 242, 0.96)',
                 padding: '18px 28px',
                 borderRadius: 24,
-                border: '1px solid rgba(255, 255, 255, 0.16)',
-                boxShadow: '0 16px 48px rgba(0, 0, 0, 0.75)',
+                border: `1.5px solid ${BRAND.wine}`,
+                boxShadow: '0 16px 48px rgba(0, 0, 0, 0.45)',
                 textAlign: 'center',
                 maxWidth: 980,
                 display: 'flex',
@@ -978,10 +1051,13 @@ export const LifeFirstBusinessMaster: React.FC<LifeFirstBusinessMasterProps> = (
                       fontFamily: FONT_BODY,
                       fontSize: 32,
                       fontWeight: isCurrent ? 900 : 700,
-                      color: isCurrent ? '#10B981' : isPast ? '#FFFFFF' : 'rgba(255, 255, 255, 0.65)',
-                      transform: isCurrent ? 'scale(1.14)' : 'scale(1.0)',
-                      textShadow: isCurrent ? '0 0 16px rgba(16, 185, 129, 0.8)' : 'none',
+                      color: isCurrent ? BRAND.wine : isPast ? '#1E293B' : 'rgba(30, 41, 59, 0.55)',
+                      transform: isCurrent ? 'scale(1.12)' : 'scale(1.0)',
+                      backgroundColor: isCurrent ? 'rgba(114, 0, 0, 0.12)' : 'transparent',
+                      padding: isCurrent ? '2px 8px' : '2px 0',
+                      borderRadius: 8,
                       display: 'inline-block',
+                      transition: 'all 0.1s ease',
                     }}
                   >
                     {w}
