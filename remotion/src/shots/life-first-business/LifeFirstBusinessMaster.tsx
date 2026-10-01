@@ -77,6 +77,82 @@ const SUBTITLES = [
   { s: 111.44, e: 116.32, text: 'follow mình nhé, mình sẽ ghi lại cái hành trình mình tìm kiếm cũng như là chia sẻ lại với mọi người nha!' },
 ];
 
+// 8 Formal, Highly Relevant Illustrative B-Roll Scenes (No Robots, Pure Editorial Lifestyle/Business)
+interface BRollClip {
+  s: number; // start in seconds
+  e: number; // end in seconds
+  src: string;
+  tag: string;
+  headline: string;
+}
+
+const BROLL_CLIPS: BRollClip[] = [
+  // 1. Hook: Overwhelmed at desk vs freedom
+  {
+    s: 1.0,
+    e: 5.2,
+    src: 'library/life_first_broll/broll_life_overwhelm.jpg',
+    tag: 'ÁP LỰC CÔNG VIỆC',
+    headline: 'Không để kinh doanh nuốt trọn cuộc sống',
+  },
+  // 2. Intro: Asian mother entrepreneur at sunlit home desk
+  {
+    s: 6.2,
+    e: 11.0,
+    src: 'library/life_first_broll/broll_mom_entrepreneur.jpg',
+    tag: 'SOLO BUSINESS FOUNDER',
+    headline: 'Mẹ nhóc 2 tuổi • Tự do thời gian',
+  },
+  // 3. Method 1: 1-on-1 strategy video consultation
+  {
+    s: 26.5,
+    e: 32.5,
+    src: 'library/life_first_broll/broll_consulting_1on1.jpg',
+    tag: 'MÔ HÌNH 01',
+    headline: 'Tư vấn 1-1 chuyên sâu cho khách hàng',
+  },
+  // 4. Method 2: Productized service scope & deliverables
+  {
+    s: 34.5,
+    e: 39.8,
+    src: 'library/life_first_broll/broll_productized_service.jpg',
+    tag: 'MÔ HÌNH 02',
+    headline: 'Dịch vụ đóng gói • 1 phạm vi rõ ràng',
+  },
+  // 5. Method 3: Micro-workshop / cohort class
+  {
+    s: 41.5,
+    e: 47.8,
+    src: 'library/life_first_broll/broll_micro_workshop.jpg',
+    tag: 'MÔ HÌNH 03',
+    headline: 'Micro-Workshop • Lớp học chuyên sâu nhỏ',
+  },
+  // 6. Method 4: Digital products (Templates, Notion, Ebooks)
+  {
+    s: 50.5,
+    e: 59.5,
+    src: 'library/life_first_broll/broll_digital_products.jpg',
+    tag: 'MÔ HÌNH 04',
+    headline: 'Sản phẩm số • Đóng gói 1 lần, bán nhiều lần',
+  },
+  // 7. Alternative: Flexible remote work & cafe terrace
+  {
+    s: 67.5,
+    e: 76.5,
+    src: 'library/life_first_broll/broll_remote_work.jpg',
+    tag: 'BƯỚC ĐỆM',
+    headline: 'Remote Work • Freelance linh hoạt tự chủ',
+  },
+  // 8. Advice: Minimalist desk, small steps & tea
+  {
+    s: 85.5,
+    e: 93.5,
+    src: 'library/life_first_broll/broll_small_steps.jpg',
+    tag: 'LỜI KHUYÊN',
+    headline: 'Bắt đầu từ việc nhỏ nhất vừa sức',
+  },
+];
+
 export const LifeFirstBusinessMaster: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -138,7 +214,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
 
   return (
     <AbsoluteFill style={{ backgroundColor: '#0B1120', overflow: 'hidden', fontFamily: FONT_BODY }}>
-      {/* ─── 1. MASTER VIDEO FOOTAGE WITH WARM EDITORIAL TONE ─── */}
+      {/* ─── 1. MASTER VIDEO FOOTAGE (PROPERLY TONEMAPPED & NATURALLY GRADED) ─── */}
       <AbsoluteFill style={{ overflow: 'hidden' }}>
         <div
           style={{
@@ -154,16 +230,109 @@ export const LifeFirstBusinessMaster: React.FC = () => {
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
 
-          {/* Warm Scandinavian Editorial Ambient Film Tone */}
+          {/* Clean subtle bottom gradient for subtitle legibility without darkening face */}
           <AbsoluteFill
             style={{
               background:
-                'radial-gradient(ellipse at 50% 36%, rgba(255, 240, 215, 0.04) 0%, rgba(15, 23, 42, 0.20) 75%, rgba(11, 17, 32, 0.55) 100%)',
+                'linear-gradient(to top, rgba(11, 17, 32, 0.70) 0%, rgba(11, 17, 32, 0) 28%)',
               pointerEvents: 'none',
             }}
           />
         </div>
       </AbsoluteFill>
+
+      {/* ─── 1.5 DYNAMIC FORMAL B-ROLL CUTAWAYS (LIVELY EDITORIAL B-ROLL) ─── */}
+      {BROLL_CLIPS.map((clip, idx) => {
+        const startFrame = Math.round(clip.s * fps);
+        const endFrame = Math.round(clip.e * fps);
+        if (frame < startFrame || frame > endFrame) return null;
+
+        const dur = endFrame - startFrame;
+        const progress = (frame - startFrame) / Math.max(1, dur);
+
+        // Smooth crossfade entry and exit
+        const opacity = interpolate(
+          frame,
+          [startFrame, startFrame + 6, endFrame - 6, endFrame],
+          [0, 1, 1, 0],
+          { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }
+        );
+
+        // Subtle Ken Burns slow push-in
+        const scale = interpolate(progress, [0, 1], [1.0, 1.08]);
+        const translateY = interpolate(progress, [0, 1], [0, -12]);
+
+        return (
+          <AbsoluteFill
+            key={idx}
+            style={{
+              zIndex: 20,
+              opacity,
+              overflow: 'hidden',
+              backgroundColor: '#0B1120',
+            }}
+          >
+            {/* The B-Roll Image */}
+            <Img
+              src={staticFile(clip.src)}
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                transform: `scale(${scale}) translateY(${translateY}px)`,
+                transformOrigin: 'center center',
+              }}
+            />
+
+            {/* Cinematic gradient overlays for badges and subtitles */}
+            <AbsoluteFill
+              style={{
+                background:
+                  'linear-gradient(to bottom, rgba(11, 17, 32, 0.80) 0%, rgba(11, 17, 32, 0) 22%, rgba(11, 17, 32, 0) 65%, rgba(11, 17, 32, 0.85) 100%)',
+                pointerEvents: 'none',
+              }}
+            />
+
+            {/* Formal Editorial B-Roll Tag */}
+            <div
+              style={{
+                position: 'absolute',
+                top: 75,
+                left: 50,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 10,
+                background: 'rgba(15, 23, 42, 0.85)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                borderRadius: 20,
+                padding: '8px 18px',
+                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.5)',
+              }}
+            >
+              <span
+                style={{
+                  width: 8,
+                  height: 8,
+                  borderRadius: '50%',
+                  backgroundColor: '#10B981',
+                  boxShadow: '0 0 10px #10B981',
+                }}
+              />
+              <span
+                style={{
+                  color: '#CBD5E1',
+                  fontSize: 13,
+                  fontWeight: 800,
+                  letterSpacing: 1.5,
+                  textTransform: 'uppercase',
+                }}
+              >
+                MINH HỌA • {clip.tag}
+              </span>
+            </div>
+          </AbsoluteFill>
+        );
+      })}
 
       {/* ─── 2. FORMAL & LIVELY ILLUSTRATIVE EDITORIAL OVERLAYS ─── */}
 

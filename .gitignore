@@ -80,3 +80,6 @@ media/*.json
 media/reference_*
 remotion/public/
 media/broll_downloads/
+
+videos/input-drive/
+test_color_graded.jpg

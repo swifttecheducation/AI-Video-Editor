@@ -60,7 +60,13 @@ SEGMENTS = [
     {"file": INPUT_DIR / "IMG_2754.MOV", "start": 9.70, "end": 15.60, "label": "Follow mình chia sẻ hành trình"}
 ]
 
-print(f"=== Bắt đầu cắt và chuẩn hóa {len(SEGMENTS)} đoạn clip ===")
+VF_SCRATCH = (
+    "zscale=t=linear:npl=100,format=gbrpf32le,zscale=p=bt709:m=bt709:r=tv,"
+    "tonemap=tonemap=hable:desat=0,zscale=t=bt709:m=bt709:r=tv,format=yuv420p,"
+    "eq=contrast=1.06:brightness=0.01:saturation=1.12,unsharp=3:3:0.5"
+)
+
+print(f"=== Bắt đầu cắt và chuẩn hóa màu {len(SEGMENTS)} đoạn clip ===")
 
 segment_files = []
 concat_manifest = TEMP_DIR / "concat_list.txt"
@@ -72,19 +78,17 @@ with open(concat_manifest, "w", encoding="utf-8") as f_manifest:
         out_seg = TEMP_DIR / f"seg_{idx:02d}.mp4"
         segment_files.append(out_seg)
         
-        print(f"[{idx+1}/{len(SEGMENTS)}] Cắt ({item['label']}): {item['start']}s -> {item['end']}s (dài {dur:.2f}s)...")
+        print(f"[{idx+1}/{len(SEGMENTS)}] Cắt & chỉnh màu ({item['label']}): {item['start']}s -> {item['end']}s (dài {dur:.2f}s)...")
         
-        # Trim and encode to clean 1080x1920 CFR 30fps H264
-        # vf="scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2"
         cmd = [
             "ffmpeg", "-y",
             "-loglevel", "error",
             "-ss", str(item["start"]),
             "-i", str(src_path),
             "-t", str(dur),
-            "-vf", "scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920",
+            "-vf", VF_SCRATCH,
             "-c:v", "libx264",
-            "-preset", "fast",
+            "-preset", "veryfast",
             "-crf", "18",
             "-r", "30",
             "-pix_fmt", "yuv420p",
