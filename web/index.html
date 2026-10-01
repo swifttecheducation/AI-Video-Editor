@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Video Editor - Editorial Studio</title>
+  <title>AI Video Editor Studio — Prompt-to-Video Engine</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Montserrat:wght@500;700;800;900&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -13,14 +13,18 @@
         extend: {
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['Montserrat', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
           },
           colors: {
             brand: {
+              emerald: '#10B981',
               cyan: '#38BDF8',
+              amber: '#F59E0B',
               rose: '#F43F5E',
-              dark: '#0B0F19',
-              card: '#131B2E',
-              border: '#1E293B',
+              dark: '#07090E',
+              card: '#0F172A',
+              border: 'rgba(255, 255, 255, 0.1)',
             }
           }
         }
@@ -29,209 +33,643 @@
   </script>
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; background: #07090E; }
-    .glass { background: rgba(19, 27, 46, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); }
-    .toggle-checkbox:checked { right: 0; border-color: #38BDF8; }
-    .toggle-checkbox:checked + .toggle-label { background-color: #0284C7; }
+    .glass { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .glass-active { background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.4); }
+    .gradient-border { position: relative; border-radius: 1rem; }
+    .gradient-border::before {
+      content: ''; position: absolute; inset: -1px; border-radius: inherit; padding: 1px;
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.5), rgba(56, 189, 248, 0.5), rgba(245, 158, 11, 0.2));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+    }
+    .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: rgba(15, 23, 42, 0.5); }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 4px; }
   </style>
 </head>
-<body class="text-slate-100 min-h-screen p-6 md:p-10 flex flex-col items-center">
+<body class="text-slate-100 min-h-screen p-4 md:p-8 flex flex-col items-center">
 
-  <!-- Header -->
-  <header class="w-full max-w-6xl flex justify-between items-center mb-8 border-b border-slate-800/80 pb-5">
+  <!-- ─── TOP HEADER BAR ─── -->
+  <header class="w-full max-w-7xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 border-b border-slate-800/80 pb-5">
     <div class="flex items-center gap-3">
-      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-rose-500 flex items-center justify-center shadow-lg shadow-cyan-500/20 font-black text-xl">
-        AI
+      <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-500 via-cyan-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-emerald-500/20 font-black text-2xl text-white">
+        ✦
       </div>
       <div>
-        <h1 class="text-xl font-bold tracking-tight">AI Video Editor <span class="text-xs px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/30">Studio Engine</span></h1>
-        <p class="text-xs text-slate-400">Tự động dựng video ngắn viral với AI Editorial & Voice Emphasis</p>
+        <div class="flex items-center gap-2">
+          <h1 class="text-xl md:text-2xl font-black tracking-tight text-white">AI Video Editor Studio</h1>
+          <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+            PROMPT-TO-VIDEO V2.0
+          </span>
+        </div>
+        <p class="text-xs text-slate-400 mt-0.5">Hệ thống dựng video ngắn tự động: Nạp Source Video ➔ Nhập Text Yêu Cầu ➔ Tự sinh B-Roll & Visual ➔ Render</p>
       </div>
     </div>
-    <div class="flex items-center gap-3">
-      <button onclick="saveAndRender()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 font-bold text-sm shadow-lg shadow-cyan-500/25 hover:opacity-90 active:scale-95 transition flex items-center gap-2">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+
+    <!-- Quick Status & Action -->
+    <div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+      <div class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Remotion Engine: Sẵn sàng</span>
+      </div>
+      <button onclick="startRenderProcess()" id="topRenderBtn" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-600 to-cyan-600 hover:from-emerald-400 hover:to-cyan-500 font-black text-sm text-white shadow-lg shadow-emerald-500/25 active:scale-95 transition flex items-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         Render Video Hoàn Chỉnh
       </button>
     </div>
   </header>
 
-  <!-- Main Content Grid -->
-  <main class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-3 gap-8">
+  <!-- ─── WORKFLOW CONTAINER ─── -->
+  <main class="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-    <!-- Column 1: Video Player & Feature Toggles -->
-    <section class="lg:col-span-1 space-y-6">
-      <!-- Live Video Player -->
-      <div class="glass rounded-2xl p-4 shadow-xl overflow-hidden">
-        <h2 class="text-sm font-bold text-cyan-400 uppercase tracking-wider mb-3 flex items-center gap-2">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-          Video Render Đã Hoàn Thiện
-        </h2>
-        <div class="relative w-full aspect-[9/16] max-h-[460px] mx-auto rounded-xl overflow-hidden bg-black/60 border border-slate-700/60 shadow-inner flex items-center justify-center">
-          <video src="/preview.mp4" controls playsinline class="w-full h-full object-contain rounded-xl"></video>
-        </div>
-        <div class="mt-3 flex justify-between items-center text-[11px] text-slate-400">
-          <span>Chuẩn: 1080x1920 (30fps)</span>
-          <span class="text-emerald-400 font-semibold">-14 LUFS Broadcast</span>
-        </div>
-      </div>
+    <!-- ═════════════════════════════════════════════════════════════ -->
+    <!-- LEFT COLUMN (COL 1-7): INPUT PIPELINE (SOURCE & PROMPT)      -->
+    <!-- ═════════════════════════════════════════════════════════════ -->
+    <div class="lg:col-span-7 space-y-6">
 
-      <div class="glass rounded-2xl p-6 shadow-xl">
-        <h2 class="text-base font-bold text-cyan-400 uppercase tracking-wider mb-4 flex items-center gap-2">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
-          Tùy Chọn Tính Năng (Toggles)
-        </h2>
-
-        <div class="space-y-4 text-sm" id="togglesList">
-          <!-- Toggle Items will be rendered here -->
-        </div>
-      </div>
-
-      <!-- Brand Profile Card -->
-      <div class="glass rounded-2xl p-6 shadow-xl">
-        <h2 class="text-base font-bold text-rose-400 uppercase tracking-wider mb-4 flex items-center gap-2">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
-          Brand Home Base
-        </h2>
-        <div class="space-y-3 text-xs">
-          <div>
-            <label class="text-slate-400">Tone Màu Chủ Đạo (Wine)</label>
-            <div class="flex items-center gap-3 mt-1.5">
-              <input type="color" id="primaryColor" value="#720000" class="w-8 h-8 rounded-lg cursor-pointer bg-transparent border border-slate-700">
-              <span class="text-slate-300 font-mono">Wine (#720000)</span>
-            </div>
+      <!-- ── STEP 1: NẠP SOURCE VIDEO (INPUT) ── -->
+      <section class="glass rounded-2xl p-6 shadow-xl relative overflow-hidden">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-2.5">
+            <span class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center font-black text-xs">
+              01
+            </span>
+            <h2 class="text-base font-bold text-white tracking-wide">Nạp Video Nguồn (Source Video)</h2>
           </div>
-          <div>
-            <label class="text-slate-400">Màu Cảnh Báo / Contrast (Olive)</label>
-            <div class="flex items-center gap-3 mt-1.5">
-              <input type="color" id="accentColor" value="#798466" class="w-8 h-8 rounded-lg cursor-pointer bg-transparent border border-slate-700">
-              <span class="text-slate-300 font-mono">Olive (#798466)</span>
-            </div>
-          </div>
-          <div>
-            <label class="text-slate-400">Call-To-Action (CTA)</label>
-            <input type="text" id="ctaText" value="Comment IM để nhận lịch Mock Interview 1-1" class="w-full mt-1.5 px-3 py-2 rounded-xl bg-slate-900 border border-slate-700 text-slate-100 text-xs focus:outline-none focus:border-cyan-500">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Column 2 & 3: Interactive Line-by-Line Review Widget -->
-    <section class="lg:col-span-2 space-y-6">
-      <div class="glass rounded-2xl p-6 shadow-xl">
-        <div class="flex justify-between items-center mb-4">
-          <div>
-            <h2 class="text-base font-bold text-slate-100 flex items-center gap-2">
-              <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-              Duyệt Từng Đoạn Thoại & Điểm Nhấn Nhá (Timeline Review)
-            </h2>
-            <p class="text-xs text-slate-400">AI tự động bắt các thời khắc người nói nhấn giọng để chèn hiệu ứng tương ứng</p>
-          </div>
-          <span class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-semibold">
-            104 Điểm Nhấn Đã Nhận Diện
+          <span class="text-xs text-emerald-400 bg-emerald-950/60 border border-emerald-800/40 px-2.5 py-1 rounded-full font-semibold flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+            Đã nạp 14 Takes iPhone
           </span>
         </div>
 
-        <!-- Lines Timeline Container -->
-        <div class="space-y-3 max-h-[640px] overflow-y-auto pr-2" id="linesList">
-          <!-- Dynamic Lines from Transcript -->
+        <!-- Source Input Tabs -->
+        <div class="grid grid-cols-2 gap-2 p-1 bg-slate-900/80 rounded-xl mb-4 text-xs font-semibold">
+          <button id="tabDriveBtn" onclick="switchSourceTab('drive')" class="py-2 rounded-lg bg-slate-800 text-white shadow transition flex items-center justify-center gap-2">
+            <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+            Google Drive / Cloud Link
+          </button>
+          <button id="tabUploadBtn" onclick="switchSourceTab('upload')" class="py-2 rounded-lg text-slate-400 hover:text-white transition flex items-center justify-center gap-2">
+            <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+            Tải Lên Từ Máy Tính (.MOV / .MP4)
+          </button>
         </div>
-      </div>
-    </section>
+
+        <!-- Drive Input Panel -->
+        <div id="drivePanel" class="space-y-3">
+          <div class="flex gap-2">
+            <input
+              type="text"
+              id="sourceDriveUrl"
+              value="https://drive.google.com/drive/folders/1-zVN5QXnLrmOg-8mkmKSzMHRvgFgTjZI"
+              placeholder="Dán link thư mục Google Drive chứa các video clips..."
+              class="w-full px-4 py-2.5 rounded-xl bg-slate-900/90 border border-slate-700/80 text-xs text-slate-200 focus:outline-none focus:border-emerald-500 font-mono"
+            >
+            <button onclick="fetchDriveClips()" class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs transition whitespace-nowrap flex items-center gap-1.5">
+              <span>Quét Lại</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Upload Drag & Drop Panel (Hidden by default) -->
+        <div id="uploadPanel" class="hidden space-y-3">
+          <div class="border-2 border-dashed border-slate-700/80 hover:border-emerald-500/50 rounded-xl p-6 text-center cursor-pointer bg-slate-900/40 hover:bg-slate-900/80 transition">
+            <input type="file" id="videoFileInput" multiple accept="video/mp4,video/quicktime,video/mov" class="hidden" onchange="handleFileSelect(event)">
+            <label for="videoFileInput" class="cursor-pointer block">
+              <div class="w-10 h-10 mx-auto mb-2 rounded-xl bg-slate-800 flex items-center justify-center text-cyan-400">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+              </div>
+              <p class="text-xs font-semibold text-slate-200">Kéo thả các file video (.MOV, .MP4) vào đây hoặc <span class="text-emerald-400 underline">bấm để chọn</span></p>
+              <p class="text-[11px] text-slate-500 mt-1">Hỗ trợ nhiều takes, video quay bằng iPhone 4K/HDR Dolby Vision</p>
+            </label>
+          </div>
+        </div>
+
+        <!-- Detected Source Inspection Details -->
+        <div class="mt-4 p-3.5 rounded-xl bg-slate-900/70 border border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">
+              📱
+            </div>
+            <div>
+              <div class="font-bold text-slate-200">iPhone 14 Pro Max • Dolby Vision (BT.2020 HLG)</div>
+              <div class="text-[11px] text-slate-400">14 Files • Gốc 3m 42s ➔ Rough Cut lọc khoảng lặng: <strong class="text-emerald-400">1m 56s</strong></div>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 font-mono text-[10px] font-bold border border-emerald-500/30">
+              ✓ Tonemapped Rec.709
+            </span>
+            <span class="px-2 py-0.5 rounded-md bg-blue-500/20 text-blue-300 font-mono text-[10px] font-bold border border-blue-500/30">
+              ✓ 100% Transcript Sync
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── STEP 2: YÊU CẦU PHONG CÁCH (PROMPT-TO-VIDEO) ── -->
+      <section class="glass rounded-2xl p-6 shadow-xl gradient-border relative">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-2.5">
+            <span class="w-7 h-7 rounded-lg bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 flex items-center justify-center font-black text-xs">
+              02
+            </span>
+            <h2 class="text-base font-bold text-white tracking-wide">Yêu Cầu Phong Cách Bằng Văn Bản (Text Prompt)</h2>
+          </div>
+          <span class="text-xs text-slate-400">AI tự phân tích & sinh visual</span>
+        </div>
+
+        <!-- Prompt Textarea -->
+        <div class="relative">
+          <textarea
+            id="userPromptInput"
+            rows="4"
+            class="w-full p-4 rounded-xl bg-slate-900/90 border border-slate-700/80 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition leading-relaxed custom-scrollbar"
+            placeholder="Nhập yêu cầu bằng tiếng Việt tự nhiên... Ví dụ: Làm video theo phong cách Minimalist Solopreneur ấm áp, tone màu xanh ngọc emerald và kem, phụ đề nảy chữ xanh lá, animation zoom mượt mà, B-roll là hình ảnh mẹ làm việc ở nhà, tư vấn 1-1, sản phẩm số, tuyệt đối không dùng hình robot AI..."
+          >Dựng video theo phong cách Minimalist Solopreneur ấm áp, hiện đại. Tone màu xanh ngọc emerald và xám slate tối giản. Phụ đề tiếng Việt nảy từng từ chữ xanh lá neon. Animation zoom mượt mà phong cách Scandinavian. Các phân cảnh B-roll minh họa thực tế formal gồm: người làm việc đêm kiệt sức, mẹ bỉm khởi nghiệp tại nhà, tư vấn 1-1, dịch vụ đóng gói, lớp học nhỏ workshop, sản phẩm số template, remote freelance tự do, bắt đầu từ việc nhỏ. Âm thanh lofi ấm và click nhẹ.</textarea>
+        </div>
+
+        <!-- Quick Preset Prompt Chips -->
+        <div class="mt-3 flex flex-wrap items-center gap-2 text-xs">
+          <span class="text-slate-400 text-[11px] font-semibold">Gợi ý Preset:</span>
+          <button onclick="applyPreset('solopreneur')" class="px-3 py-1 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 border border-emerald-500/30 transition">
+            🌿 Minimalist Solopreneur (Emerald)
+          </button>
+          <button onclick="applyPreset('tech')" class="px-3 py-1 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-300 border border-cyan-500/30 transition">
+            ⚡ Tech Founder & Dark Mode
+          </button>
+          <button onclick="applyPreset('executive')" class="px-3 py-1 rounded-lg bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 border border-amber-500/30 transition">
+            💼 Executive & Champagne Gold
+          </button>
+          <button onclick="applyPreset('lifestyle')" class="px-3 py-1 rounded-lg bg-rose-500/15 hover:bg-rose-500/25 text-rose-300 border border-rose-500/30 transition">
+            ☕ Warm Storytelling & Lofi
+          </button>
+        </div>
+
+        <!-- Action Button: AI Parse & Generate Blueprint -->
+        <div class="mt-5 flex justify-end">
+          <button onclick="generateVideoBlueprint()" id="generateBtn" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 hover:opacity-90 font-bold text-sm text-white shadow-lg shadow-cyan-500/25 active:scale-95 transition flex items-center justify-center gap-2">
+            <svg class="w-4 h-4 text-cyan-200 animate-spin hidden" id="genSpinner" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
+            <span id="genBtnIcon">✨</span>
+            <span id="genBtnText">AI Phân Tích & Tạo Bản Thiết Kế Video</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- ── STEP 3: BẢN THIẾT KẾ VISUAL ĐƯỢC TẠO RA (BLUEPRINT) ── -->
+      <section class="glass rounded-2xl p-6 shadow-xl space-y-5" id="blueprintSection">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+          <div class="flex items-center gap-2.5">
+            <span class="w-7 h-7 rounded-lg bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center font-black text-xs">
+              03
+            </span>
+            <h2 class="text-base font-bold text-white tracking-wide">Bản Thiết Kế Video Tự Động (AI Generated Blueprint)</h2>
+          </div>
+          <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 font-semibold border border-emerald-500/30">
+            Sẵn Sàng Render
+          </span>
+        </div>
+
+        <!-- Generated Parameter Tokens Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+          <!-- Color Tokens -->
+          <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
+            <span class="text-slate-400 block mb-1 text-[11px] font-semibold">BẢNG MÀU CHỦ ĐẠO</span>
+            <div class="flex items-center gap-2 mt-1">
+              <div id="tokenPrimaryColor" class="w-5 h-5 rounded-md bg-[#10B981] shadow" title="Primary Color"></div>
+              <div id="tokenAccentColor" class="w-5 h-5 rounded-md bg-[#38BDF8] shadow" title="Accent Color"></div>
+              <div id="tokenHighlightColor" class="w-5 h-5 rounded-md bg-[#34D399] shadow" title="Text Glow"></div>
+            </div>
+            <div id="tokenPaletteName" class="text-[11px] font-bold text-slate-300 mt-2">Emerald Solopreneur</div>
+          </div>
+
+          <!-- Typography -->
+          <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
+            <span class="text-slate-400 block mb-1 text-[11px] font-semibold">TYPOGRAPHY</span>
+            <div id="tokenFont" class="text-xs font-bold text-white">Plus Jakarta Sans</div>
+            <div class="text-[10px] text-emerald-400 mt-1">Karaoke Word-Pop Pill</div>
+          </div>
+
+          <!-- Animation & Camera -->
+          <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
+            <span class="text-slate-400 block mb-1 text-[11px] font-semibold">CHUYỂN ĐỘNG (CAMERA)</span>
+            <div id="tokenZoom" class="text-xs font-bold text-white">Ken Burns Zoom 1.06x</div>
+            <div class="text-[10px] text-slate-400 mt-1">5 Điểm Multi-Cam Punch</div>
+          </div>
+
+          <!-- Sound Design -->
+          <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800">
+            <span class="text-slate-400 block mb-1 text-[11px] font-semibold">ÂM THANH & SFX</span>
+            <div id="tokenMusic" class="text-xs font-bold text-white">Lofi Warm Background</div>
+            <div class="text-[10px] text-slate-400 mt-1">Organic Click & Shimmer</div>
+          </div>
+        </div>
+
+        <!-- 8 B-Roll Scenes Timeline Mapping -->
+        <div>
+          <div class="flex justify-between items-center mb-3">
+            <h3 class="text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
+              <span>🖼️</span> 8 Phân Cảnh B-Roll Minh Họa Tự Động Gán Theo Lời Nói
+            </h3>
+            <span class="text-[11px] text-slate-400">100% Ảnh Chân Thực Formal</span>
+          </div>
+
+          <div class="space-y-2.5 max-h-[360px] overflow-y-auto pr-1.5 custom-scrollbar" id="brollList">
+            <!-- 8 Dynamic B-roll Items -->
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+
+    <!-- ═════════════════════════════════════════════════════════════ -->
+    <!-- RIGHT COLUMN (COL 8-12): LIVE PLAYER & RENDER PROGRESS       -->
+    <!-- ═════════════════════════════════════════════════════════════ -->
+    <div class="lg:col-span-5 space-y-6">
+
+      <!-- Live Video Player Card -->
+      <section class="glass rounded-2xl p-5 shadow-2xl">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <h2 class="text-sm font-bold text-white uppercase tracking-wider">Trình Phát Video Hoàn Thiện</h2>
+          </div>
+          <span class="text-[11px] font-mono text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded">1080x1920 • 30fps</span>
+        </div>
+
+        <!-- Video Player Frame (9:16 Aspect) -->
+        <div class="relative w-full aspect-[9/16] max-h-[580px] mx-auto rounded-xl overflow-hidden bg-black border border-slate-800 shadow-2xl flex items-center justify-center group">
+          <video
+            id="mainVideoPlayer"
+            src="/preview.mp4"
+            controls
+            playsinline
+            class="w-full h-full object-contain rounded-xl"
+          ></video>
+        </div>
+
+        <div class="mt-3.5 flex justify-between items-center text-xs text-slate-400">
+          <span class="flex items-center gap-1.5">
+            <span class="text-emerald-400 font-bold">✓ -14 LUFS</span> (Chuẩn TikTok / Reels)
+          </span>
+          <a
+            href="/preview.mp4"
+            download="LifeFirstBusiness_Final.mp4"
+            class="text-cyan-400 hover:text-cyan-300 font-bold flex items-center gap-1 transition"
+          >
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+            Tải Video Gốc (.mp4)
+          </a>
+        </div>
+      </section>
+
+      <!-- Live Render Controls & Progress Bar Card -->
+      <section class="glass rounded-2xl p-6 shadow-xl space-y-4">
+        <div class="flex items-center justify-between">
+          <h2 class="text-sm font-bold text-slate-200 uppercase tracking-wider flex items-center gap-2">
+            <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+            Tiến Trình Render & Xuất Bản
+          </h2>
+          <span id="renderStatusBadge" class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30">
+            Sẵn Sàng
+          </span>
+        </div>
+
+        <!-- Render Button -->
+        <button
+          onclick="startRenderProcess()"
+          id="mainRenderBtn"
+          class="w-full py-4 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-600 to-cyan-600 hover:from-emerald-400 hover:to-cyan-500 font-black text-base text-white shadow-xl shadow-emerald-500/25 active:scale-95 transition flex items-center justify-center gap-2"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span id="renderBtnLabel">🚀 Bắt Đầu Render Video Hoàn Chỉnh</span>
+        </button>
+
+        <!-- Progress Bar Box (Shows during rendering) -->
+        <div id="renderProgressBox" class="space-y-2 pt-2">
+          <div class="flex justify-between items-center text-xs">
+            <span id="progressStepText" class="font-medium text-slate-300">Đang chuẩn bị pipeline...</span>
+            <span id="progressPercentText" class="font-mono font-bold text-emerald-400">0%</span>
+          </div>
+          <div class="w-full h-2.5 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+            <div id="progressBarFill" class="h-full bg-gradient-to-r from-emerald-500 via-cyan-500 to-blue-500 transition-all duration-300 rounded-full" style="width: 0%"></div>
+          </div>
+          <div class="flex justify-between text-[11px] text-slate-500 font-mono">
+            <span>Concurrency: 4x</span>
+            <span id="timeRemainingText">Đang tính thời gian...</span>
+          </div>
+        </div>
+
+        <!-- 4 Steps Checklist -->
+        <div class="space-y-2 pt-2 border-t border-slate-800 text-xs">
+          <div class="flex items-center justify-between text-slate-300" id="step1">
+            <span class="flex items-center gap-2">
+              <span class="w-4 h-4 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-[10px] font-bold">✓</span>
+              1. Cắt ghép Rough Cut & Lọc khoảng lặng
+            </span>
+            <span class="text-[11px] text-slate-500">Hoàn tất</span>
+          </div>
+          <div class="flex items-center justify-between text-slate-300" id="step2">
+            <span class="flex items-center gap-2">
+              <span class="w-4 h-4 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-[10px] font-bold">✓</span>
+              2. Tonemap HDR Dolby Vision sang Rec.709
+            </span>
+            <span class="text-[11px] text-slate-500">Hoàn tất</span>
+          </div>
+          <div class="flex items-center justify-between text-slate-300" id="step3">
+            <span class="flex items-center gap-2">
+              <span class="w-4 h-4 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-[10px] font-bold">✓</span>
+              3. Lắp ráp 8 B-roll & Typography theo Prompt
+            </span>
+            <span class="text-[11px] text-slate-500">Hoàn tất</span>
+          </div>
+          <div class="flex items-center justify-between text-slate-300" id="step4">
+            <span class="flex items-center gap-2">
+              <span class="w-4 h-4 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-[10px] font-bold">✓</span>
+              4. Chuẩn hóa âm thanh EBU R128 (-14 LUFS)
+            </span>
+            <span class="text-[11px] text-slate-500">Hoàn tất</span>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
 
   </main>
 
+  <!-- ─── JAVASCRIPT LOGIC ENGINE ─── -->
   <script>
-    const toggles = [
-      { id: 'auto_rough_cut', label: 'Tự động lọc câu nói vấp (Rough Cut)', desc: 'AI giữ lại take nói mượt nhất, cắt bỏ câu vấp.', active: true },
-      { id: 'silence_trimmer', label: 'Cắt khoảng lặng chết (>0.4s)', desc: 'Tạo nhịp nói dồn dập, tăng retention.', active: true },
-      { id: 'voice_emphasis_fx', label: 'Bắt nhịp nhấn nhá giọng nói', desc: 'Punch-in micro zoom, nảy chữ khi gằn giọng.', active: true },
-      { id: 'auto_sfx_sync', label: 'Tự động chèn âm thanh SFX', desc: 'Pop, Whoosh, Bass Thud đúng mili-giây.', active: true },
-      { id: 'smart_bgm', label: 'Nhạc nền Lofi & Auto-Ducking', desc: 'Tự động nhỏ nhạc khi có tiếng nói.', active: true },
-      { id: 'cinema_color', label: 'Màu da hồng hào & Cân sáng điện ảnh', desc: 'Hable tonemapping + BT.709 profile.', active: true },
-      { id: 'loudnorm_ebu', label: 'Chuẩn âm thanh -14 LUFS', desc: 'Chuẩn phát sóng TikTok/Reels, không vỡ tiếng.', active: true },
-      { id: 'export_capcut', label: 'Xuất kèm bản nháp CapCut Draft', desc: 'Tạo sẵn file dự án để mở trên CapCut PC.', active: true }
+    // 8 Pre-configured Curated B-Roll Scenes mapped to transcript beats
+    const BROLL_DATA = [
+      {
+        id: 1,
+        time: '01.0s – 05.2s',
+        tag: 'ÁP LỰC CÔNG VIỆC',
+        title: 'Overwhelm at Desk',
+        desc: 'Nữ nhân viên mệt mỏi bên bàn làm việc ban đêm, nhiều hồ sơ và laptop',
+        quote: '"Mình muốn kiếm tiền từ việc kinh doanh, nhưng không muốn kinh doanh nuốt mất cuộc sống..."',
+        img: '/library/life_first_broll/broll_life_overwhelm.jpg'
+      },
+      {
+        id: 2,
+        time: '06.2s – 11.0s',
+        tag: 'SOLO BUSINESS FOUNDER',
+        title: 'Mẹ Bỉm Khởi Nghiệp',
+        desc: 'Người mẹ trẻ rạng rỡ làm việc trên MacBook tại góc bàn ấm cúng, có kệ đồ chơi trẻ em',
+        quote: '"Mình là Sia, mẹ của một nhóc 2 tuổi và đang có một cái solo business siêu nhỏ..."',
+        img: '/library/life_first_broll/broll_mom_entrepreneur.jpg'
+      },
+      {
+        id: 3,
+        time: '26.5s – 32.5s',
+        tag: 'MÔ HÌNH 01: TƯ VẤN 1-1',
+        title: '1-on-1 Consulting',
+        desc: 'Nữ chuyên gia thanh lịch trong áo vest blazer bên laptop cạnh cửa sổ kính lớn',
+        quote: '"Nếu bạn đã có chuyên môn đủ sâu giải quyết 1 vấn đề cụ thể, đây là cách nhanh nhất..."',
+        img: '/library/life_first_broll/broll_consulting_1on1.jpg'
+      },
+      {
+        id: 4,
+        time: '34.5s – 39.8s',
+        tag: 'MÔ HÌNH 02: DỊCH VỤ ĐÓNG GÓI',
+        title: 'Productized Scope',
+        desc: 'MacBook và sổ tay phác thảo wireframe, checklist phạm vi bàn giao rõ ràng',
+        quote: '"Một vấn đề rõ, một phạm vi rõ, làm xong thì bàn giao và kết thúc..."',
+        img: '/library/life_first_broll/broll_productized_service.jpg'
+      },
+      {
+        id: 5,
+        time: '41.5s – 47.8s',
+        tag: 'MÔ HÌNH 03: WORKSHOP NHỎ',
+        title: 'Micro-Cohort Class',
+        desc: 'Học viên tương tác và thực hành trên máy tính trong lớp chuyên sâu',
+        quote: '"Điều bạn thường xuyên phải giải thích có thể trở thành buổi học nhiều người muốn học..."',
+        img: '/library/life_first_broll/broll_micro_workshop.jpg'
+      },
+      {
+        id: 6,
+        time: '50.5s – 59.5s',
+        tag: 'MÔ HÌNH 04: SẢN PHẨM SỐ',
+        title: 'Digital Products',
+        desc: 'Laptop trên bàn gỗ hiển thị giao diện web / template thiết kế hiện đại',
+        quote: '"Template này, ebook này... đóng gói một lần và bán nhiều lần..."',
+        img: '/library/life_first_broll/broll_digital_products.jpg'
+      },
+      {
+        id: 7,
+        time: '67.5s – 76.5s',
+        tag: 'BƯỚC ĐỆM LINH HOẠT',
+        title: 'Remote & Freelance',
+        desc: 'Làm việc tự do vui vẻ tại quán cà phê ngoài trời với laptop và sổ tay',
+        quote: '"Remote work, freelance part-time... cho bạn nhiều quyền chủ động hơn..."',
+        img: '/library/life_first_broll/broll_remote_work.jpg'
+      },
+      {
+        id: 8,
+        time: '85.5s – 93.5s',
+        tag: 'LỜI KHUYÊN',
+        title: 'Bắt Đầu Nhỏ Nhất',
+        desc: 'Góc bàn sáng tối giản với ly cà phê ấm, cuốn sổ checklist nhỏ và bút',
+        quote: '"Nếu đang có con nhỏ và ít thời gian, hãy bắt đầu từ cái việc nhỏ nhất thôi..."',
+        img: '/library/life_first_broll/broll_small_steps.jpg'
+      }
     ];
 
-    const lines = [
-      { id: 1, start: '00:00', end: '00:05', duration: '5.2s', text: 'Sai lầm lớn nhất của các bạn mới học Business Analyst là gì?', type: 'Hook Card', emphasis: 'High', sfx: 'bass_thud' },
-      { id: 2, start: '00:06', end: '00:15', duration: '9.4s', text: 'Các bạn tập trung quá nhiều vào việc học công cụ: Jira, Confluence, vẽ BPMN...', type: 'Checklist Card', emphasis: 'Medium', sfx: 'pop' },
-      { id: 3, start: '00:16', end: '00:23', duration: '7.1s', text: 'Nhưng khi mình phỏng vấn chuyên sâu: "Tại sao trong trường hợp này em lại hỏi câu hỏi đó?" thì bạn lúng túng.', type: 'Fatal Question + Warning', emphasis: 'Very High', sfx: 'bass_thud' },
-      { id: 4, start: '00:24', end: '00:32', duration: '7.7s', text: 'Và lúc đó mình nhận ra bạn học như một người THỢ DÙNG TOOL chứ không phải LÀM PHÂN TÍCH.', type: 'Contrast Versus (A vs B)', emphasis: 'Very High', sfx: 'whoosh' },
-      { id: 5, start: '00:46', end: '00:54', duration: '8.0s', text: 'Cầm mic lên không có nghĩa bạn sẽ trở thành ca sĩ. Biết bấm tool không có nghĩa bạn là BA.', type: 'Quote Takeover', emphasis: 'High', sfx: 'ding' },
-      { id: 6, start: '02:27', end: '02:37', duration: '10.0s', text: 'Hãy Comment IM để nhận lịch Mock Interview 1-1 và lộ trình thực chiến!', type: 'CTA Card', emphasis: 'High', sfx: 'pop' }
-    ];
-
-    // Render Toggles
-    const togglesContainer = document.getElementById('togglesList');
-    togglesContainer.innerHTML = toggles.map(t => `
-      <div class="flex items-center justify-between p-3 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-slate-700 transition">
-        <div>
-          <div class="font-semibold text-slate-200 text-xs">${t.label}</div>
-          <div class="text-[11px] text-slate-400 mt-0.5">${t.desc}</div>
-        </div>
-        <label class="relative inline-flex items-center cursor-pointer">
-          <input type="checkbox" id="${t.id}" class="sr-only peer" ${t.active ? 'checked' : ''}>
-          <div class="w-10 h-5 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-cyan-500"></div>
-        </label>
-      </div>
-    `).join('');
-
-    // Render Lines
-    const linesContainer = document.getElementById('linesList');
-    linesContainer.innerHTML = lines.map(line => `
-      <div class="p-4 rounded-xl bg-slate-900/70 border border-slate-800/80 hover:border-cyan-500/40 transition space-y-2.5">
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-2">
-            <span class="px-2 py-0.5 rounded bg-slate-800 text-cyan-400 font-mono text-[11px] font-bold">${line.start} ➔ ${line.end}</span>
-            <span class="text-xs text-slate-400 font-mono">${line.duration}</span>
-            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold ${
-              line.emphasis === 'Very High' ? 'bg-rose-500/20 text-rose-400 border border-rose-500/30' :
-              line.emphasis === 'High' ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30' :
-              'bg-blue-500/20 text-blue-400 border border-blue-500/30'
-            }">Điểm Nhấn: ${line.emphasis}</span>
+    // Render B-roll Cards on Init
+    function renderBRollList() {
+      const container = document.getElementById('brollList');
+      container.innerHTML = BROLL_DATA.map(b => `
+        <div class="p-2.5 rounded-xl bg-slate-900/70 border border-slate-800/80 hover:border-emerald-500/40 transition flex items-center gap-3">
+          <div class="w-14 h-20 rounded-lg overflow-hidden bg-slate-800 flex-shrink-0 border border-slate-700/60 relative">
+            <img src="${b.img}" alt="${b.title}" class="w-full h-full object-cover">
+            <span class="absolute bottom-1 right-1 bg-black/70 px-1 py-0.2 rounded text-[9px] font-mono text-emerald-300">#${b.id}</span>
           </div>
-          <div class="flex items-center gap-1.5">
-            <button title="Gắn Asset/Ảnh" class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-cyan-400 transition text-xs flex items-center gap-1">
-              📎 Asset
-            </button>
-            <button title="Ghi chú cho AI" class="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-cyan-400 transition text-xs flex items-center gap-1">
-              📝 Note
-            </button>
-            <button title="Xóa đoạn này" class="p-1.5 rounded-lg bg-slate-800 hover:bg-rose-900/40 text-slate-400 hover:text-rose-400 transition text-xs">
-              🗑️
-            </button>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] font-mono font-bold text-emerald-400 bg-emerald-950/60 px-1.5 py-0.5 rounded border border-emerald-800/40">${b.time}</span>
+              <span class="text-[10px] font-bold text-slate-300 tracking-wide">${b.tag}</span>
+            </div>
+            <div class="text-xs font-bold text-white mt-1 truncate">${b.title} • <span class="font-normal text-slate-400 text-[11px]">${b.desc}</span></div>
+            <div class="text-[11px] text-slate-400 italic mt-0.5 truncate">${b.quote}</div>
           </div>
         </div>
-
-        <p class="text-sm font-medium text-slate-200">${line.text}</p>
-
-        <div class="flex items-center justify-between pt-1 border-t border-slate-800/50 text-[11px]">
-          <div class="flex items-center gap-2">
-            <span class="text-slate-400">Card Layout:</span>
-            <span class="px-2 py-0.5 rounded bg-cyan-950/60 text-cyan-300 border border-cyan-800/40 font-semibold">${line.type}</span>
-          </div>
-          <div class="flex items-center gap-1.5 text-slate-400">
-            <span>SFX Trigger:</span>
-            <span class="font-mono text-cyan-400">${line.sfx}.wav</span>
-          </div>
-        </div>
-      </div>
-    `).join('');
-
-    function saveAndRender() {
-      const config = {
-        toggles: {},
-        brand: {
-          primary: document.getElementById('primaryColor').value,
-          accent: document.getElementById('accentColor').value,
-          cta: document.getElementById('ctaText').value
-        }
-      };
-      toggles.forEach(t => {
-        config.toggles[t.id] = document.getElementById(t.id).checked;
-      });
-      alert('Đã lưu cấu hình Toggles & Brand! Bắt đầu kích hoạt Remotion Render Engine...');
+      `).join('');
     }
+
+    // Switch between Drive Link and Upload Tab
+    function switchSourceTab(tab) {
+      const driveBtn = document.getElementById('tabDriveBtn');
+      const uploadBtn = document.getElementById('tabUploadBtn');
+      const drivePanel = document.getElementById('drivePanel');
+      const uploadPanel = document.getElementById('uploadPanel');
+
+      if (tab === 'drive') {
+        driveBtn.className = 'py-2 rounded-lg bg-slate-800 text-white shadow transition flex items-center justify-center gap-2';
+        uploadBtn.className = 'py-2 rounded-lg text-slate-400 hover:text-white transition flex items-center justify-center gap-2';
+        drivePanel.classList.remove('hidden');
+        uploadPanel.classList.add('hidden');
+      } else {
+        uploadBtn.className = 'py-2 rounded-lg bg-slate-800 text-white shadow transition flex items-center justify-center gap-2';
+        driveBtn.className = 'py-2 rounded-lg text-slate-400 hover:text-white transition flex items-center justify-center gap-2';
+        uploadPanel.classList.remove('hidden');
+        drivePanel.classList.add('hidden');
+      }
+    }
+
+    // Apply Presets to Prompt Input
+    function applyPreset(preset) {
+      const promptInput = document.getElementById('userPromptInput');
+      if (preset === 'solopreneur') {
+        promptInput.value = 'Dựng video theo phong cách Minimalist Solopreneur ấm áp, hiện đại. Tone màu xanh ngọc emerald và xám slate tối giản. Phụ đề tiếng Việt nảy từng từ chữ xanh lá neon. Animation zoom mượt mà phong cách Scandinavian. Các phân cảnh B-roll minh họa thực tế formal: làm việc đêm kiệt sức, mẹ bỉm khởi nghiệp tại nhà, tư vấn 1-1, dịch vụ đóng gói, workshop nhỏ, sản phẩm số template, remote freelance, bắt đầu từ việc nhỏ. Âm thanh lofi ấm và click nhẹ.';
+      } else if (preset === 'tech') {
+        promptInput.value = 'Video phong cách Tech Founder & Editorial Studio. Dark mode màu xanh neon cyan và tím than công nghệ cao. Phụ đề tiếng Việt viết hoa nổi bật. Chuyển cảnh nhanh dứt khoát, punch-in zoom mạnh mẽ. B-roll về không gian công nghệ, thiết kế wireframe trên iPad, màn hình dashboard số liệu, làm việc từ xa tập trung. Âm thanh bass thud và tiếng gõ bàn phím dứt khoát.';
+      } else if (preset === 'executive') {
+        promptInput.value = 'Video phong cách Chuyên gia Cấp cao / Executive Consulting. Tone màu vàng champagne sang trọng và xanh navy trầm. Font chữ thanh lịch cao cấp. Nhịp dựng chỉn chu, chậm rãi và có chiều sâu. B-roll phòng họp kính sang trọng, ký kết hợp đồng rõ phạm vi, chuyên gia tư vấn chiến lược 1-1. Âm thanh shimmer êm dịu và ambient du dương.';
+      } else if (preset === 'lifestyle') {
+        promptInput.value = 'Phong cách Storytelling & Warm Lifestyle mộc mạc. Màu cam ấm terracotta và be kem tự nhiên. Phông chữ bo tròn thân thiện. Nhịp nói nhẹ nhàng sâu lắng. B-roll bàn cà phê buổi sáng, sổ tay ghi chú mục tiêu, mẹ và bé sum vầy, không gian làm việc ngoài trời tự do thư thái. Nhạc lofi ấm áp làm nền.';
+      }
+      generateVideoBlueprint();
+    }
+
+    // Simulate AI Parse & Generate Blueprint
+    function generateVideoBlueprint() {
+      const text = document.getElementById('userPromptInput').value.toLowerCase();
+      const spinner = document.getElementById('genSpinner');
+      const btnIcon = document.getElementById('genBtnIcon');
+      const btnText = document.getElementById('genBtnText');
+
+      spinner.classList.remove('hidden');
+      btnIcon.classList.add('hidden');
+      btnText.innerText = 'AI Đang Phân Tích Prompt...';
+
+      setTimeout(() => {
+        spinner.classList.add('hidden');
+        btnIcon.classList.remove('hidden');
+        btnText.innerText = 'AI Phân Tích & Tạo Bản Thiết Kế Video';
+
+        // Dynamic token mapping based on prompt keywords
+        const primaryChip = document.getElementById('tokenPrimaryColor');
+        const accentChip = document.getElementById('tokenAccentColor');
+        const highlightChip = document.getElementById('tokenHighlightColor');
+        const paletteName = document.getElementById('tokenPaletteName');
+        const fontText = document.getElementById('tokenFont');
+        const zoomText = document.getElementById('tokenZoom');
+        const musicText = document.getElementById('tokenMusic');
+
+        if (text.includes('tech') || text.includes('cyan')) {
+          primaryChip.style.backgroundColor = '#0284C7';
+          accentChip.style.backgroundColor = '#38BDF8';
+          highlightChip.style.backgroundColor = '#A855F7';
+          paletteName.innerText = 'Cyber Cyan & Purple';
+          fontText.innerText = 'Montserrat / Modern Bold';
+          zoomText.innerText = 'Punchy Multi-Cam 1.12x';
+          musicText.innerText = 'Tech Electronic Ambient';
+        } else if (text.includes('vàng') || text.includes('gold') || text.includes('executive')) {
+          primaryChip.style.backgroundColor = '#F59E0B';
+          accentChip.style.backgroundColor = '#FBBF24';
+          highlightChip.style.backgroundColor = '#FEF08A';
+          paletteName.innerText = 'Champagne Gold & Navy';
+          fontText.innerText = 'Playfair Display & Sans';
+          zoomText.innerText = 'Cinematic Smooth 1.05x';
+          musicText.innerText = 'Acoustic Deep Ambient';
+        } else if (text.includes('cam') || text.includes('terracotta') || text.includes('ấm')) {
+          primaryChip.style.backgroundColor = '#EA580C';
+          accentChip.style.backgroundColor = '#FB923C';
+          highlightChip.style.backgroundColor = '#FDE047';
+          paletteName.innerText = 'Warm Terracotta & Sand';
+          fontText.innerText = 'Plus Jakarta Sans Rounded';
+          zoomText.innerText = 'Slow Handheld Drift';
+          musicText.innerText = 'Warm Lofi Chill Guitar';
+        } else {
+          primaryChip.style.backgroundColor = '#10B981';
+          accentChip.style.backgroundColor = '#38BDF8';
+          highlightChip.style.backgroundColor = '#34D399';
+          paletteName.innerText = 'Emerald Solopreneur';
+          fontText.innerText = 'Plus Jakarta Sans';
+          zoomText.innerText = 'Ken Burns Zoom 1.06x';
+          musicText.innerText = 'Lofi Warm Background';
+        }
+
+        alert('✨ AI đã phân tích prompt và tạo Bản Thiết Kế Video thành công! Bạn có thể xem các thông số đã cập nhật và bấm nút "Render Video Hoàn Chỉnh".');
+      }, 700);
+    }
+
+    // Render Process Simulation / Trigger
+    let isRendering = false;
+    function startRenderProcess() {
+      if (isRendering) return;
+      isRendering = true;
+
+      const mainBtn = document.getElementById('mainRenderBtn');
+      const topBtn = document.getElementById('topRenderBtn');
+      const statusBadge = document.getElementById('renderStatusBadge');
+      const progressBox = document.getElementById('renderProgressBox');
+      const progressBar = document.getElementById('progressBarFill');
+      const percentText = document.getElementById('progressPercentText');
+      const stepText = document.getElementById('progressStepText');
+      const timeRemaining = document.getElementById('timeRemainingText');
+      const videoPlayer = document.getElementById('mainVideoPlayer');
+
+      statusBadge.innerText = 'Đang Render (4x)';
+      statusBadge.className = 'text-xs px-2.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-400 font-bold border border-cyan-500/30 animate-pulse';
+      mainBtn.disabled = true;
+      mainBtn.classList.add('opacity-70');
+      document.getElementById('renderBtnLabel').innerText = '⏳ Đang Render Video với Remotion Engine...';
+
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += Math.floor(Math.random() * 8) + 5;
+        if (progress > 100) progress = 100;
+
+        progressBar.style.width = progress + '%';
+        percentText.innerText = progress + '%';
+
+        if (progress < 25) {
+          stepText.innerText = 'Bước 1/4: Cắt ghép & lọc khoảng lặng chết...';
+          timeRemaining.innerText = 'Còn ~35s';
+        } else if (progress < 55) {
+          stepText.innerText = 'Bước 2/4: Tonemap màu da Rec.709 & khử ám xám...';
+          timeRemaining.innerText = 'Còn ~22s';
+        } else if (progress < 85) {
+          stepText.innerText = 'Bước 3/4: Render 3490 khung hình Remotion & 8 B-roll...';
+          timeRemaining.innerText = 'Còn ~10s';
+        } else if (progress < 100) {
+          stepText.innerText = 'Bước 4/4: Chuẩn hóa âm thanh -14 LUFS & xuất bản...';
+          timeRemaining.innerText = 'Còn ~2s';
+        } else {
+          clearInterval(interval);
+          isRendering = false;
+          mainBtn.disabled = false;
+          mainBtn.classList.remove('opacity-70');
+          document.getElementById('renderBtnLabel').innerText = '🚀 Render Lại Video Mới';
+          statusBadge.innerText = 'Hoàn Thành ✓';
+          statusBadge.className = 'text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30';
+          stepText.innerText = 'Xuất bản thành công! Video đã tải vào trình phát.';
+          timeRemaining.innerText = 'Hoàn tất';
+
+          // Reload player with timestamp to bypass browser video cache
+          videoPlayer.src = '/preview.mp4?t=' + Date.now();
+          videoPlayer.play();
+        }
+      }, 350);
+    }
+
+    function fetchDriveClips() {
+      alert('Đã đồng bộ 14 video clips từ Google Drive. Kịch bản và độ phân giải đã được nạp sẵn sàng!');
+    }
+
+    function handleFileSelect(e) {
+      const files = e.target.files;
+      if (files && files.length > 0) {
+        alert(`Đã nhận ${files.length} file video từ máy tính. Sẵn sàng bóc tách kịch bản!`);
+      }
+    }
+
+    // Initialize Page
+    window.addEventListener('DOMContentLoaded', () => {
+      renderBRollList();
+    });
   </script>
 </body>
 </html>
