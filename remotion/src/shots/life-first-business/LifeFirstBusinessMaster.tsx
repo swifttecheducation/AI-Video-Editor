@@ -30,47 +30,104 @@ const BRAND = {
   ivory: '#F8F5F2',
   beige: '#D4CABE',
   gold: '#E0B554',
+  goldBright: '#F3C969',
   white: '#FFFFFF',
 };
 
-// Bite-sized, spoken phrase transcript for elegant 1-2 line subtitle pacing
+// 1. Precise 2-4 word subtitle chunks (placed at collar/chest level, 3/4 width)
 const SUBTITLES = [
-  { s: 0.00, e: 2.80, text: 'Mình muốn kiếm tiền từ việc kinh doanh,' },
-  { s: 2.80, e: 5.60, text: 'nhưng không muốn nó nuốt mất cuộc sống của mình.' },
-  { s: 6.00, e: 8.30, text: 'Mình là Sia, mẹ của một nhóc 2 tuổi' },
-  { s: 8.30, e: 10.96, text: 'và đang có một solo business siêu nhỏ.' },
-  { s: 12.00, e: 14.50, text: 'Và đây là tập 3 của Live First Business' },
-  { s: 14.50, e: 17.38, text: 'xây dựng mô hình kinh doanh từ cuộc sống mong muốn trước.' },
-  { s: 18.28, e: 20.30, text: 'Tập này nói chuyện thực tế hơn nhé.' },
-  { s: 20.74, e: 24.58, text: 'Mình có thể kiếm tiền từ chuyên môn bằng những cách nào?' },
-  { s: 25.84, e: 28.50, text: 'Một, tư vấn 1-1.' },
-  { s: 28.50, e: 30.60, text: 'Nếu bạn đã có chuyên môn đủ sâu' },
-  { s: 30.60, e: 32.72, text: 'để giải quyết vấn đề cho khách hàng, đây là cách nhanh nhất.' },
+  // 0.0 - 5.6s
+  { s: 0.00, e: 1.40, text: 'Mình muốn kiếm tiền' },
+  { s: 1.40, e: 2.80, text: 'từ việc kinh doanh,' },
+  { s: 2.80, e: 4.20, text: 'nhưng không muốn nó' },
+  { s: 4.20, e: 5.60, text: 'nuốt mất cuộc sống.' },
+
+  // 6.0 - 11.0s
+  { s: 6.00, e: 7.20, text: 'Mình là Sia,' },
+  { s: 7.20, e: 8.80, text: 'mẹ của nhóc 2 tuổi' },
+  { s: 8.80, e: 10.96, text: 'và solo business siêu nhỏ.' },
+
+  // 12.0 - 17.4s
+  { s: 12.00, e: 13.50, text: 'Và đây là tập 3' },
+  { s: 13.50, e: 15.20, text: 'của Live First Business,' },
+  { s: 15.20, e: 16.50, text: 'xây dựng mô hình kinh doanh' },
+  { s: 16.50, e: 17.38, text: 'từ cuộc sống trước.' },
+
+  // 18.28 - 20.30s
+  { s: 18.28, e: 19.30, text: 'Tập này nói chuyện' },
+  { s: 19.30, e: 20.30, text: 'thực tế hơn nhé.' },
+
+  // 20.74 - 24.58s
+  { s: 20.74, e: 22.00, text: 'Mình có thể kiếm tiền' },
+  { s: 22.00, e: 23.30, text: 'từ chuyên môn của bản thân' },
+  { s: 23.30, e: 24.58, text: 'bằng những cách nào?' },
+
+  // 25.84 - 32.72s (Cách 1)
+  { s: 25.84, e: 27.20, text: 'Một, tư vấn 1-1.' },
+  { s: 27.20, e: 28.50, text: 'Nếu bạn có chuyên môn' },
+  { s: 28.50, e: 30.20, text: 'đủ sâu để giải quyết' },
+  { s: 30.20, e: 31.50, text: 'vấn đề cho khách hàng,' },
+  { s: 31.50, e: 32.72, text: 'đây là cách nhanh nhất.' },
+
+  // 33.60 - 40.00s (Cách 2)
   { s: 33.60, e: 35.50, text: 'Hai, dịch vụ đóng gói.' },
-  { s: 35.74, e: 37.80, text: 'Một vấn đề rõ, một phạm vi rõ,' },
-  { s: 37.80, e: 40.00, text: 'làm xong thì bàn giao và kết thúc.' },
-  { s: 40.24, e: 43.50, text: 'Ba, workshop hoặc là một cái lớp học nhỏ.' },
-  { s: 43.50, e: 45.60, text: 'Một điều bạn thường xuyên phải giải thích cho khách hàng,' },
-  { s: 45.60, e: 48.00, text: 'có thể trở thành buổi học mà rất nhiều người muốn học.' },
+  { s: 35.74, e: 37.20, text: 'Một vấn đề rõ,' },
+  { s: 37.20, e: 38.60, text: 'một phạm vi rõ,' },
+  { s: 38.60, e: 40.00, text: 'bàn giao và kết thúc.' },
+
+  // 40.24 - 48.00s (Cách 3)
+  { s: 40.24, e: 42.00, text: 'Ba, workshop nhỏ' },
+  { s: 42.00, e: 43.50, text: 'hoặc một lớp học.' },
+  { s: 43.50, e: 45.20, text: 'Một điều bạn hay giải thích' },
+  { s: 45.20, e: 46.60, text: 'cho khách hàng, bạn bè' },
+  { s: 46.60, e: 48.00, text: 'trở thành buổi học nhiều người cần.' },
+
+  // 48.96 - 61.12s (Cách 4)
   { s: 48.96, e: 51.50, text: 'Bốn, sản phẩm số.' },
-  { s: 51.50, e: 54.00, text: 'Template này, ebook này, bộ hướng dẫn này.' },
-  { s: 54.00, e: 57.50, text: 'Tất cả đều có thể trở thành một sản phẩm' },
-  { s: 57.50, e: 61.12, text: 'mà bạn đóng gói một lần và bán nhiều lần.' },
-  { s: 62.06, e: 65.50, text: 'Nhưng thật ra ấy, bạn không nhất thiết phải mở business ngay.' },
-  { s: 66.24, e: 70.20, text: 'Remote work, freelance hay công việc online part-time.' },
-  { s: 70.76, e: 72.80, text: 'Cũng có thể là điểm bắt đầu.' },
-  { s: 73.16, e: 76.80, text: 'Đôi khi chỉ cần một công việc cho bạn nhiều quyền chủ động hơn,' },
-  { s: 77.16, e: 80.76, text: 'đã là thay đổi rất lớn để tiến gần tới Live First Business rồi.' },
-  { s: 81.38, e: 85.00, text: 'Và mình không nghĩ là bạn cần phải làm tất cả những điều này.' },
-  { s: 85.34, e: 88.50, text: 'Nếu đang có con nhỏ và quỹ thời gian rất là ít,' },
-  { s: 88.94, e: 91.20, text: 'hãy bắt đầu từ cái việc nhỏ nhất thôi.' },
-  { s: 91.56, e: 94.94, text: 'Một việc đủ nhỏ để kỹ năng hiện tại có thể làm được.' },
-  { s: 96.02, e: 99.80, text: 'Làm thì nhỏ thôi và xem xem có ai thực sự trả tiền không,' },
-  { s: 99.80, e: 104.28, text: 'và có thực sự là cách làm fit với cuộc sống của bạn không?' },
-  { s: 105.12, e: 107.50, text: 'Nếu bạn cũng đang tìm một cách kiếm tiền,' },
-  { s: 108.06, e: 111.00, text: 'mà không muốn cả cuộc sống phải xoay quanh công việc,' },
-  { s: 111.44, e: 113.80, text: 'follow mình nhé, mình sẽ ghi lại hành trình này' },
-  { s: 113.80, e: 116.32, text: 'và chia sẻ lại tất cả với mọi người nha!' },
+  { s: 51.50, e: 53.00, text: 'Template này, ebook này,' },
+  { s: 53.00, e: 54.50, text: 'bộ hướng dẫn này.' },
+  { s: 54.50, e: 56.50, text: 'Tất cả đều có thể' },
+  { s: 56.50, e: 58.80, text: 'trở thành một sản phẩm' },
+  { s: 58.80, e: 61.12, text: 'đóng gói một lần, bán nhiều lần.' },
+
+  // 62.06 - 65.50s
+  { s: 62.06, e: 63.80, text: 'Nhưng thật ra ấy,' },
+  { s: 63.80, e: 65.50, text: 'không nhất thiết mở business ngay.' },
+
+  // 66.24 - 72.80s
+  { s: 66.24, e: 68.20, text: 'Remote work, freelance' },
+  { s: 68.20, e: 70.20, text: 'hay công việc part-time' },
+  { s: 70.76, e: 72.80, text: 'cũng là điểm bắt đầu.' },
+
+  // 73.16 - 80.76s
+  { s: 73.16, e: 75.00, text: 'Đôi khi chỉ cần' },
+  { s: 75.00, e: 76.80, text: 'nhiều quyền chủ động hơn,' },
+  { s: 77.16, e: 79.00, text: 'đã là thay đổi rất lớn' },
+  { s: 79.00, e: 80.76, text: 'để tới Live First Business.' },
+
+  // 81.38 - 85.00s
+  { s: 81.38, e: 83.20, text: 'Và mình không nghĩ' },
+  { s: 83.20, e: 85.00, text: 'cần làm tất cả điều này.' },
+
+  // 85.34 - 94.94s
+  { s: 85.34, e: 87.00, text: 'Nếu đang có con nhỏ,' },
+  { s: 87.00, e: 88.50, text: 'thời gian rất là ít,' },
+  { s: 88.94, e: 91.20, text: 'bắt đầu từ việc nhỏ nhất.' },
+  { s: 91.56, e: 93.20, text: 'Một việc đủ nhỏ' },
+  { s: 93.20, e: 94.94, text: 'kỹ năng hiện tại làm được.' },
+
+  // 96.02 - 104.28s
+  { s: 96.02, e: 98.00, text: 'Làm nhỏ thôi và xem' },
+  { s: 98.00, e: 100.20, text: 'ai thực sự trả tiền không,' },
+  { s: 100.20, e: 102.30, text: 'và có thực sự là cách làm' },
+  { s: 102.30, e: 104.28, text: 'fit với cuộc sống không?' },
+
+  // 105.12 - 116.32s
+  { s: 105.12, e: 107.50, text: 'Nếu bạn cũng đang tìm' },
+  { s: 107.50, e: 109.20, text: 'một cách kiếm tiền,' },
+  { s: 109.20, e: 111.00, text: 'không xoay quanh công việc,' },
+  { s: 111.44, e: 113.80, text: 'follow mình nhé!' },
+  { s: 113.80, e: 116.32, text: 'Mình sẽ chia sẻ hành trình này.' },
 ];
 
 export const LifeFirstBusinessMaster: React.FC = () => {
@@ -108,7 +165,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
     });
   };
 
-  // Organic wave float for floating words
+  // Organic wave float for floating elements
   const waveFloat = (offset = 0) => Math.sin((frame + offset) / 16) * 3.5;
   const waveRotate = (offset = 0) => Math.cos((frame + offset) / 22) * 1.8;
 
@@ -130,190 +187,189 @@ export const LifeFirstBusinessMaster: React.FC = () => {
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
 
-          {/* Filmic gentle gradient for pure free-floating text legibility */}
+          {/* Gentle cinematic gradient for contrast */}
           <AbsoluteFill
             style={{
               background:
-                'linear-gradient(to bottom, rgba(10, 5, 6, 0.50) 0%, rgba(10, 5, 6, 0) 24%, rgba(10, 5, 6, 0) 68%, rgba(10, 5, 6, 0.70) 100%)',
+                'linear-gradient(to bottom, rgba(10, 5, 6, 0.55) 0%, rgba(10, 5, 6, 0.15) 28%, rgba(10, 5, 6, 0.10) 65%, rgba(10, 5, 6, 0.75) 100%)',
               pointerEvents: 'none',
             }}
           />
         </div>
       </AbsoluteFill>
 
-      {/* ─── 2. FREE-FLOATING AESTHETIC KINETIC TYPOGRAPHY (LARGE, BOLD & ORGANIC) ─── */}
+      {/* ─── 2. UPPER HIGHLIGHT & MINH HỌA (TRÊN ĐẦU / TỪ TRÁN TRỞ LÊN) ─── */}
 
-      {/* BEAT 1 (0.0s - 5.6s): KIẾM TIỀN ≠ CUỘC SỐNG BỊ NUỐT MẤT */}
-      {currentTime >= 0.5 && currentTime <= 5.5 && (() => {
-        const sprLeft = makeSpring(15);
-        const sprRight = makeSpring(35);
-        const sprNot = makeSpring(50);
+      {/* BEAT 1 (0.0s - 5.6s): NEW HOOK theo đúng ref ảnh Bree:
+          "cách thực tế để kiếm thêm thu nhập tại nhà từ chuyên môn"
+          Chữ to, uốn lượn, lên xuống dòng, Serif kết hợp Italic! */}
+      {currentTime >= 0.3 && currentTime <= 5.8 && (() => {
+        const spr1 = makeSpring(8);
+        const spr2 = makeSpring(25);
+        const spr3 = makeSpring(45);
         return (
           <div
             style={{
               position: 'absolute',
-              top: 140,
+              top: 180,
               left: 40,
               right: 40,
               zIndex: 35,
+              textAlign: 'center',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
             }}
           >
+            {/* Line 1: cách thực tế */}
             <div
               style={{
-                fontFamily: FONT_HANDWRITING,
-                color: BRAND.oliveLight,
-                fontSize: 42,
+                transform: `scale(${spr1}) translateY(${waveFloat(0)}px)`,
+                opacity: spr1,
+                fontFamily: FONT_DISPLAY,
+                fontSize: 66,
                 fontWeight: 700,
-                transform: `rotate(-4deg) translateY(${waveFloat(0)}px)`,
-                textShadow: '0 2px 12px rgba(0,0,0,0.9)',
-                marginBottom: 8,
+                color: BRAND.gold,
+                lineHeight: 1.15,
+                textShadow: '0 3px 20px rgba(0,0,0,0.98), 0 6px 36px rgba(0,0,0,0.90)',
+                letterSpacing: 1,
               }}
             >
-              bài toán cân bằng ~
+              cách thực tế
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 18 }}>
-              <div
-                style={{
-                  transform: `translateX(${(1 - sprLeft) * -60}px) rotate(-2deg) translateY(${waveFloat(10)}px)`,
-                  opacity: sprLeft,
-                  fontFamily: FONT_DISPLAY,
-                  fontSize: 52,
-                  fontWeight: 900,
-                  color: BRAND.ivory,
-                  textShadow: '0 3px 16px rgba(0,0,0,0.95), 0 6px 30px rgba(114,0,0,0.6)',
-                  letterSpacing: 1.5,
-                }}
-              >
-                KIẾM TIỀN
-              </div>
-
-              <div
-                style={{
-                  transform: `scale(${sprNot}) rotate(${waveRotate(5)}deg)`,
-                  opacity: sprNot,
-                  fontFamily: FONT_DISPLAY,
-                  fontSize: 64,
-                  fontWeight: 900,
-                  color: BRAND.wineGlow,
-                  textShadow: '0 0 24px rgba(220,38,38,0.8), 0 2px 10px rgba(0,0,0,0.9)',
-                }}
-              >
-                ≠
-              </div>
-
-              <div
-                style={{
-                  transform: `translateX(${(1 - sprRight) * 60}px) rotate(2deg) translateY(${waveFloat(20)}px)`,
-                  opacity: sprRight,
-                  fontFamily: FONT_DISPLAY,
-                  fontSize: 48,
-                  fontWeight: 900,
-                  color: BRAND.beige,
-                  textShadow: '0 3px 16px rgba(0,0,0,0.95), 0 6px 30px rgba(0,0,0,0.8)',
-                  letterSpacing: 1,
-                }}
-              >
-                CUỘC SỐNG BỊ NUỐT MẤT
-              </div>
+            {/* Line 2: để kiếm thêm thu nhập (italic) */}
+            <div
+              style={{
+                transform: `scale(${spr2}) translateY(${waveFloat(8)}px)`,
+                opacity: spr2,
+                fontFamily: FONT_DISPLAY,
+                fontSize: 62,
+                fontStyle: 'italic',
+                fontWeight: 600,
+                color: BRAND.ivory,
+                lineHeight: 1.15,
+                marginTop: 4,
+                textShadow: '0 3px 20px rgba(0,0,0,0.98), 0 6px 36px rgba(0,0,0,0.90)',
+              }}
+            >
+              để kiếm thêm thu nhập
             </div>
 
-            <svg width="420" height="26" viewBox="0 0 420 26" style={{ marginTop: 8, opacity: sprRight }}>
-              <path
-                d="M 10 18 Q 110 4, 220 16 Q 320 24, 410 10"
-                fill="none"
-                stroke={BRAND.wineGlow}
-                strokeWidth="4"
-                strokeLinecap="round"
-              />
-            </svg>
+            {/* Line 3: tại nhà từ chuyên môn */}
+            <div
+              style={{
+                transform: `scale(${spr3}) translateY(${waveFloat(16)}px)`,
+                opacity: spr3,
+                fontFamily: FONT_DISPLAY,
+                fontSize: 68,
+                fontWeight: 900,
+                color: BRAND.gold,
+                lineHeight: 1.15,
+                marginTop: 6,
+                textShadow: '0 3px 20px rgba(0,0,0,0.98), 0 6px 36px rgba(0,0,0,0.90)',
+              }}
+            >
+              tại nhà <span style={{ fontStyle: 'italic', color: BRAND.ivory, fontWeight: 700 }}>từ chuyên môn</span>
+            </div>
           </div>
         );
       })()}
 
-      {/* BEAT 2 & 3 (6.0s - 11.0s): Sia • Mẹ của nhóc 2 tuổi & solo business */}
+      {/* BEAT 2 & 3 (6.0s - 11.0s):
+          Yêu cầu mục 4: Căn giữa, to rõ ràng, để từ trán trở lên:
+          Dòng trên to hơn dòng dưới:
+          Sia • Mẹ của nhóc 2 tuổi
+          Điều hành một business nhỏ (in nghiêng, mảnh) */}
       {currentTime >= 6.0 && currentTime <= 11.0 && (() => {
-        const spr1 = makeSpring(180);
-        const spr2 = makeSpring(250);
+        const sprTop = makeSpring(180);
+        const sprSub = makeSpring(240);
         return (
           <div
             style={{
               position: 'absolute',
-              top: 145,
-              left: 50,
+              top: 220,
+              left: 40,
+              right: 40,
               zIndex: 35,
-              transform: `translateX(${(1 - spr1) * -40}px)`,
-              opacity: spr1,
+              textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
             }}
           >
+            {/* Dòng trên to hơn */}
             <div
               style={{
+                transform: `scale(${sprTop}) translateY(${waveFloat(0)}px)`,
+                opacity: sprTop,
                 fontFamily: FONT_DISPLAY,
-                color: BRAND.ivory,
-                fontSize: 48,
+                fontSize: 58,
                 fontWeight: 900,
-                textShadow: '0 3px 18px rgba(0,0,0,0.95), 0 6px 30px rgba(0,0,0,0.8)',
+                color: BRAND.ivory,
+                textShadow: '0 3px 20px rgba(0,0,0,0.98), 0 6px 36px rgba(0,0,0,0.90)',
                 display: 'flex',
                 alignItems: 'center',
+                justifyContent: 'center',
                 gap: 16,
               }}
             >
               <span style={{ color: BRAND.gold }}>Sia</span>
-              <span style={{ color: BRAND.oliveLight, fontSize: 32 }}>•</span>
-              <span style={{ fontSize: 38, color: BRAND.beige, fontWeight: 700 }}>Mẹ của nhóc 2 tuổi</span>
+              <span style={{ color: BRAND.oliveLight, fontSize: 36 }}>•</span>
+              <span>Mẹ của nhóc 2 tuổi</span>
             </div>
-            {currentTime >= 8.3 && (
-              <div
-                style={{
-                  transform: `translateY(${(1 - spr2) * 12}px) rotate(-2deg) translateY(${waveFloat(5)}px)`,
-                  opacity: spr2,
-                  fontFamily: FONT_HANDWRITING,
-                  color: BRAND.gold,
-                  fontSize: 42,
-                  fontWeight: 700,
-                  marginTop: 8,
-                  textShadow: '0 2px 14px rgba(0,0,0,0.95)',
-                }}
-              >
-                ~ đang có một solo business siêu nhỏ ✨
-              </div>
-            )}
+
+            {/* Dòng dưới in nghiêng, mảnh hơn */}
+            <div
+              style={{
+                transform: `scale(${sprSub}) translateY(${waveFloat(10)}px)`,
+                opacity: sprSub,
+                fontFamily: FONT_DISPLAY,
+                fontSize: 44,
+                fontStyle: 'italic',
+                fontWeight: 500,
+                color: BRAND.beige,
+                marginTop: 10,
+                textShadow: '0 2px 16px rgba(0,0,0,0.95)',
+              }}
+            >
+              Điều hành một business nhỏ ~ ✨
+            </div>
           </div>
         );
       })()}
 
-      {/* BEAT 4 & 5 (11.8s - 17.4s): SERIES: LIFE-FIRST BUSINESS • TẬP 03 */}
+      {/* BEAT 4 & 5 (11.8s - 17.4s):
+          Màn hình tên series / hook: LIFE-FIRST BUSINESS • TẬP 03
+          Cuộc sống trước ➔ Business sau */}
       {currentTime >= 11.8 && currentTime <= 17.4 && (() => {
         const sprTitle = makeSpring(355);
-        const sprLife = makeSpring(420);
-        const sprBiz = makeSpring(465);
+        const sprMain = makeSpring(410);
         return (
           <div
             style={{
               position: 'absolute',
-              top: 135,
+              top: 200,
               left: 40,
               right: 40,
               zIndex: 35,
+              textAlign: 'center',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              transform: `scale(${interpolate(sprTitle, [0, 1], [0.92, 1.0])})`,
+              transform: `scale(${interpolate(sprTitle, [0, 1], [0.94, 1.0])})`,
               opacity: sprTitle,
             }}
           >
             <div
               style={{
                 fontFamily: FONT_BODY,
-                fontSize: 18,
+                fontSize: 20,
                 fontWeight: 900,
                 color: BRAND.gold,
                 letterSpacing: 4,
-                textShadow: '0 2px 10px rgba(0,0,0,0.9)',
                 textTransform: 'uppercase',
+                textShadow: '0 2px 10px rgba(0,0,0,0.9)',
                 display: 'flex',
                 alignItems: 'center',
                 gap: 12,
@@ -325,33 +381,29 @@ export const LifeFirstBusinessMaster: React.FC = () => {
 
             <div
               style={{
+                transform: `scale(${sprMain}) translateY(${waveFloat(6)}px)`,
+                opacity: sprMain,
                 fontFamily: FONT_DISPLAY,
-                color: BRAND.ivory,
-                fontSize: 52,
+                fontSize: 54,
                 fontWeight: 900,
-                marginTop: 10,
-                textAlign: 'center',
-                textShadow: '0 3px 20px rgba(0,0,0,0.95)',
-                lineHeight: 1.25,
+                color: BRAND.ivory,
+                marginTop: 12,
+                textShadow: '0 3px 20px rgba(0,0,0,0.98)',
               }}
             >
-              <span style={{ transform: `scale(${sprLife})`, display: 'inline-block', color: BRAND.oliveLight }}>
-                CUỘC SỐNG TRƯỚC
-              </span>
+              <span style={{ color: BRAND.oliveLight, fontStyle: 'italic' }}>CUỘC SỐNG TRƯỚC</span>
               <span style={{ margin: '0 16px', color: BRAND.gold, fontSize: 44 }}>➔</span>
-              <span style={{ transform: `scale(${sprBiz})`, display: 'inline-block', color: BRAND.ivory }}>
-                BUSINESS SAU
-              </span>
+              <span>BUSINESS SAU</span>
             </div>
 
             <div
               style={{
                 fontFamily: FONT_HANDWRITING,
                 color: BRAND.beige,
-                fontSize: 38,
+                fontSize: 40,
                 marginTop: 8,
                 transform: `rotate(-2deg) translateY(${waveFloat(12)}px)`,
-                textShadow: '0 2px 12px rgba(0,0,0,0.9)',
+                textShadow: '0 2px 14px rgba(0,0,0,0.95)',
               }}
             >
               bắt đầu từ lối sống bạn muốn ~
@@ -360,19 +412,19 @@ export const LifeFirstBusinessMaster: React.FC = () => {
         );
       })()}
 
-      {/* BEAT 7 (20.5s - 24.8s): CHUYÊN MÔN ➔ KIẾM TIỀN BẰNG CÁCH NÀO? */}
+      {/* BEAT 7 (20.5s - 24.8s): Kiếm tiền từ chuyên môn bằng những cách nào? */}
       {currentTime >= 20.5 && currentTime <= 24.8 && (() => {
         const spr = makeSpring(615);
         return (
           <div
             style={{
               position: 'absolute',
-              top: 140,
+              top: 200,
               left: 40,
               right: 40,
               zIndex: 35,
               textAlign: 'center',
-              transform: `translateY(${(1 - spr) * -25}px) translateY(${waveFloat(0)}px)`,
+              transform: `translateY(${(1 - spr) * -20}px) translateY(${waveFloat(0)}px)`,
               opacity: spr,
             }}
           >
@@ -394,15 +446,15 @@ export const LifeFirstBusinessMaster: React.FC = () => {
               style={{
                 fontFamily: FONT_DISPLAY,
                 color: BRAND.ivory,
-                fontSize: 50,
+                fontSize: 54,
                 fontWeight: 900,
-                lineHeight: 1.3,
-                textShadow: '0 3px 20px rgba(0,0,0,0.95), 0 6px 36px rgba(0,0,0,0.8)',
+                lineHeight: 1.25,
+                textShadow: '0 3px 22px rgba(0,0,0,0.98), 0 6px 36px rgba(0,0,0,0.85)',
               }}
             >
               Kiếm tiền từ chuyên môn của bạn
               <br />
-              <span style={{ color: BRAND.oliveLight, fontFamily: FONT_HANDWRITING, fontSize: 56 }}>
+              <span style={{ color: BRAND.gold, fontStyle: 'italic', fontSize: 58 }}>
                 bằng những cách nào?
               </span>
             </div>
@@ -410,396 +462,321 @@ export const LifeFirstBusinessMaster: React.FC = () => {
         );
       })()}
 
-      {/* BEAT 8, 9, 10 (25.8s - 32.7s): 01 • TƯ VẤN 1:1 */}
+      {/* BEAT 8, 9, 10 (25.8s - 32.7s):
+          DẠNG LIỆT KÊ (theo ảnh ref 3):
+          Header to ở trên + các text (handwritten font) ra dần ở trên đầu */}
       {currentTime >= 25.8 && currentTime <= 32.7 && (() => {
-        const sprNum = makeSpring(775);
-        const sprHand = makeSpring(840);
-        const sprDetail = makeSpring(900);
+        const sprHeader = makeSpring(775);
+        const sprItem1 = makeSpring(840);
+        const sprItem2 = makeSpring(900);
         return (
           <div
             style={{
               position: 'absolute',
-              top: 135,
+              top: 180,
               left: 50,
               right: 50,
               zIndex: 35,
+              textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
-              <div
-                style={{
-                  transform: `scale(${sprNum}) rotate(${waveRotate(0)}deg)`,
-                  opacity: sprNum,
-                  width: 84,
-                  height: 84,
-                  borderRadius: '50%',
-                  background: `linear-gradient(135deg, ${BRAND.wine} 0%, #A81E1E 100%)`,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: BRAND.ivory,
-                  fontFamily: FONT_DISPLAY,
-                  fontSize: 42,
-                  fontWeight: 900,
-                  boxShadow: '0 4px 22px rgba(114,0,0,0.7)',
-                  border: '2px solid rgba(255,255,255,0.2)',
-                }}
-              >
-                01
-              </div>
-
-              <div
-                style={{
-                  transform: `translateX(${(1 - sprNum) * -30}px)`,
-                  opacity: sprNum,
-                  fontFamily: FONT_DISPLAY,
-                  color: BRAND.ivory,
-                  fontSize: 64,
-                  fontWeight: 900,
-                  letterSpacing: 1.5,
-                  textShadow: '0 3px 20px rgba(0,0,0,0.95)',
-                }}
-              >
-                TƯ VẤN 1:1
-              </div>
-            </div>
-
+            {/* Header */}
             <div
               style={{
-                transform: `translateX(${(1 - sprHand) * 40}px) rotate(-3deg) translateY(${waveFloat(8)}px)`,
-                opacity: sprHand,
-                fontFamily: FONT_HANDWRITING,
+                transform: `scale(${sprHeader}) translateY(${waveFloat(0)}px)`,
+                opacity: sprHeader,
+                fontFamily: FONT_DISPLAY,
+                fontSize: 56,
+                fontWeight: 900,
                 color: BRAND.gold,
-                fontSize: 44,
-                fontWeight: 700,
-                marginTop: 10,
-                marginLeft: 96,
-                textShadow: '0 2px 14px rgba(0,0,0,0.95)',
+                textShadow: '0 3px 20px rgba(0,0,0,0.98)',
               }}
             >
-              ~ cách bắt đầu nhanh nhất để có dòng tiền ⚡
+              💡 01 • TƯ VẤN 1:1
+            </div>
+
+            {/* Handwritten list items popping up */}
+            <div
+              style={{
+                transform: `scale(${sprItem1}) translateY(${waveFloat(8)}px)`,
+                opacity: sprItem1,
+                fontFamily: FONT_HANDWRITING,
+                color: BRAND.ivory,
+                fontSize: 44,
+                fontWeight: 700,
+                marginTop: 12,
+                textShadow: '0 2px 16px rgba(0,0,0,0.95)',
+              }}
+            >
+              "cách bắt đầu nhanh nhất để có dòng tiền ⚡"
             </div>
 
             {currentTime >= 28.5 && (
               <div
                 style={{
-                  transform: `translateY(${(1 - sprDetail) * 15}px)`,
-                  opacity: sprDetail,
-                  fontFamily: FONT_DISPLAY,
-                  color: BRAND.beige,
-                  fontSize: 34,
+                  transform: `scale(${sprItem2}) translateY(${waveFloat(14)}px)`,
+                  opacity: sprItem2,
+                  fontFamily: FONT_HANDWRITING,
+                  color: BRAND.oliveLight,
+                  fontSize: 42,
                   fontWeight: 700,
                   marginTop: 10,
-                  marginLeft: 96,
-                  textShadow: '0 2px 12px rgba(0,0,0,0.95)',
+                  textShadow: '0 2px 14px rgba(0,0,0,0.95)',
                 }}
               >
-                ✓ Giải quyết 1 vấn đề cụ thể cho khách hàng
+                • Giải quyết 1 vấn đề cụ thể cho khách hàng
               </div>
             )}
           </div>
         );
       })()}
 
-      {/* BEAT 11, 12, 13 (33.6s - 40.0s): 02 • DỊCH VỤ ĐÓNG GÓI */}
+      {/* BEAT 11, 12, 13 (33.6s - 40.0s):
+          DẠNG LIỆT KÊ (theo ảnh ref 3):
+          02 • DỊCH VỤ ĐÓNG GÓI + list ra dần */}
       {currentTime >= 33.6 && currentTime <= 40.0 && (() => {
-        const sprNum = makeSpring(1008);
-        const sprFlow = makeSpring(1070);
-        const sprStamp = makeSpring(1135);
+        const sprHeader = makeSpring(1008);
+        const sprStep1 = makeSpring(1065);
+        const sprStep2 = makeSpring(1115);
+        const sprStep3 = makeSpring(1155);
         return (
           <div
             style={{
               position: 'absolute',
-              top: 135,
+              top: 180,
               left: 50,
               right: 50,
               zIndex: 35,
+              textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
-              <div
-                style={{
-                  transform: `scale(${sprNum}) rotate(${waveRotate(5)}deg)`,
-                  opacity: sprNum,
-                  width: 84,
-                  height: 84,
-                  borderRadius: '50%',
-                  background: `linear-gradient(135deg, ${BRAND.olive} 0%, #5E694E 100%)`,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: BRAND.ivory,
-                  fontFamily: FONT_DISPLAY,
-                  fontSize: 42,
-                  fontWeight: 900,
-                  boxShadow: '0 4px 22px rgba(121,132,102,0.6)',
-                  border: '2px solid rgba(255,255,255,0.2)',
-                }}
-              >
-                02
-              </div>
-
-              <div
-                style={{
-                  transform: `translateX(${(1 - sprNum) * -30}px)`,
-                  opacity: sprNum,
-                  fontFamily: FONT_DISPLAY,
-                  color: BRAND.ivory,
-                  fontSize: 64,
-                  fontWeight: 900,
-                  letterSpacing: 1.5,
-                  textShadow: '0 3px 20px rgba(0,0,0,0.95)',
-                }}
-              >
-                DỊCH VỤ ĐÓNG GÓI
-              </div>
-
-              <div
-                style={{
-                  fontFamily: FONT_HANDWRITING,
-                  color: BRAND.oliveLight,
-                  fontSize: 38,
-                  transform: 'rotate(-4deg)',
-                  textShadow: '0 2px 10px rgba(0,0,0,0.9)',
-                }}
-              >
-                Productized Scope ~
-              </div>
-            </div>
-
             <div
               style={{
-                transform: `scale(${sprFlow}) translateY(${waveFloat(14)}px)`,
-                opacity: sprFlow,
-                marginTop: 14,
-                marginLeft: 96,
-                display: 'flex',
-                alignItems: 'center',
-                gap: 16,
+                transform: `scale(${sprHeader}) translateY(${waveFloat(0)}px)`,
+                opacity: sprHeader,
+                fontFamily: FONT_DISPLAY,
+                fontSize: 56,
+                fontWeight: 900,
+                color: BRAND.oliveLight,
+                textShadow: '0 3px 20px rgba(0,0,0,0.98)',
               }}
             >
-              <span style={{ fontFamily: FONT_DISPLAY, fontSize: 34, fontWeight: 800, color: BRAND.ivory, textShadow: '0 2px 12px rgba(0,0,0,0.95)' }}>
-                1 Vấn đề rõ
-              </span>
-              <span style={{ color: BRAND.oliveLight, fontSize: 28 }}>➔</span>
-              <span style={{ fontFamily: FONT_DISPLAY, fontSize: 34, fontWeight: 800, color: BRAND.ivory, textShadow: '0 2px 12px rgba(0,0,0,0.95)' }}>
-                1 Phạm vi rõ
-              </span>
-              <span style={{ color: BRAND.oliveLight, fontSize: 28 }}>➔</span>
+              📦 02 • DỊCH VỤ ĐÓNG GÓI
+            </div>
 
-              <span
+            <div style={{ marginTop: 12, display: 'flex', flexDirection: 'column', gap: 10, alignItems: 'center' }}>
+              <div
                 style={{
-                  transform: `scale(${sprStamp}) rotate(-7deg)`,
-                  opacity: sprStamp,
-                  display: 'inline-block',
-                  background: BRAND.wineGlow,
+                  transform: `scale(${sprStep1})`,
+                  opacity: sprStep1,
+                  fontFamily: FONT_HANDWRITING,
                   color: BRAND.ivory,
-                  padding: '6px 20px',
-                  borderRadius: 10,
-                  fontFamily: FONT_DISPLAY,
-                  fontSize: 32,
-                  fontWeight: 900,
-                  letterSpacing: 2,
-                  boxShadow: '0 6px 24px rgba(220,38,38,0.7)',
+                  fontSize: 42,
+                  fontWeight: 700,
+                  textShadow: '0 2px 14px rgba(0,0,0,0.95)',
                 }}
               >
-                XONG! ✓
-              </span>
+                • 1 Vấn đề rõ
+              </div>
+
+              {currentTime >= 36.8 && (
+                <div
+                  style={{
+                    transform: `scale(${sprStep2})`,
+                    opacity: sprStep2,
+                    fontFamily: FONT_HANDWRITING,
+                    color: BRAND.ivory,
+                    fontSize: 42,
+                    fontWeight: 700,
+                    textShadow: '0 2px 14px rgba(0,0,0,0.95)',
+                  }}
+                >
+                  • 1 Phạm vi rõ
+                </div>
+              )}
+
+              {currentTime >= 38.2 && (
+                <div
+                  style={{
+                    transform: `scale(${sprStep3}) rotate(-4deg)`,
+                    opacity: sprStep3,
+                    fontFamily: FONT_HANDWRITING,
+                    color: BRAND.gold,
+                    fontSize: 46,
+                    fontWeight: 700,
+                    textShadow: '0 2px 16px rgba(0,0,0,0.95)',
+                  }}
+                >
+                  ✓ Bàn giao và kết thúc! (Xong gọn gàng)
+                </div>
+              )}
             </div>
           </div>
         );
       })()}
 
-      {/* BEAT 14, 15, 16 (40.2s - 48.0s): 03 • WORKSHOP NHỎ (ENLARGED & PROMINENT) */}
+      {/* BEAT 14, 15, 16 (40.2s - 48.0s):
+          03 • WORKSHOP NHỎ + list ra dần */}
       {currentTime >= 40.2 && currentTime <= 48.0 && (() => {
-        const sprNum = makeSpring(1206);
-        const sprCohort = makeSpring(1320);
+        const sprHeader = makeSpring(1206);
+        const sprItem1 = makeSpring(1280);
+        const sprItem2 = makeSpring(1350);
         return (
           <div
             style={{
               position: 'absolute',
-              top: 135,
+              top: 180,
               left: 50,
               right: 50,
               zIndex: 35,
+              textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
-              <div
-                style={{
-                  transform: `scale(${sprNum}) rotate(${waveRotate(10)}deg)`,
-                  opacity: sprNum,
-                  width: 84,
-                  height: 84,
-                  borderRadius: '50%',
-                  background: `linear-gradient(135deg, ${BRAND.gold} 0%, #B88924 100%)`,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#1A0A0C',
-                  fontFamily: FONT_DISPLAY,
-                  fontSize: 42,
-                  fontWeight: 900,
-                  boxShadow: '0 4px 22px rgba(224,181,84,0.6)',
-                  border: '2px solid rgba(255,255,255,0.3)',
-                }}
-              >
-                03
-              </div>
-
-              <div
-                style={{
-                  transform: `translateX(${(1 - sprNum) * -30}px)`,
-                  opacity: sprNum,
-                  fontFamily: FONT_DISPLAY,
-                  color: BRAND.ivory,
-                  fontSize: 64,
-                  fontWeight: 900,
-                  letterSpacing: 1.5,
-                  textShadow: '0 3px 20px rgba(0,0,0,0.95)',
-                }}
-              >
-                WORKSHOP NHỎ
-              </div>
-
-              <div
-                style={{
-                  fontFamily: FONT_HANDWRITING,
-                  color: BRAND.gold,
-                  fontSize: 42,
-                  transform: 'rotate(-3deg)',
-                  textShadow: '0 2px 12px rgba(0,0,0,0.9)',
-                }}
-              >
-                micro-cohort ~
-              </div>
+            <div
+              style={{
+                transform: `scale(${sprHeader}) translateY(${waveFloat(0)}px)`,
+                opacity: sprHeader,
+                fontFamily: FONT_DISPLAY,
+                fontSize: 56,
+                fontWeight: 900,
+                color: BRAND.gold,
+                textShadow: '0 3px 20px rgba(0,0,0,0.98)',
+              }}
+            >
+              🌱 03 • WORKSHOP NHỎ
             </div>
 
             <div
               style={{
-                transform: `translateY(${(1 - sprCohort) * 15}px) translateY(${waveFloat(4)}px)`,
-                opacity: sprCohort,
-                marginTop: 14,
-                marginLeft: 96,
+                transform: `scale(${sprItem1}) translateY(${waveFloat(6)}px)`,
+                opacity: sprItem1,
                 fontFamily: FONT_HANDWRITING,
                 color: BRAND.ivory,
-                fontSize: 42,
+                fontSize: 44,
                 fontWeight: 700,
-                textShadow: '0 3px 18px rgba(0,0,0,0.98), 0 6px 30px rgba(0,0,0,0.9)',
-                lineHeight: 1.35,
+                marginTop: 12,
+                textShadow: '0 2px 16px rgba(0,0,0,0.95)',
               }}
             >
-              "Điều bạn hay phải giải thích ➔ trở thành lớp học nhiều người muốn học ✨"
+              "điều bạn hay giải thích cho người khác ~"
             </div>
+
+            {currentTime >= 44.5 && (
+              <div
+                style={{
+                  transform: `scale(${sprItem2}) translateY(${waveFloat(12)}px)`,
+                  opacity: sprItem2,
+                  fontFamily: FONT_HANDWRITING,
+                  color: BRAND.gold,
+                  fontSize: 44,
+                  fontWeight: 700,
+                  marginTop: 10,
+                  textShadow: '0 2px 16px rgba(0,0,0,0.95)',
+                }}
+              >
+                • Biến thành buổi học nhiều người muốn học ✨
+              </div>
+            )}
           </div>
         );
       })()}
 
-      {/* BEAT 17, 18, 19 (48.9s - 61.1s): 04 • SẢN PHẨM SỐ */}
+      {/* BEAT 17, 18, 19 (48.9s - 61.1s):
+          04 • SẢN PHẨM SỐ + list ra dần */}
       {currentTime >= 48.9 && currentTime <= 61.1 && (() => {
-        const sprNum = makeSpring(1467);
-        const sprPill = makeSpring(1560);
-        const sprMulti = makeSpring(1710);
+        const sprHeader = makeSpring(1467);
+        const sprPill = makeSpring(1540);
+        const sprPassive = makeSpring(1680);
         return (
           <div
             style={{
               position: 'absolute',
-              top: 135,
+              top: 180,
               left: 50,
               right: 50,
               zIndex: 35,
+              textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
-              <div
-                style={{
-                  transform: `scale(${sprNum}) rotate(${waveRotate(15)}deg)`,
-                  opacity: sprNum,
-                  width: 84,
-                  height: 84,
-                  borderRadius: '50%',
-                  background: `linear-gradient(135deg, ${BRAND.wineGlow} 0%, ${BRAND.wine} 100%)`,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: BRAND.ivory,
-                  fontFamily: FONT_DISPLAY,
-                  fontSize: 42,
-                  fontWeight: 900,
-                  boxShadow: '0 4px 22px rgba(220,38,38,0.7)',
-                  border: '2px solid rgba(255,255,255,0.2)',
-                }}
-              >
-                04
-              </div>
-
-              <div
-                style={{
-                  transform: `translateX(${(1 - sprNum) * -30}px)`,
-                  opacity: sprNum,
-                  fontFamily: FONT_DISPLAY,
-                  color: BRAND.ivory,
-                  fontSize: 64,
-                  fontWeight: 900,
-                  letterSpacing: 1.5,
-                  textShadow: '0 3px 20px rgba(0,0,0,0.95)',
-                }}
-              >
-                SẢN PHẨM SỐ
-              </div>
+            <div
+              style={{
+                transform: `scale(${sprHeader}) translateY(${waveFloat(0)}px)`,
+                opacity: sprHeader,
+                fontFamily: FONT_DISPLAY,
+                fontSize: 56,
+                fontWeight: 900,
+                color: BRAND.gold,
+                textShadow: '0 3px 20px rgba(0,0,0,0.98)',
+              }}
+            >
+              ✨ 04 • SẢN PHẨM SỐ
             </div>
 
+            {/* List items popping in */}
             <div
               style={{
                 transform: `scale(${sprPill})`,
                 opacity: sprPill,
-                marginTop: 12,
-                marginLeft: 96,
+                marginTop: 14,
                 display: 'flex',
-                gap: 14,
+                gap: 16,
                 alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
-              <span style={{ color: BRAND.beige, fontFamily: FONT_DISPLAY, fontSize: 30, fontWeight: 700, textShadow: '0 2px 10px rgba(0,0,0,0.9)' }}>
-                Template
+              <span style={{ color: BRAND.ivory, fontFamily: FONT_HANDWRITING, fontSize: 38, fontWeight: 700, textShadow: '0 2px 12px rgba(0,0,0,0.95)' }}>
+                "Template"
               </span>
-              <span style={{ color: BRAND.oliveLight, fontSize: 24 }}>•</span>
-              <span style={{ color: BRAND.beige, fontFamily: FONT_DISPLAY, fontSize: 30, fontWeight: 700, textShadow: '0 2px 10px rgba(0,0,0,0.9)' }}>
-                Ebook
+              <span style={{ color: BRAND.oliveLight, fontSize: 28 }}>•</span>
+              <span style={{ color: BRAND.ivory, fontFamily: FONT_HANDWRITING, fontSize: 38, fontWeight: 700, textShadow: '0 2px 12px rgba(0,0,0,0.95)' }}>
+                "Ebook"
               </span>
-              <span style={{ color: BRAND.oliveLight, fontSize: 24 }}>•</span>
-              <span style={{ color: BRAND.beige, fontFamily: FONT_DISPLAY, fontSize: 30, fontWeight: 700, textShadow: '0 2px 10px rgba(0,0,0,0.9)' }}>
-                Bộ Hướng Dẫn
+              <span style={{ color: BRAND.oliveLight, fontSize: 28 }}>•</span>
+              <span style={{ color: BRAND.ivory, fontFamily: FONT_HANDWRITING, fontSize: 38, fontWeight: 700, textShadow: '0 2px 12px rgba(0,0,0,0.95)' }}>
+                "Bộ Hướng Dẫn"
               </span>
             </div>
 
-            <div
-              style={{
-                transform: `translateX(${(1 - sprMulti) * 30}px) rotate(-3deg) translateY(${waveFloat(10)}px)`,
-                opacity: sprMulti,
-                marginTop: 12,
-                marginLeft: 96,
-                fontFamily: FONT_HANDWRITING,
-                color: BRAND.gold,
-                fontSize: 44,
-                fontWeight: 700,
-                textShadow: '0 2px 14px rgba(0,0,0,0.95)',
-              }}
-            >
-              💡 Đóng gói 1 lần ➔ Bán nhiều lần (thu nhập thụ động ✨)
-            </div>
+            {currentTime >= 54.5 && (
+              <div
+                style={{
+                  transform: `scale(${sprPassive}) translateY(${waveFloat(8)}px)`,
+                  opacity: sprPassive,
+                  marginTop: 14,
+                  fontFamily: FONT_HANDWRITING,
+                  color: BRAND.gold,
+                  fontSize: 46,
+                  fontWeight: 700,
+                  textShadow: '0 2px 16px rgba(0,0,0,0.95)',
+                }}
+              >
+                💡 Đóng gói 1 lần ➔ Bán nhiều lần ✨
+              </div>
+            )}
           </div>
         );
       })()}
 
-      {/* BEAT 20 (62.0s - 65.5s): KHÔNG NHẤT THIẾT PHẢI MỞ BUSINESS NGAY */}
+      {/* BEAT 20 (62.0s - 65.5s): Không nhất thiết phải mở business ngay */}
       {currentTime >= 62.0 && currentTime <= 65.5 && (() => {
         const spr = makeSpring(1860);
         return (
           <div
             style={{
               position: 'absolute',
-              top: 140,
+              top: 200,
               left: 40,
               right: 40,
               zIndex: 35,
@@ -826,9 +803,9 @@ export const LifeFirstBusinessMaster: React.FC = () => {
               style={{
                 fontFamily: FONT_DISPLAY,
                 color: BRAND.ivory,
-                fontSize: 50,
+                fontSize: 52,
                 fontWeight: 900,
-                textShadow: '0 3px 20px rgba(0,0,0,0.95), 0 6px 36px rgba(0,0,0,0.8)',
+                textShadow: '0 3px 20px rgba(0,0,0,0.98), 0 6px 36px rgba(0,0,0,0.85)',
               }}
             >
               "Bạn không nhất thiết phải mở business ngay!"
@@ -837,62 +814,116 @@ export const LifeFirstBusinessMaster: React.FC = () => {
         );
       })()}
 
-      {/* BEAT 21, 22, 23 (66.2s - 80.8s): Remote work • Freelance • Part-time */}
+      {/* BEAT 21, 22, 23 (66.2s - 80.8s):
+          DẠNG LIỆT KÊ (theo ảnh ref 3 bên trái):
+          Các quotes xuất hiện so le ở khoảng trống trên đầu:
+          "remote work"
+              "freelance"
+          "công việc online part-time" */}
       {currentTime >= 66.2 && currentTime <= 80.8 && (() => {
-        const spr = makeSpring(1986);
+        const sprTitle = makeSpring(1986);
+        const spr1 = makeSpring(2000);
+        const spr2 = makeSpring(2050);
+        const spr3 = makeSpring(2100);
         const sprUnlock = makeSpring(2190);
         return (
           <div
             style={{
               position: 'absolute',
-              top: 135,
+              top: 175,
               left: 40,
               right: 40,
               zIndex: 35,
               textAlign: 'center',
-              transform: `scale(${interpolate(spr, [0, 1], [0.93, 1.0])})`,
-              opacity: spr,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
             }}
           >
             <div
               style={{
-                fontFamily: FONT_HANDWRITING,
-                color: BRAND.oliveLight,
-                fontSize: 38,
-                transform: 'rotate(-2deg)',
-                textShadow: '0 2px 10px rgba(0,0,0,0.9)',
-              }}
-            >
-              những bước đệm linh hoạt ~
-            </div>
-
-            <div
-              style={{
+                transform: `scale(${sprTitle})`,
+                opacity: sprTitle,
                 fontFamily: FONT_DISPLAY,
-                color: BRAND.ivory,
-                fontSize: 48,
+                color: BRAND.gold,
+                fontSize: 52,
                 fontWeight: 900,
-                marginTop: 8,
                 textShadow: '0 3px 18px rgba(0,0,0,0.95)',
               }}
             >
-              Remote Work • Freelance • Part-time Online
+              🌿 BƯỚC ĐỆM LINH HOẠT
             </div>
 
-            <div
-              style={{
-                transform: `scale(${sprUnlock}) translateY(${waveFloat(8)}px)`,
-                opacity: sprUnlock,
-                fontFamily: FONT_HANDWRITING,
-                color: BRAND.gold,
-                fontSize: 44,
-                fontWeight: 700,
-                marginTop: 10,
-                textShadow: '0 2px 14px rgba(0,0,0,0.95)',
-              }}
-            >
-              🔓 Chỉ cần cho bạn nhiều quyền chủ động hơn!
+            {/* Staggered quotes floating like reference 3 */}
+            <div style={{ marginTop: 12, width: '100%', maxWidth: 700 }}>
+              <div
+                style={{
+                  transform: `scale(${spr1}) translateY(${waveFloat(0)}px)`,
+                  opacity: spr1,
+                  textAlign: 'left',
+                  fontFamily: FONT_HANDWRITING,
+                  color: BRAND.ivory,
+                  fontSize: 48,
+                  fontWeight: 700,
+                  textShadow: '0 3px 18px rgba(0,0,0,0.98), 0 6px 30px rgba(0,0,0,0.90)',
+                }}
+              >
+                "remote work"
+              </div>
+
+              {currentTime >= 68.0 && (
+                <div
+                  style={{
+                    transform: `scale(${spr2}) translateY(${waveFloat(8)}px)`,
+                    opacity: spr2,
+                    textAlign: 'right',
+                    fontFamily: FONT_HANDWRITING,
+                    color: BRAND.gold,
+                    fontSize: 50,
+                    fontWeight: 700,
+                    marginTop: 4,
+                    textShadow: '0 3px 18px rgba(0,0,0,0.98), 0 6px 30px rgba(0,0,0,0.90)',
+                  }}
+                >
+                  "freelance"
+                </div>
+              )}
+
+              {currentTime >= 69.5 && (
+                <div
+                  style={{
+                    transform: `scale(${spr3}) translateY(${waveFloat(14)}px)`,
+                    opacity: spr3,
+                    textAlign: 'center',
+                    fontFamily: FONT_HANDWRITING,
+                    color: BRAND.ivory,
+                    fontSize: 48,
+                    fontWeight: 700,
+                    marginTop: 4,
+                    textShadow: '0 3px 18px rgba(0,0,0,0.98), 0 6px 30px rgba(0,0,0,0.90)',
+                  }}
+                >
+                  "online part-time"
+                </div>
+              )}
             </div>
+
+            {currentTime >= 73.5 && (
+              <div
+                style={{
+                  transform: `scale(${sprUnlock}) translateY(${waveFloat(10)}px)`,
+                  opacity: sprUnlock,
+                  fontFamily: FONT_HANDWRITING,
+                  color: BRAND.gold,
+                  fontSize: 44,
+                  fontWeight: 700,
+                  marginTop: 12,
+                  textShadow: '0 2px 16px rgba(0,0,0,0.95)',
+                }}
+              >
+                🔓 Chỉ cần cho bạn nhiều quyền chủ động hơn!
+              </div>
+            )}
           </div>
         );
       })()}
@@ -905,7 +936,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
           <div
             style={{
               position: 'absolute',
-              top: 135,
+              top: 185,
               left: 40,
               right: 40,
               zIndex: 35,
@@ -935,10 +966,10 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 fontSize: 56,
                 fontWeight: 900,
                 marginTop: 10,
-                textShadow: '0 3px 20px rgba(0,0,0,0.95)',
+                textShadow: '0 3px 20px rgba(0,0,0,0.98)',
               }}
             >
-              Hãy bắt đầu từ việc <span style={{ color: BRAND.wineGlow, textDecoration: 'underline' }}>NHỎ NHẤT</span>!
+              Hãy bắt đầu từ việc <span style={{ color: BRAND.gold, textDecoration: 'underline' }}>NHỎ NHẤT</span>!
             </div>
 
             <div
@@ -947,9 +978,9 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 opacity: sprHand,
                 fontFamily: FONT_HANDWRITING,
                 color: BRAND.oliveLight,
-                fontSize: 42,
+                fontSize: 44,
                 fontWeight: 700,
-                marginTop: 10,
+                marginTop: 12,
                 textShadow: '0 2px 14px rgba(0,0,0,0.95)',
               }}
             >
@@ -959,7 +990,11 @@ export const LifeFirstBusinessMaster: React.FC = () => {
         );
       })()}
 
-      {/* BEAT 29, 30, 31 (96.0s - 104.3s): 2 Tiêu chí kiểm chứng */}
+      {/* BEAT 29, 30, 31 (96.0s - 104.3s):
+          2 TIÊU CHÍ TEST (theo dạng list ảnh 3):
+          📖 2 BÀI TEST THỰC TẾ
+          • Có ai thực sự trả tiền không?
+          • Có fit với cuộc sống của bạn không? */}
       {currentTime >= 96.0 && currentTime <= 104.3 && (() => {
         const spr = makeSpring(2880);
         const spr1 = makeSpring(2950);
@@ -968,61 +1003,66 @@ export const LifeFirstBusinessMaster: React.FC = () => {
           <div
             style={{
               position: 'absolute',
-              top: 135,
+              top: 185,
               left: 40,
               right: 40,
               zIndex: 35,
               textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
               transform: `scale(${interpolate(spr, [0, 1], [0.93, 1.0])})`,
               opacity: spr,
             }}
           >
             <div
               style={{
-                fontFamily: FONT_HANDWRITING,
+                fontFamily: FONT_DISPLAY,
                 color: BRAND.gold,
-                fontSize: 42,
-                transform: 'rotate(-3deg)',
-                textShadow: '0 2px 12px rgba(0,0,0,0.9)',
+                fontSize: 54,
+                fontWeight: 900,
+                textShadow: '0 3px 18px rgba(0,0,0,0.95)',
               }}
             >
-              2 bài test thực tế ⚖️
+              ⚖️ 2 BÀI TEST THỰC TẾ
             </div>
 
-            <div style={{ marginTop: 12, display: 'flex', flexDirection: 'column', gap: 12, alignItems: 'center' }}>
+            <div style={{ marginTop: 14, display: 'flex', flexDirection: 'column', gap: 12, alignItems: 'center' }}>
               <div
                 style={{
-                  transform: `translateX(${(1 - spr1) * -30}px)`,
+                  transform: `scale(${spr1})`,
                   opacity: spr1,
-                  fontFamily: FONT_DISPLAY,
+                  fontFamily: FONT_HANDWRITING,
                   color: BRAND.ivory,
-                  fontSize: 40,
-                  fontWeight: 900,
-                  textShadow: '0 3px 16px rgba(0,0,0,0.95)',
+                  fontSize: 44,
+                  fontWeight: 700,
+                  textShadow: '0 2px 16px rgba(0,0,0,0.95)',
                 }}
               >
-                1. Có ai thực sự trả tiền không?
+                • Có ai thực sự trả tiền không?
               </div>
 
-              <div
-                style={{
-                  transform: `translateX(${(1 - spr2) * 30}px) translateY(${waveFloat(4)}px)`,
-                  opacity: spr2,
-                  fontFamily: FONT_DISPLAY,
-                  color: BRAND.oliveLight,
-                  fontSize: 42,
-                  fontWeight: 900,
-                  textShadow: '0 3px 18px rgba(0,0,0,0.95)',
-                }}
-              >
-                2. Cách làm đó có <span style={{ color: BRAND.gold }}>FIT với cuộc sống</span> không?
-              </div>
+              {currentTime >= 99.8 && (
+                <div
+                  style={{
+                    transform: `scale(${spr2}) translateY(${waveFloat(4)}px)`,
+                    opacity: spr2,
+                    fontFamily: FONT_HANDWRITING,
+                    color: BRAND.gold,
+                    fontSize: 44,
+                    fontWeight: 700,
+                    textShadow: '0 2px 16px rgba(0,0,0,0.95)',
+                  }}
+                >
+                  • Có thực sự fit với cuộc sống của bạn không? ✨
+                </div>
+              )}
             </div>
           </div>
         );
       })()}
 
-      {/* BEAT 32, 33, 34, 35 (105.1s - 116.3s): CUỘC SỐNG ≠ XOAY QUANH CÔNG VIỆC ➔ Follow */}
+      {/* BEAT 32 - 35 (105.1s - 116.3s): CUỘC SỐNG ≠ CÔNG VIỆC ➔ Follow */}
       {currentTime >= 105.1 && currentTime <= 116.3 && (() => {
         const spr = makeSpring(3153);
         const sprFollow = makeSpring(3340);
@@ -1030,11 +1070,14 @@ export const LifeFirstBusinessMaster: React.FC = () => {
           <div
             style={{
               position: 'absolute',
-              top: 135,
+              top: 190,
               left: 40,
               right: 40,
               zIndex: 40,
               textAlign: 'center',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
               transform: `scale(${interpolate(spr, [0, 1], [0.93, 1.0])})`,
               opacity: spr,
             }}
@@ -1045,11 +1088,11 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 fontSize: 54,
                 fontWeight: 900,
                 color: BRAND.ivory,
-                textShadow: '0 3px 20px rgba(0,0,0,0.95)',
+                textShadow: '0 3px 20px rgba(0,0,0,0.98)',
                 lineHeight: 1.25,
               }}
             >
-              CUỘC SỐNG <span style={{ color: BRAND.wineGlow }}>≠</span> XOAY QUANH CÔNG VIỆC
+              CUỘC SỐNG <span style={{ color: BRAND.gold }}>≠</span> XOAY QUANH CÔNG VIỆC
             </div>
 
             <div
@@ -1061,7 +1104,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 alignItems: 'center',
                 gap: 12,
                 background: `linear-gradient(135deg, ${BRAND.wineGlow} 0%, ${BRAND.wine} 100%)`,
-                padding: '14px 32px',
+                padding: '14px 34px',
                 borderRadius: 36,
                 color: BRAND.ivory,
                 boxShadow: '0 6px 28px rgba(220,38,38,0.65)',
@@ -1076,7 +1119,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
               style={{
                 fontFamily: FONT_HANDWRITING,
                 color: BRAND.beige,
-                fontSize: 38,
+                fontSize: 40,
                 marginTop: 12,
                 transform: 'rotate(-2deg)',
                 textShadow: '0 2px 12px rgba(0,0,0,0.95)',
@@ -1106,22 +1149,18 @@ export const LifeFirstBusinessMaster: React.FC = () => {
       <Sequence from={2880} durationInFrames={30}><Audio src={staticFile('sfx/page-flip.wav')} volume={0.18} /></Sequence>
       <Sequence from={3153} durationInFrames={30}><Audio src={staticFile('sfx/sparkle-soft.wav')} volume={0.22} /></Sequence>
 
-      {/* ─── 4. BRAND COMPLIANT ORGANIC SUBTITLES (EDITORIAL SERIF + HANDWRITING ACCENTS) ─── */}
+      {/* ─── 4. SUBTITLES: Ở GIỮA TẦM CỔ ÁO / NGỰC (Y ~ 1180px), TO RÕ RÀNG (~3/4 CHIỀU NGANG), 3-4 CHỮ/CHUNK, KHÔNG TÔ MÀU THEO TỪ ─── */}
       {activeSub && (() => {
-        const subDuration = Math.max(0.1, activeSub.e - activeSub.s);
-        const progress = Math.max(0, Math.min(1, (currentTime - activeSub.s) / subDuration));
-        const words = activeSub.text.split(' ');
-        const activeWordIndex = Math.min(words.length - 1, Math.floor(progress * words.length));
-
         return (
           <div
             style={{
               position: 'absolute',
-              bottom: 120,
-              left: 50,
-              right: 50,
+              top: 1160,
+              left: 40,
+              right: 40,
               display: 'flex',
               justifyContent: 'center',
+              alignItems: 'center',
               zIndex: 50,
               pointerEvents: 'none',
             }}
@@ -1129,67 +1168,17 @@ export const LifeFirstBusinessMaster: React.FC = () => {
             <div
               style={{
                 textAlign: 'center',
-                maxWidth: 920,
-                display: 'flex',
-                flexWrap: 'wrap',
-                justifyContent: 'center',
-                alignItems: 'baseline',
-                gap: '8px 12px',
-                lineHeight: 1.4,
+                maxWidth: 820, // ~3/4 chiều ngang toàn khung hình 1080
+                fontFamily: FONT_DISPLAY,
+                fontSize: 58,
+                fontWeight: 800,
+                color: BRAND.ivory,
+                lineHeight: 1.25,
+                textShadow: '0 3px 18px rgba(0,0,0,0.98), 0 6px 36px rgba(0,0,0,0.90)',
+                letterSpacing: 0.5,
               }}
             >
-              {words.map((w, idx) => {
-                const isCurrent = idx === activeWordIndex;
-                const isPast = idx < activeWordIndex;
-                const cleanWord = w.toLowerCase().replace(/[,.?!~;:"'•✓⚡💡👶🌱☕✨]/g, '').trim();
-
-                // Handwriting cursive keywords
-                const isHandwriting = [
-                  'sống', 'cuộc', 'siêu', 'nhỏ', 'thực', 'tế', 'nhanh', 'nhất',
-                  'chủ', 'động', 'linh', 'hoạt', 'fit', 'follow', 'đồng', 'hành', 'chia', 'sẻ'
-                ].includes(cleanWord);
-
-                // Brand Gold keywords
-                const isGold = ['live', 'first', 'business', 'sia', 'workshop'].includes(cleanWord);
-
-                // Typography style
-                let wordFont = FONT_DISPLAY;
-                let wordSize = 40;
-                let wordColor = isPast ? BRAND.ivory : 'rgba(248, 245, 242, 0.50)';
-
-                if (isHandwriting) {
-                  wordFont = FONT_HANDWRITING;
-                  wordSize = 46;
-                  wordColor = isPast ? BRAND.oliveLight : 'rgba(163, 177, 138, 0.55)';
-                } else if (isGold) {
-                  wordFont = FONT_DISPLAY;
-                  wordColor = isPast ? BRAND.gold : 'rgba(224, 181, 84, 0.55)';
-                }
-
-                if (isCurrent) {
-                  wordColor = isGold ? '#FFE899' : isHandwriting ? '#E5F3D4' : BRAND.wineGlow;
-                }
-
-                return (
-                  <span
-                    key={idx}
-                    style={{
-                      fontFamily: wordFont,
-                      fontSize: wordSize,
-                      fontWeight: isCurrent ? 900 : 700,
-                      color: wordColor,
-                      transform: isCurrent ? 'scale(1.12) translateY(-2px)' : 'scale(1.0)',
-                      display: 'inline-block',
-                      transition: 'all 0.08s ease',
-                      textShadow: isCurrent
-                        ? '0 0 18px rgba(220,38,38,0.85), 0 2px 14px rgba(0,0,0,0.95)'
-                        : '0 2px 10px rgba(0,0,0,0.95), 0 4px 22px rgba(0,0,0,0.85)',
-                    }}
-                  >
-                    {w}
-                  </span>
-                );
-              })}
+              {activeSub.text}
             </div>
           </div>
         );
