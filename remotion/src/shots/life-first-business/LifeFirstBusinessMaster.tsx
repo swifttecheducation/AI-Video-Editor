@@ -20,21 +20,20 @@ export const compositionConfig = {
   height: 1920,
 };
 
-// Brand Guide Palette
+// 100% Exact Brand Guide Palette (Warm Ivory, Soft Beige, Wine, Olive)
 const BRAND = {
   wine: '#720000',
-  wineLight: '#991B1B',
+  wineBright: '#B91C1C', // Wine for dark background contrast
   wineGlow: '#DC2626',
   olive: '#798466',
-  oliveLight: '#A3B18A',
-  ivory: '#F8F5F2',
-  beige: '#D4CABE',
-  gold: '#E0B554',
-  goldBright: '#F3C969',
+  oliveLight: '#9BAA83', // Olive for text contrast
+  ivory: '#F8F5F2', // Warm Ivory - primary text
+  beige: '#D4CABE', // Soft Beige - secondary text & accents
+  charcoal: '#1F1616',
   white: '#FFFFFF',
 };
 
-// 1. Precise 2-4 word subtitle chunks (placed at collar/chest level, 3/4 width)
+// 2-4 word subtitle chunks (at collar/chest level, 3/4 width, Be Vietnam Pro font per Brand Guide)
 const SUBTITLES = [
   // 0.0 - 5.6s
   { s: 0.00, e: 1.40, text: 'Mình muốn kiếm tiền' },
@@ -165,13 +164,11 @@ export const LifeFirstBusinessMaster: React.FC = () => {
     });
   };
 
-  // Organic wave float for floating elements
   const waveFloat = (offset = 0) => Math.sin((frame + offset) / 16) * 3.5;
-  const waveRotate = (offset = 0) => Math.cos((frame + offset) / 22) * 1.8;
 
   return (
     <AbsoluteFill style={{ backgroundColor: '#07090E', overflow: 'hidden', fontFamily: FONT_BODY }}>
-      {/* ─── 1. MASTER VIDEO FOOTAGE (100% TALKING HEAD) ─── */}
+      {/* ─── 1. MASTER VIDEO FOOTAGE ─── */}
       <AbsoluteFill style={{ overflow: 'hidden' }}>
         <div
           style={{
@@ -198,11 +195,11 @@ export const LifeFirstBusinessMaster: React.FC = () => {
         </div>
       </AbsoluteFill>
 
-      {/* ─── 2. UPPER HIGHLIGHT & MINH HỌA (TRÊN ĐẦU / TỪ TRÁN TRỞ LÊN) ─── */}
+      {/* ─── 2. UPPER HIGHLIGHT (FROM FOREHEAD UP) - 100% BRAND GUIDE ─── */}
 
-      {/* BEAT 1 (0.0s - 5.6s): NEW HOOK theo đúng ref ảnh Bree:
+      {/* BEAT 1 (0.0s - 5.6s): NEW HOOK
           "cách thực tế để kiếm thêm thu nhập tại nhà từ chuyên môn"
-          Chữ to, uốn lượn, lên xuống dòng, Serif kết hợp Italic! */}
+          Font: Alegreya (Heading), Colors: Wine (#B91C1C / #720000) & Warm Ivory (#F8F5F2) */}
       {currentTime >= 0.3 && currentTime <= 5.8 && (() => {
         const spr1 = makeSpring(8);
         const spr2 = makeSpring(25);
@@ -221,15 +218,15 @@ export const LifeFirstBusinessMaster: React.FC = () => {
               alignItems: 'center',
             }}
           >
-            {/* Line 1: cách thực tế */}
+            {/* Line 1: cách thực tế (Wine) */}
             <div
               style={{
                 transform: `scale(${spr1}) translateY(${waveFloat(0)}px)`,
                 opacity: spr1,
                 fontFamily: FONT_DISPLAY,
                 fontSize: 66,
-                fontWeight: 700,
-                color: BRAND.gold,
+                fontWeight: 800,
+                color: BRAND.ivory,
                 lineHeight: 1.15,
                 textShadow: '0 3px 20px rgba(0,0,0,0.98), 0 6px 36px rgba(0,0,0,0.90)',
                 letterSpacing: 1,
@@ -238,7 +235,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
               cách thực tế
             </div>
 
-            {/* Line 2: để kiếm thêm thu nhập (italic) */}
+            {/* Line 2: để kiếm thêm thu nhập (Italic Warm Ivory) */}
             <div
               style={{
                 transform: `scale(${spr2}) translateY(${waveFloat(8)}px)`,
@@ -256,7 +253,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
               để kiếm thêm thu nhập
             </div>
 
-            {/* Line 3: tại nhà từ chuyên môn */}
+            {/* Line 3: tại nhà từ chuyên môn (Olive Light & Warm Ivory) */}
             <div
               style={{
                 transform: `scale(${spr3}) translateY(${waveFloat(16)}px)`,
@@ -264,23 +261,22 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 fontFamily: FONT_DISPLAY,
                 fontSize: 68,
                 fontWeight: 900,
-                color: BRAND.gold,
+                color: BRAND.ivory,
                 lineHeight: 1.15,
                 marginTop: 6,
                 textShadow: '0 3px 20px rgba(0,0,0,0.98), 0 6px 36px rgba(0,0,0,0.90)',
               }}
             >
-              tại nhà <span style={{ fontStyle: 'italic', color: BRAND.ivory, fontWeight: 700 }}>từ chuyên môn</span>
+              <span style={{ color: BRAND.oliveLight }}>tại nhà</span>{' '}
+              <span style={{ fontStyle: 'italic', color: BRAND.beige, fontWeight: 700 }}>từ chuyên môn</span>
             </div>
           </div>
         );
       })()}
 
       {/* BEAT 2 & 3 (6.0s - 11.0s):
-          Yêu cầu mục 4: Căn giữa, to rõ ràng, để từ trán trở lên:
-          Dòng trên to hơn dòng dưới:
-          Sia • Mẹ của nhóc 2 tuổi
-          Điều hành một business nhỏ (in nghiêng, mảnh) */}
+          Sia • Mẹ của nhóc 2 tuổi (Alegreya bold, Wine + Ivory)
+          Điều hành một business nhỏ (Alegreya italic slender, Soft Beige) */}
       {currentTime >= 6.0 && currentTime <= 11.0 && (() => {
         const sprTop = makeSpring(180);
         const sprSub = makeSpring(240);
@@ -314,7 +310,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 gap: 16,
               }}
             >
-              <span style={{ color: BRAND.gold }}>Sia</span>
+              <span style={{ color: BRAND.ivory }}>Sia</span>
               <span style={{ color: BRAND.oliveLight, fontSize: 36 }}>•</span>
               <span>Mẹ của nhóc 2 tuổi</span>
             </div>
@@ -340,7 +336,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
       })()}
 
       {/* BEAT 4 & 5 (11.8s - 17.4s):
-          Màn hình tên series / hook: LIFE-FIRST BUSINESS • TẬP 03
+          SERIES: LIFE-FIRST BUSINESS • TẬP 03
           Cuộc sống trước ➔ Business sau */}
       {currentTime >= 11.8 && currentTime <= 17.4 && (() => {
         const sprTitle = makeSpring(355);
@@ -365,8 +361,8 @@ export const LifeFirstBusinessMaster: React.FC = () => {
               style={{
                 fontFamily: FONT_BODY,
                 fontSize: 20,
-                fontWeight: 900,
-                color: BRAND.gold,
+                fontWeight: 800,
+                color: BRAND.oliveLight,
                 letterSpacing: 4,
                 textTransform: 'uppercase',
                 textShadow: '0 2px 10px rgba(0,0,0,0.9)',
@@ -376,7 +372,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
               }}
             >
               <span>SERIES: LIFE-FIRST BUSINESS</span>
-              <span style={{ background: BRAND.gold, color: '#1A0A0C', padding: '3px 12px', borderRadius: 8, fontSize: 14, fontWeight: 900 }}>TẬP 03</span>
+              <span style={{ background: BRAND.wineBright, color: BRAND.ivory, padding: '3px 12px', borderRadius: 8, fontSize: 14, fontWeight: 900 }}>TẬP 03</span>
             </div>
 
             <div
@@ -392,7 +388,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
               }}
             >
               <span style={{ color: BRAND.oliveLight, fontStyle: 'italic' }}>CUỘC SỐNG TRƯỚC</span>
-              <span style={{ margin: '0 16px', color: BRAND.gold, fontSize: 44 }}>➔</span>
+              <span style={{ margin: '0 16px', color: BRAND.beige, fontSize: 44 }}>➔</span>
               <span>BUSINESS SAU</span>
             </div>
 
@@ -412,7 +408,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
         );
       })()}
 
-      {/* BEAT 7 (20.5s - 24.8s): Kiếm tiền từ chuyên môn bằng những cách nào? */}
+      {/* BEAT 7 (20.5s - 24.8s): CHUYÊN MÔN ➔ KIẾM TIỀN BẰNG CÁCH NÀO? */}
       {currentTime >= 20.5 && currentTime <= 24.8 && (() => {
         const spr = makeSpring(615);
         return (
@@ -431,7 +427,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
             <div
               style={{
                 fontFamily: FONT_HANDWRITING,
-                color: BRAND.gold,
+                color: BRAND.oliveLight,
                 fontSize: 42,
                 fontWeight: 700,
                 transform: 'rotate(-4deg)',
@@ -454,7 +450,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
             >
               Kiếm tiền từ chuyên môn của bạn
               <br />
-              <span style={{ color: BRAND.gold, fontStyle: 'italic', fontSize: 58 }}>
+              <span style={{ color: BRAND.wineBright, fontStyle: 'italic', fontSize: 58 }}>
                 bằng những cách nào?
               </span>
             </div>
@@ -462,9 +458,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
         );
       })()}
 
-      {/* BEAT 8, 9, 10 (25.8s - 32.7s):
-          DẠNG LIỆT KÊ (theo ảnh ref 3):
-          Header to ở trên + các text (handwritten font) ra dần ở trên đầu */}
+      {/* BEAT 8, 9, 10 (25.8s - 32.7s): 01 • TƯ VẤN 1:1 */}
       {currentTime >= 25.8 && currentTime <= 32.7 && (() => {
         const sprHeader = makeSpring(775);
         const sprItem1 = makeSpring(840);
@@ -483,7 +477,6 @@ export const LifeFirstBusinessMaster: React.FC = () => {
               alignItems: 'center',
             }}
           >
-            {/* Header */}
             <div
               style={{
                 transform: `scale(${sprHeader}) translateY(${waveFloat(0)}px)`,
@@ -491,14 +484,13 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 fontFamily: FONT_DISPLAY,
                 fontSize: 56,
                 fontWeight: 900,
-                color: BRAND.gold,
+                color: BRAND.ivory,
                 textShadow: '0 3px 20px rgba(0,0,0,0.98)',
               }}
             >
-              💡 01 • TƯ VẤN 1:1
+              <span style={{ color: BRAND.oliveLight }}>💡 01 •</span> TƯ VẤN 1:1
             </div>
 
-            {/* Handwritten list items popping up */}
             <div
               style={{
                 transform: `scale(${sprItem1}) translateY(${waveFloat(8)}px)`,
@@ -534,9 +526,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
         );
       })()}
 
-      {/* BEAT 11, 12, 13 (33.6s - 40.0s):
-          DẠNG LIỆT KÊ (theo ảnh ref 3):
-          02 • DỊCH VỤ ĐÓNG GÓI + list ra dần */}
+      {/* BEAT 11, 12, 13 (33.6s - 40.0s): 02 • DỊCH VỤ ĐÓNG GÓI */}
       {currentTime >= 33.6 && currentTime <= 40.0 && (() => {
         const sprHeader = makeSpring(1008);
         const sprStep1 = makeSpring(1065);
@@ -607,7 +597,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                     transform: `scale(${sprStep3}) rotate(-4deg)`,
                     opacity: sprStep3,
                     fontFamily: FONT_HANDWRITING,
-                    color: BRAND.gold,
+                    color: BRAND.wineBright,
                     fontSize: 46,
                     fontWeight: 700,
                     textShadow: '0 2px 16px rgba(0,0,0,0.95)',
@@ -621,8 +611,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
         );
       })()}
 
-      {/* BEAT 14, 15, 16 (40.2s - 48.0s):
-          03 • WORKSHOP NHỎ + list ra dần */}
+      {/* BEAT 14, 15, 16 (40.2s - 48.0s): 03 • WORKSHOP NHỎ */}
       {currentTime >= 40.2 && currentTime <= 48.0 && (() => {
         const sprHeader = makeSpring(1206);
         const sprItem1 = makeSpring(1280);
@@ -648,7 +637,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 fontFamily: FONT_DISPLAY,
                 fontSize: 56,
                 fontWeight: 900,
-                color: BRAND.gold,
+                color: BRAND.oliveLight,
                 textShadow: '0 3px 20px rgba(0,0,0,0.98)',
               }}
             >
@@ -676,7 +665,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                   transform: `scale(${sprItem2}) translateY(${waveFloat(12)}px)`,
                   opacity: sprItem2,
                   fontFamily: FONT_HANDWRITING,
-                  color: BRAND.gold,
+                  color: BRAND.wineBright,
                   fontSize: 44,
                   fontWeight: 700,
                   marginTop: 10,
@@ -690,8 +679,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
         );
       })()}
 
-      {/* BEAT 17, 18, 19 (48.9s - 61.1s):
-          04 • SẢN PHẨM SỐ + list ra dần */}
+      {/* BEAT 17, 18, 19 (48.9s - 61.1s): 04 • SẢN PHẨM SỐ */}
       {currentTime >= 48.9 && currentTime <= 61.1 && (() => {
         const sprHeader = makeSpring(1467);
         const sprPill = makeSpring(1540);
@@ -717,14 +705,13 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 fontFamily: FONT_DISPLAY,
                 fontSize: 56,
                 fontWeight: 900,
-                color: BRAND.gold,
+                color: BRAND.ivory,
                 textShadow: '0 3px 20px rgba(0,0,0,0.98)',
               }}
             >
-              ✨ 04 • SẢN PHẨM SỐ
+              <span style={{ color: BRAND.oliveLight }}>✨ 04 •</span> SẢN PHẨM SỐ
             </div>
 
-            {/* List items popping in */}
             <div
               style={{
                 transform: `scale(${sprPill})`,
@@ -756,7 +743,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                   opacity: sprPassive,
                   marginTop: 14,
                   fontFamily: FONT_HANDWRITING,
-                  color: BRAND.gold,
+                  color: BRAND.oliveLight,
                   fontSize: 46,
                   fontWeight: 700,
                   textShadow: '0 2px 16px rgba(0,0,0,0.95)',
@@ -788,7 +775,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
             <div
               style={{
                 fontFamily: FONT_HANDWRITING,
-                color: BRAND.gold,
+                color: BRAND.oliveLight,
                 fontSize: 42,
                 fontWeight: 700,
                 transform: 'rotate(-4deg)',
@@ -814,12 +801,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
         );
       })()}
 
-      {/* BEAT 21, 22, 23 (66.2s - 80.8s):
-          DẠNG LIỆT KÊ (theo ảnh ref 3 bên trái):
-          Các quotes xuất hiện so le ở khoảng trống trên đầu:
-          "remote work"
-              "freelance"
-          "công việc online part-time" */}
+      {/* BEAT 21, 22, 23 (66.2s - 80.8s): BƯỚC ĐỆM LINH HOẠT */}
       {currentTime >= 66.2 && currentTime <= 80.8 && (() => {
         const sprTitle = makeSpring(1986);
         const spr1 = makeSpring(2000);
@@ -845,7 +827,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 transform: `scale(${sprTitle})`,
                 opacity: sprTitle,
                 fontFamily: FONT_DISPLAY,
-                color: BRAND.gold,
+                color: BRAND.oliveLight,
                 fontSize: 52,
                 fontWeight: 900,
                 textShadow: '0 3px 18px rgba(0,0,0,0.95)',
@@ -854,7 +836,6 @@ export const LifeFirstBusinessMaster: React.FC = () => {
               🌿 BƯỚC ĐỆM LINH HOẠT
             </div>
 
-            {/* Staggered quotes floating like reference 3 */}
             <div style={{ marginTop: 12, width: '100%', maxWidth: 700 }}>
               <div
                 style={{
@@ -878,7 +859,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                     opacity: spr2,
                     textAlign: 'right',
                     fontFamily: FONT_HANDWRITING,
-                    color: BRAND.gold,
+                    color: BRAND.beige,
                     fontSize: 50,
                     fontWeight: 700,
                     marginTop: 4,
@@ -896,7 +877,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                     opacity: spr3,
                     textAlign: 'center',
                     fontFamily: FONT_HANDWRITING,
-                    color: BRAND.ivory,
+                    color: BRAND.oliveLight,
                     fontSize: 48,
                     fontWeight: 700,
                     marginTop: 4,
@@ -914,7 +895,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                   transform: `scale(${sprUnlock}) translateY(${waveFloat(10)}px)`,
                   opacity: sprUnlock,
                   fontFamily: FONT_HANDWRITING,
-                  color: BRAND.gold,
+                  color: BRAND.wineBright,
                   fontSize: 44,
                   fontWeight: 700,
                   marginTop: 12,
@@ -948,9 +929,9 @@ export const LifeFirstBusinessMaster: React.FC = () => {
             <div
               style={{
                 fontFamily: FONT_BODY,
-                color: BRAND.gold,
+                color: BRAND.oliveLight,
                 fontSize: 20,
-                fontWeight: 900,
+                fontWeight: 800,
                 letterSpacing: 3,
                 textTransform: 'uppercase',
                 textShadow: '0 2px 10px rgba(0,0,0,0.9)',
@@ -969,7 +950,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 textShadow: '0 3px 20px rgba(0,0,0,0.98)',
               }}
             >
-              Hãy bắt đầu từ việc <span style={{ color: BRAND.gold, textDecoration: 'underline' }}>NHỎ NHẤT</span>!
+              Hãy bắt đầu từ việc <span style={{ color: BRAND.wineBright, textDecoration: 'underline' }}>NHỎ NHẤT</span>!
             </div>
 
             <div
@@ -977,7 +958,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 transform: `rotate(-3deg) translateY(${waveFloat(10)}px)`,
                 opacity: sprHand,
                 fontFamily: FONT_HANDWRITING,
-                color: BRAND.oliveLight,
+                color: BRAND.beige,
                 fontSize: 44,
                 fontWeight: 700,
                 marginTop: 12,
@@ -990,11 +971,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
         );
       })()}
 
-      {/* BEAT 29, 30, 31 (96.0s - 104.3s):
-          2 TIÊU CHÍ TEST (theo dạng list ảnh 3):
-          📖 2 BÀI TEST THỰC TẾ
-          • Có ai thực sự trả tiền không?
-          • Có fit với cuộc sống của bạn không? */}
+      {/* BEAT 29, 30, 31 (96.0s - 104.3s): 2 TIÊU CHÍ TEST */}
       {currentTime >= 96.0 && currentTime <= 104.3 && (() => {
         const spr = makeSpring(2880);
         const spr1 = makeSpring(2950);
@@ -1018,7 +995,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
             <div
               style={{
                 fontFamily: FONT_DISPLAY,
-                color: BRAND.gold,
+                color: BRAND.oliveLight,
                 fontSize: 54,
                 fontWeight: 900,
                 textShadow: '0 3px 18px rgba(0,0,0,0.95)',
@@ -1048,7 +1025,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                     transform: `scale(${spr2}) translateY(${waveFloat(4)}px)`,
                     opacity: spr2,
                     fontFamily: FONT_HANDWRITING,
-                    color: BRAND.gold,
+                    color: BRAND.wineBright,
                     fontSize: 44,
                     fontWeight: 700,
                     textShadow: '0 2px 16px rgba(0,0,0,0.95)',
@@ -1092,7 +1069,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 lineHeight: 1.25,
               }}
             >
-              CUỘC SỐNG <span style={{ color: BRAND.gold }}>≠</span> XOAY QUANH CÔNG VIỆC
+              CUỘC SỐNG <span style={{ color: BRAND.wineBright }}>≠</span> XOAY QUANH CÔNG VIỆC
             </div>
 
             <div
@@ -1112,7 +1089,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
             >
               <span style={{ fontSize: 24 }}>👉</span>
               <span style={{ fontFamily: FONT_BODY, fontWeight: 900, fontSize: 23 }}>Follow để cùng đồng hành</span>
-              <span style={{ fontFamily: FONT_HANDWRITING, color: BRAND.gold, fontSize: 32 }}>✨</span>
+              <span style={{ fontFamily: FONT_HANDWRITING, color: BRAND.ivory, fontSize: 32 }}>✨</span>
             </div>
 
             <div
@@ -1149,7 +1126,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
       <Sequence from={2880} durationInFrames={30}><Audio src={staticFile('sfx/page-flip.wav')} volume={0.18} /></Sequence>
       <Sequence from={3153} durationInFrames={30}><Audio src={staticFile('sfx/sparkle-soft.wav')} volume={0.22} /></Sequence>
 
-      {/* ─── 4. SUBTITLES: Ở GIỮA TẦM CỔ ÁO / NGỰC (Y ~ 1180px), TO RÕ RÀNG (~3/4 CHIỀU NGANG), 3-4 CHỮ/CHUNK, KHÔNG TÔ MÀU THEO TỪ ─── */}
+      {/* ─── 4. SUBTITLES: TẦM CỔ ÁO / NGỰC (Y ~ 1160px), FONT BE VIETNAM PRO (BODY FONT TRONG BRAND GUIDE), WARM IVORY ─── */}
       {activeSub && (() => {
         return (
           <div
@@ -1168,14 +1145,14 @@ export const LifeFirstBusinessMaster: React.FC = () => {
             <div
               style={{
                 textAlign: 'center',
-                maxWidth: 820, // ~3/4 chiều ngang toàn khung hình 1080
-                fontFamily: FONT_DISPLAY,
-                fontSize: 58,
-                fontWeight: 800,
-                color: BRAND.ivory,
+                maxWidth: 820,
+                fontFamily: FONT_BODY, // Be Vietnam Pro per Brand Guide
+                fontSize: 54,
+                fontWeight: 700,
+                color: BRAND.ivory, // Warm Ivory per Brand Guide
                 lineHeight: 1.25,
                 textShadow: '0 3px 18px rgba(0,0,0,0.98), 0 6px 36px rgba(0,0,0,0.90)',
-                letterSpacing: 0.5,
+                letterSpacing: 0.2,
               }}
             >
               {activeSub.text}
