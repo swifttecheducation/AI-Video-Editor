@@ -11,6 +11,7 @@ import {
   interpolate,
 } from 'remotion';
 import { FONT_DISPLAY, FONT_BODY, FONT_HANDWRITING } from '../../fonts';
+import { CHICKEN_NOODLE_FONT_FACE } from '../../chickenNoodleFont';
 
 export const compositionConfig = {
   id: 'LifeFirstBusinessMaster',
@@ -394,7 +395,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
 
             <div
               style={{
-                fontFamily: FONT_HANDWRITING,
+                fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_HANDWRITING,
                 color: BRAND.beige,
                 fontSize: 40,
                 marginTop: 8,
@@ -426,7 +427,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
           >
             <div
               style={{
-                fontFamily: FONT_HANDWRITING,
+                fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_HANDWRITING,
                 color: BRAND.oliveLight,
                 fontSize: 42,
                 fontWeight: 700,
@@ -495,7 +496,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
               style={{
                 transform: `scale(${sprItem1}) translateY(${waveFloat(8)}px)`,
                 opacity: sprItem1,
-                fontFamily: FONT_HANDWRITING,
+                fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_HANDWRITING,
                 color: BRAND.ivory,
                 fontSize: 44,
                 fontWeight: 700,
@@ -511,7 +512,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 style={{
                   transform: `scale(${sprItem2}) translateY(${waveFloat(14)}px)`,
                   opacity: sprItem2,
-                  fontFamily: FONT_HANDWRITING,
+                  fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_HANDWRITING,
                   color: BRAND.oliveLight,
                   fontSize: 42,
                   fontWeight: 700,
@@ -565,7 +566,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 style={{
                   transform: `scale(${sprStep1})`,
                   opacity: sprStep1,
-                  fontFamily: FONT_HANDWRITING,
+                  fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_HANDWRITING,
                   color: BRAND.ivory,
                   fontSize: 42,
                   fontWeight: 700,
@@ -580,7 +581,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                   style={{
                     transform: `scale(${sprStep2})`,
                     opacity: sprStep2,
-                    fontFamily: FONT_HANDWRITING,
+                    fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_HANDWRITING,
                     color: BRAND.ivory,
                     fontSize: 42,
                     fontWeight: 700,
@@ -596,7 +597,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                   style={{
                     transform: `scale(${sprStep3}) rotate(-4deg)`,
                     opacity: sprStep3,
-                    fontFamily: FONT_HANDWRITING,
+                    fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_HANDWRITING,
                     color: BRAND.wineBright,
                     fontSize: 46,
                     fontWeight: 700,
@@ -648,7 +649,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
               style={{
                 transform: `scale(${sprItem1}) translateY(${waveFloat(6)}px)`,
                 opacity: sprItem1,
-                fontFamily: FONT_HANDWRITING,
+                fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_HANDWRITING,
                 color: BRAND.ivory,
                 fontSize: 44,
                 fontWeight: 700,
@@ -664,7 +665,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 style={{
                   transform: `scale(${sprItem2}) translateY(${waveFloat(12)}px)`,
                   opacity: sprItem2,
-                  fontFamily: FONT_HANDWRITING,
+                  fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_HANDWRITING,
                   color: BRAND.wineBright,
                   fontSize: 44,
                   fontWeight: 700,
@@ -723,15 +724,15 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 justifyContent: 'center',
               }}
             >
-              <span style={{ color: BRAND.ivory, fontFamily: FONT_HANDWRITING, fontSize: 38, fontWeight: 700, textShadow: '0 2px 12px rgba(0,0,0,0.95)' }}>
+              <span style={{ color: BRAND.ivory, fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_HANDWRITING, fontSize: 38, fontWeight: 700, textShadow: '0 2px 12px rgba(0,0,0,0.95)' }}>
                 "Template"
               </span>
               <span style={{ color: BRAND.oliveLight, fontSize: 28 }}>•</span>
-              <span style={{ color: BRAND.ivory, fontFamily: FONT_HANDWRITING, fontSize: 38, fontWeight: 700, textShadow: '0 2px 12px rgba(0,0,0,0.95)' }}>
+              <span style={{ color: BRAND.ivory, fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_HANDWRITING, fontSize: 38, fontWeight: 700, textShadow: '0 2px 12px rgba(0,0,0,0.95)' }}>
                 "Ebook"
               </span>
               <span style={{ color: BRAND.oliveLight, fontSize: 28 }}>•</span>
-              <span style={{ color: BRAND.ivory, fontFamily: FONT_HANDWRITING, fontSize: 38, fontWeight: 700, textShadow: '0 2px 12px rgba(0,0,0,0.95)' }}>
+              <span style={{ color: BRAND.ivory, fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_HANDWRITING, fontSize: 38, fontWeight: 700, textShadow: '0 2px 12px rgba(0,0,0,0.95)' }}>
                 "Bộ Hướng Dẫn"
               </span>
             </div>
@@ -742,7 +743,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                   transform: `scale(${sprPassive}) translateY(${waveFloat(8)}px)`,
                   opacity: sprPassive,
                   marginTop: 14,
-                  fontFamily: FONT_HANDWRITING,
+                  fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_HANDWRITING,
                   color: BRAND.oliveLight,
                   fontSize: 46,
                   fontWeight: 700,
@@ -774,7 +775,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
           >
             <div
               style={{
-                fontFamily: FONT_HANDWRITING,
+                fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_HANDWRITING,
                 color: BRAND.oliveLight,
                 fontSize: 42,
                 fontWeight: 700,
@@ -842,7 +843,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                   transform: `scale(${spr1}) translateY(${waveFloat(0)}px)`,
                   opacity: spr1,
                   textAlign: 'left',
-                  fontFamily: FONT_HANDWRITING,
+                  fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_HANDWRITING,
                   color: BRAND.ivory,
                   fontSize: 48,
                   fontWeight: 700,
@@ -858,7 +859,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                     transform: `scale(${spr2}) translateY(${waveFloat(8)}px)`,
                     opacity: spr2,
                     textAlign: 'right',
-                    fontFamily: FONT_HANDWRITING,
+                    fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_HANDWRITING,
                     color: BRAND.beige,
                     fontSize: 50,
                     fontWeight: 700,
@@ -876,7 +877,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                     transform: `scale(${spr3}) translateY(${waveFloat(14)}px)`,
                     opacity: spr3,
                     textAlign: 'center',
-                    fontFamily: FONT_HANDWRITING,
+                    fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_HANDWRITING,
                     color: BRAND.oliveLight,
                     fontSize: 48,
                     fontWeight: 700,
@@ -894,7 +895,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 style={{
                   transform: `scale(${sprUnlock}) translateY(${waveFloat(10)}px)`,
                   opacity: sprUnlock,
-                  fontFamily: FONT_HANDWRITING,
+                  fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_HANDWRITING,
                   color: BRAND.wineBright,
                   fontSize: 44,
                   fontWeight: 700,
@@ -957,7 +958,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
               style={{
                 transform: `rotate(-3deg) translateY(${waveFloat(10)}px)`,
                 opacity: sprHand,
-                fontFamily: FONT_HANDWRITING,
+                fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_HANDWRITING,
                 color: BRAND.beige,
                 fontSize: 44,
                 fontWeight: 700,
@@ -1009,7 +1010,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 style={{
                   transform: `scale(${spr1})`,
                   opacity: spr1,
-                  fontFamily: FONT_HANDWRITING,
+                  fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_HANDWRITING,
                   color: BRAND.ivory,
                   fontSize: 44,
                   fontWeight: 700,
@@ -1024,7 +1025,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                   style={{
                     transform: `scale(${spr2}) translateY(${waveFloat(4)}px)`,
                     opacity: spr2,
-                    fontFamily: FONT_HANDWRITING,
+                    fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_HANDWRITING,
                     color: BRAND.wineBright,
                     fontSize: 44,
                     fontWeight: 700,
@@ -1089,12 +1090,12 @@ export const LifeFirstBusinessMaster: React.FC = () => {
             >
               <span style={{ fontSize: 24 }}>👉</span>
               <span style={{ fontFamily: FONT_BODY, fontWeight: 900, fontSize: 23 }}>Follow để cùng đồng hành</span>
-              <span style={{ fontFamily: FONT_HANDWRITING, color: BRAND.ivory, fontSize: 32 }}>✨</span>
+              <span style={{ fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_HANDWRITING, color: BRAND.ivory, fontSize: 32 }}>✨</span>
             </div>
 
             <div
               style={{
-                fontFamily: FONT_HANDWRITING,
+                fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_HANDWRITING,
                 color: BRAND.beige,
                 fontSize: 40,
                 marginTop: 12,
@@ -1146,7 +1147,8 @@ export const LifeFirstBusinessMaster: React.FC = () => {
               style={{
                 textAlign: 'center',
                 maxWidth: 820,
-                fontFamily: FONT_BODY, // Be Vietnam Pro per Brand Guide
+                fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_BODY,
+                fontSize: 64,
                 fontSize: 54,
                 fontWeight: 700,
                 color: BRAND.ivory, // Warm Ivory per Brand Guide

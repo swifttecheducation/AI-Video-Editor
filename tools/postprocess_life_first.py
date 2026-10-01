@@ -37,6 +37,20 @@ subprocess.run(cmd_norm, check=True)
 shutil.copyfile(norm_tmp, FINAL_PROJECT_OUT)
 shutil.copyfile(norm_tmp, WEB_PREVIEW)
 
+desktop_path = Path("C:/Users/Admin/OneDrive/Desktop/LifeFirstBusiness_Final.mp4")
+downloads_path = Path("C:/Users/Admin/Downloads/LifeFirstBusiness_Final.mp4")
+try:
+    shutil.copyfile(norm_tmp, desktop_path)
+    print(f"- Desktop Copy: {desktop_path}")
+except Exception as e:
+    print(f"Warning Desktop copy: {e}")
+
+try:
+    shutil.copyfile(norm_tmp, downloads_path)
+    print(f"- Downloads Copy: {downloads_path}")
+except Exception as e:
+    print(f"Warning Downloads copy: {e}")
+
 # Get stats
 dur_cmd = ["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "default=noprint_wrappers=1:nokey=1", str(FINAL_PROJECT_OUT)]
 dur = float(subprocess.run(dur_cmd, capture_output=True, text=True).stdout.strip())
