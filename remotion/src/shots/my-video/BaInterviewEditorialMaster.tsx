@@ -21,30 +21,57 @@ export const compositionConfig = {
   height: 1920,
 };
 
-// Precise Vietnamese Subtitles mapped 100% to her actual spoken words
+// 100% Exact word-for-word transcript matching the speaker's actual voice
 const SUBTITLES = [
-  { s: 0.16, e: 4.3, text: 'Tuần trước mình lại phải từ chối một bạn đã đăng ký chương trình Interview Master.' },
-  { s: 4.3, e: 9.2, text: 'Không phải vì bạn ấy không cố gắng, ngược lại bạn ấy học rất nhiều:' },
-  { s: 9.3, e: 15.6, text: 'biết dùng Jira, viết User Story, vẽ Flowchart, viết document theo template rất đầy đủ.' },
-  { s: 15.6, e: 20.0, text: 'Nhưng khi mình phỏng vấn chuyên sâu hơn, mình hỏi bạn ấy:' },
-  { s: 20.0, e: 23.5, text: '"Tại sao trong trường hợp này em lại chọn hỏi câu hỏi đó?" thì bạn lúng túng.' },
-  { s: 24.0, e: 28.5, text: 'Và lúc đó mình nhận ra rất nhiều bạn đang học BA theo cách:' },
-  { s: 28.5, e: 32.5, text: 'biến mình thành THỢ DÙNG CÔNG CỤ, chứ không phải LÀM PHÂN TÍCH.' },
-  { s: 32.9, e: 38.0, text: 'Nhiều người nghĩ vẽ flow chart đẹp, viết user story theo template,' },
-  { s: 38.0, e: 43.0, text: 'dùng Jira, Figma thật thành thạo thì có thể trở thành BA.' },
-  { s: 43.2, e: 50.7, text: 'Nhưng đó chỉ là công cụ. Cầm mic lên không có nghĩa bạn sẽ trở thành ca sĩ!' },
-  { s: 51.2, e: 56.7, text: 'Một người thợ thì chỉ ghi lại chính xác những gì khách hàng yêu cầu.' },
-  { s: 56.8, e: 64.0, text: 'Còn BA thực sự luôn tự hỏi: Tại sao cần tính năng này? Root cause là gì?' },
-  { s: 64.3, e: 68.6, text: 'Và nếu thay đổi thế này thì hệ thống sẽ bị ảnh hưởng những gì?' },
-  { s: 69.0, e: 77.5, text: 'Các bạn hay hỏi học BA bắt đầu từ đâu, lộ trình thế nào...' },
-  { s: 78.0, e: 87.0, text: 'Nhưng các bạn đang học ngọn mà bỏ quên gốc: Tư duy giải quyết vấn đề.' },
-  { s: 87.5, e: 96.0, text: 'Công cụ có thể học trong 1-2 tuần, nhưng tư duy phân tích cần rèn luyện thực chiến.' },
-  { s: 96.5, e: 106.0, text: 'Đó là lý do các buổi Mock Interview của mình luôn xoáy sâu vào logic đằng sau.' },
-  { s: 106.5, e: 116.0, text: 'Để bạn hiểu vì sao chọn giải pháp đó, đối mặt với stakeholder ra sao.' },
-  { s: 116.5, e: 126.0, text: 'Khi bạn nắm vững bản chất, bất kỳ dự án hay công cụ mới nào bạn cũng tự tin xử lý.' },
-  { s: 126.5, e: 135.0, text: 'Đừng để 1 năm học của mình chỉ dừng lại ở danh xưng "thợ dùng tool".' },
-  { s: 135.5, e: 147.0, text: 'Hãy nâng tầm bản thân thành một Business Analyst thực thụ có tư duy sắc bén.' },
-  { s: 147.8, e: 157.2, text: 'Comment IM để nhận lịch Mock Interview 1-1 và lộ trình thực chiến!' },
+  // Segment 1 (0.16s - 4.30s)
+  { s: 0.16, e: 4.30, text: 'Tuần trước mình lại phải từ chối một bạn đã đăng ký chương trình Interview Master của bên mình.' },
+  // Segment 2 (4.30s - 15.60s)
+  { s: 4.30, e: 9.50, text: 'Không phải vì bạn ấy không cố gắng, ngược lại là bạn ấy học rất là nhiều,' },
+  { s: 9.50, e: 15.60, text: 'bạn ấy biết dùng Jira này, biết viết User Story, biết vẽ Flow Chart, rồi cũng có thể viết document theo template tương đối đầy đủ.' },
+  // Segment 3 (15.60s - 23.54s)
+  { s: 15.60, e: 19.80, text: 'Đó, nhưng mà trong cái lúc mà mình interview bạn ấy chuyên sâu hơn' },
+  { s: 19.80, e: 23.54, text: 'thì mình hỏi: "Tại sao trong trường hợp này em lại chọn hỏi câu hỏi đó?" thì bạn bắt đầu lúng túng.' },
+  // Segment 4 (24.06s - 32.48s)
+  { s: 24.06, e: 28.50, text: 'Và lúc đó là lúc mà mình nhận ra rằng rất nhiều bạn đang học BA theo cái cách:' },
+  { s: 28.50, e: 32.48, text: 'biến mình thành một người THỢ DÙNG CÔNG CỤ, chứ không phải là một người thực sự đang LÀM PHÂN TÍCH.' },
+  // Segment 5 (32.92s - 42.92s)
+  { s: 32.92, e: 38.00, text: 'Nhiều người cứ nghĩ là có thể vẽ flowchart đẹp này, rồi viết user story theo template này,' },
+  { s: 38.00, e: 42.92, text: 'dùng Jira, Figma hay là một số các cái tool thật là thành thạo thì bạn có thể trở thành BA.' },
+  // Segment 6 (43.26s - 50.74s)
+  { s: 43.26, e: 47.00, text: 'Nhưng mà tất cả đó thì nó chỉ là công cụ thôi.' },
+  { s: 47.00, e: 50.74, text: 'Nó giống như việc các bạn biết hát, các bạn cầm mic lên không có nghĩa các bạn sẽ trở thành ca sĩ, đúng không?' },
+  // Segment 7 (51.26s - 56.68s)
+  { s: 51.26, e: 56.68, text: 'Một người thợ ấy thì khi mà làm BA, người ta sẽ ghi lại chính xác những cái gì mà khách hàng yêu cầu này.' },
+  // Segment 8 (56.84s - 64.06s)
+  { s: 56.84, e: 60.80, text: 'Còn một BA thật sự thì sẽ luôn tự hỏi: Tại sao họ lại cần tính năng này?' },
+  { s: 60.80, e: 64.06, text: 'Root cause thật sự là gì? Có cách nào giải quyết cái vấn đề này tốt hơn không?' },
+  // Segment 9 (64.34s - 68.56s)
+  { s: 64.34, e: 68.56, text: 'Và nếu như mà thay đổi như thế này thì hiện tại cái hệ thống nó sẽ bị ảnh hưởng những cái gì?' },
+  // Segment 10 (68.94s - 74.24s)
+  { s: 68.94, e: 74.24, text: 'Bản chất của BA ấy, nó chưa bao giờ là cái nghề mà viết document, viết tài liệu hay là vẽ sơ đồ.' },
+  // Segment 11 (74.70s - 78.26s)
+  { s: 74.70, e: 78.26, text: 'BA là một cái nghề giải quyết cái bài toán kinh doanh bằng công nghệ.' },
+  // Segment 12 (78.80s - 86.54s)
+  { s: 78.80, e: 86.54, text: 'Có một xu hướng tất yếu mà mình đã quan sát được từ thời điểm trước, và trong thời đại AI thì càng thúc đẩy xu hướng đó hơn.' },
+  // Segment 13 (86.54s - 92.23s)
+  { s: 86.54, e: 92.23, text: 'Đó là công cụ sẽ càng ngày càng dễ sử dụng hơn, hay việc học tool á, nó có thể chỉ mất vài tuần đến một tháng thôi.' },
+  // Segment 14 (92.23s - 96.91s)
+  { s: 92.23, e: 96.91, text: 'Nhưng mà cái tư duy phân tích mới là cái thứ cần rất nhiều thời gian để mà có thể mài giũa.' },
+  // Segment 15 (97.44s - 102.67s)
+  { s: 97.44, e: 102.67, text: 'Và đó cũng là cái lý do mà mình thường nhận rất là ít mỗi năm cho cái chương trình Interview Master.' },
+  // Segment 16 (103.02s - 114.16s)
+  { s: 103.02, e: 108.50, text: 'Vì thực tế là rất nhiều bạn tự học BA hoặc các bạn có thể học ở những bên khác,' },
+  { s: 108.50, e: 114.16, text: 'nhưng không có người định hướng rõ ràng hoặc giải thích nguyên lý phía sau mỗi quyết định, nên khả năng phân tích bị yếu.' },
+  // Segment 17 (114.57s - 133.79s)
+  { s: 114.57, e: 120.50, text: 'Trong khi đó Interview Master là chương trình duy nhất của chúng mình không dạy lại từ đầu hay truyền đạt kiến thức nền tảng,' },
+  { s: 120.50, e: 126.92, text: 'mà sẽ chỉ tập trung vào hỗ trợ ứng tuyển này, mock interview này, rồi cả tối ưu những cái chiến lược tìm việc nữa.' },
+  { s: 127.15, e: 133.79, text: 'Nên tụi mình buộc phải yêu cầu đầu vào cao để đảm bảo là các bạn đã có cái nền tảng tư duy BA trước khi tham gia.' },
+  // Segment 18 (134.33s - 147.63s)
+  { s: 134.33, e: 141.00, text: 'Nếu bạn đã và đang tự học BA hoặc đã học qua một vài khóa BA, nhưng vẫn chưa tìm được một công việc ưng ý nào, thường xuyên bị từ chối,' },
+  { s: 141.00, e: 147.63, text: 'thì có thể vấn đề không nằm ở việc bạn chưa đủ cố gắng, mà nằm ở việc là bạn đang học sai trọng tâm rồi.' },
+  // Segment 19 (148.19s - 157.61s)
+  { s: 148.19, e: 152.80, text: 'Vậy thì hãy comment email để chúng mình hẹn một lịch mock interview,' },
+  { s: 152.80, e: 157.61, text: 'cũng như là để đánh giá chi tiết và đưa ra những định hướng, một lộ trình thực chiến phù hợp hơn dành cho bạn nha!' },
 ];
 
 export const BaInterviewEditorialMaster: React.FC = () => {
@@ -55,36 +82,28 @@ export const BaInterviewEditorialMaster: React.FC = () => {
   // Active Subtitle
   const activeSub = SUBTITLES.find((s) => currentTime >= s.s && currentTime <= s.e);
 
-  // 1. Dynamic Handheld Drift & Subtle Natural Camera Movement
-  const driftX = Math.sin(frame / 35) * 4;
-  const driftY = Math.cos(frame / 45) * 3;
-  const driftRotate = Math.sin(frame / 50) * 0.25;
+  // 1. Natural Handheld Camera Drift
+  const driftX = Math.sin(frame / 35) * 3;
+  const driftY = Math.cos(frame / 45) * 2;
+  const driftRotate = Math.sin(frame / 55) * 0.2;
 
-  // 2. Virtual Multi-Cam Dynamic Punch-in (1.0x wide vs 1.08x - 1.14x punch)
+  // 2. Editorial Multi-Cam Punch-Ins (Dynamic focus at key moments)
   let baseZoom = 1.0;
-  if (currentTime >= 18.5 && currentTime < 23.5) {
-    baseZoom = 1.14; // Dramatic question punch
-  } else if (currentTime >= 26.5 && currentTime < 28.5) {
-    baseZoom = 1.08;
-  } else if (currentTime >= 51.2 && currentTime < 56.7) {
-    baseZoom = 1.08;
-  } else if (currentTime >= 64.3 && currentTime < 68.6) {
-    baseZoom = 1.09;
-  } else if (currentTime >= 78.0 && currentTime < 87.0) {
-    baseZoom = 1.07;
-  } else if (currentTime >= 135.5 && currentTime < 147.0) {
-    baseZoom = 1.08;
-  } else if (currentTime >= 147.8 && currentTime < 157.2) {
-    baseZoom = 1.12; // CTA punch
+  if (currentTime >= 19.8 && currentTime < 23.54) {
+    baseZoom = 1.12; // Spotlight question punch
+  } else if (currentTime >= 28.5 && currentTime < 32.48) {
+    baseZoom = 1.07; // Core insight
+  } else if (currentTime >= 56.8 && currentTime < 64.06) {
+    baseZoom = 1.09; // BA really asks Why?
+  } else if (currentTime >= 74.7 && currentTime < 78.26) {
+    baseZoom = 1.08; // Core definition
+  } else if (currentTime >= 141.0 && currentTime < 147.63) {
+    baseZoom = 1.08; // Empathy beat
+  } else if (currentTime >= 148.19) {
+    baseZoom = 1.11; // Direct CTA punch
   }
 
-  // 3. Screen Shake Impact on heavy bass hits
-  let shakeOffset = 0;
-  if ((frame >= 35 && frame <= 42) || (frame >= 600 && frame <= 606) || (frame >= 855 && frame <= 862)) {
-    shakeOffset = (frame % 2 === 0 ? 1 : -1) * 4;
-  }
-
-  const makeSpring = (startFrame: number, damping = 14, stiffness = 130) => {
+  const makeSpring = (startFrame: number, damping = 16, stiffness = 140) => {
     return spring({
       frame: Math.max(0, frame - startFrame),
       fps,
@@ -92,37 +111,39 @@ export const BaInterviewEditorialMaster: React.FC = () => {
     });
   };
 
-  // 4. Five Distinct Semantic B-Roll Segments Mapped to Her Speech
-  const broll1Active = currentTime >= 0.8 && currentTime <= 3.8;   // Rejection CV
-  const broll2Active = currentTime >= 10.0 && currentTime <= 14.5; // Jira & Flowcharts
-  const broll3Active = currentTime >= 28.5 && currentTime <= 32.5; // Robot Factory
-  const broll4Active = currentTime >= 44.0 && currentTime <= 49.5; // Singer with Mic
-  const broll5Active = currentTime >= 58.0 && currentTime <= 63.5; // Strategic Chess & Logic Tree
+  // Visual segment triggers
+  const showReviewModal = currentTime >= 0.8 && currentTime <= 3.9;
+  const showJiraBpmBoard = currentTime >= 9.8 && currentTime <= 15.2;
+  const showQuestionCard = currentTime >= 19.8 && currentTime <= 23.5;
+  const showThoVsBaCard = currentTime >= 28.2 && currentTime <= 32.5;
+  const showToolsChecklist = currentTime >= 34.0 && currentTime <= 41.5;
+  const showMicAnalogy = currentTime >= 44.0 && currentTime <= 50.2;
+  const showRootCauseCard = currentTime >= 57.0 && currentTime <= 63.8;
+  const showImpactAnalysis = currentTime >= 64.5 && currentTime <= 68.5;
+  const showDefinitionCard = currentTime >= 74.5 && currentTime <= 78.2;
+  const showAiEraCard = currentTime >= 84.0 && currentTime <= 94.0;
+  const showMissingLinkCard = currentTime >= 105.0 && currentTime <= 113.5;
+  const showInterviewMasterPillars = currentTime >= 115.5 && currentTime <= 126.5;
+  const showWrongFocusCard = currentTime >= 139.5 && currentTime <= 147.0;
+  const showCtaCard = currentTime >= 148.2 && currentTime <= 157.2;
 
-  const isAnyBroll = broll1Active || broll2Active || broll3Active || broll4Active || broll5Active;
-
-  // Flash transition detector (first 4 frames of every B-Roll entry and exit)
-  const isFlash =
-    (frame >= 24 && frame <= 28) ||
-    (frame >= 111 && frame <= 115) ||
-    (frame >= 300 && frame <= 304) ||
-    (frame >= 432 && frame <= 436) ||
-    (frame >= 855 && frame <= 859) ||
-    (frame >= 972 && frame <= 976) ||
-    (frame >= 1320 && frame <= 1324) ||
-    (frame >= 1482 && frame <= 1486) ||
-    (frame >= 1740 && frame <= 1744) ||
-    (frame >= 1902 && frame <= 1906);
+  // Flash transition detector for major cutaway moments (very subtle, 3 frames)
+  const isCutawayEntry =
+    (frame >= 24 && frame <= 27) ||
+    (frame >= 294 && frame <= 297) ||
+    (frame >= 450 && frame <= 453) ||
+    (frame >= 1320 && frame <= 1323) ||
+    (frame >= 1500 && frame <= 1503);
 
   return (
     <AbsoluteFill style={{ backgroundColor: '#090D16', overflow: 'hidden', fontFamily: FONT_BODY }}>
-      {/* ─── 1. MASTER VIDEO FOOTAGE WITH DYNAMIC CAMERA & WARM FILM TONE ─── */}
+      {/* ─── 1. MASTER VIDEO FOOTAGE WITH CINEMATIC COLOR GRADE ─── */}
       <AbsoluteFill style={{ overflow: 'hidden' }}>
         <div
           style={{
             width: '100%',
             height: '100%',
-            transform: `translate(${driftX + shakeOffset}px, ${driftY}px) scale(${baseZoom}) rotate(${driftRotate}deg)`,
+            transform: `translate(${driftX}px, ${driftY}px) scale(${baseZoom}) rotate(${driftRotate}deg)`,
             transformOrigin: 'center 38%',
           }}
         >
@@ -132,409 +153,714 @@ export const BaInterviewEditorialMaster: React.FC = () => {
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />
 
-          {/* Golden Warm Film Tone & Contrast Boost */}
+          {/* Clean Editorial Ambient Film Vignette */}
           <AbsoluteFill
             style={{
               background:
-                'radial-gradient(ellipse at 50% 36%, rgba(255, 200, 140, 0.05) 0%, rgba(20, 10, 5, 0.15) 80%, rgba(5, 3, 2, 0.45) 100%)',
+                'radial-gradient(ellipse at 50% 36%, rgba(255, 235, 200, 0.04) 0%, rgba(10, 15, 25, 0.25) 80%, rgba(4, 7, 14, 0.6) 100%)',
               pointerEvents: 'none',
             }}
           />
         </div>
       </AbsoluteFill>
 
-      {/* ─── 2. SEMANTIC B-ROLL CUTAWAYS (100% MATCHED TO WORDS) ─── */}
+      {/* ─── 2. AUTHENTIC DOCUMENTARY EDITORIAL OVERLAYS & CUTAWAYS ─── */}
 
-      {/* B-ROLL 1: CV REJECTION STAMP (0.8s - 3.8s) */}
-      {broll1Active && (() => {
-        const p = (currentTime - 0.8) / 3.0;
-        const bZoom = interpolate(p, [0, 1], [1.02, 1.12]);
-        const stampSpr = makeSpring(34, 12, 160);
-        return (
-          <AbsoluteFill style={{ zIndex: 35 }}>
-            <div style={{ width: '100%', height: '100%', transform: `scale(${bZoom})`, overflow: 'hidden' }}>
-              <Img
-                src={staticFile('library/broll/broll_rejected_cv.jpg')}
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-            </div>
-            {/* Rubber Stamp Slam Graphic */}
-            <div
-              style={{
-                position: 'absolute',
-                top: 220,
-                left: 0,
-                right: 0,
-                display: 'flex',
-                justifyContent: 'center',
-                transform: `scale(${interpolate(stampSpr, [0, 1], [2.2, 1.0])}) rotate(-6deg)`,
-                opacity: stampSpr,
-              }}
-            >
-              <div
-                style={{
-                  border: '6px solid #EF4444',
-                  borderRadius: 16,
-                  padding: '14px 38px',
-                  background: 'rgba(239, 68, 68, 0.22)',
-                  boxShadow: '0 0 40px rgba(239, 68, 68, 0.7)',
-                }}
-              >
-                <span style={{ fontSize: 38, fontWeight: 900, color: '#EF4444', letterSpacing: 4, fontFamily: FONT_DISPLAY }}>
-                  HỒ SƠ BỊ TỪ CHỐI ✕
-                </span>
-              </div>
-            </div>
-          </AbsoluteFill>
-        );
-      })()}
-
-      {/* B-ROLL 2: JIRA BOARD & FLOWCHART WORKSPACE (10.0s - 14.5s) */}
-      {broll2Active && (() => {
-        const p = (currentTime - 10.0) / 4.5;
-        const bZoom = interpolate(p, [0, 1], [1.0, 1.08]);
-        const panX = interpolate(p, [0, 1], [0, -15]);
-        const card1Spr = makeSpring(310);
-        const card2Spr = makeSpring(335);
-        return (
-          <AbsoluteFill style={{ zIndex: 35 }}>
-            <div
-              style={{
-                width: '100%',
-                height: '100%',
-                transform: `scale(${bZoom}) translate(${panX}px, 0px)`,
-                overflow: 'hidden',
-              }}
-            >
-              <Img
-                src={staticFile('library/broll/broll_jira_flowchart.jpg')}
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-            </div>
-            {/* Interactive Animated UI Chips */}
-            <div style={{ position: 'absolute', top: 180, left: 60, display: 'flex', flexDirection: 'column', gap: 14 }}>
-              <div
-                style={{
-                  transform: `translateX(${(1 - card1Spr) * -80}px)`,
-                  opacity: card1Spr,
-                  background: 'rgba(15, 23, 42, 0.94)',
-                  border: '1.5px solid #38BDF8',
-                  padding: '12px 24px',
-                  borderRadius: 24,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 10,
-                  boxShadow: '0 10px 30px rgba(0,0,0,0.6)',
-                }}
-              >
-                <span style={{ width: 12, height: 12, borderRadius: '50%', background: '#38BDF8', boxShadow: '0 0 8px #38BDF8' }} />
-                <span style={{ color: '#F1F5F9', fontWeight: 800, fontSize: 20 }}>JIRA: [PROJ-104] USER STORY SPEC</span>
-              </div>
-              <div
-                style={{
-                  transform: `translateX(${(1 - card2Spr) * -80}px)`,
-                  opacity: card2Spr,
-                  background: 'rgba(15, 23, 42, 0.94)',
-                  border: '1.5px solid #10B981',
-                  padding: '12px 24px',
-                  borderRadius: 24,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 10,
-                  boxShadow: '0 10px 30px rgba(0,0,0,0.6)',
-                }}
-              >
-                <span style={{ width: 12, height: 12, borderRadius: '50%', background: '#10B981', boxShadow: '0 0 8px #10B981' }} />
-                <span style={{ color: '#F1F5F9', fontWeight: 800, fontSize: 20 }}>FIGMA: BPMN FLOWCHART DIAGRAM</span>
-              </div>
-            </div>
-          </AbsoluteFill>
-        );
-      })()}
-
-      {/* B-ROLL 3: ROBOT ASSEMBLY LINE (28.5s - 32.5s) */}
-      {broll3Active && (() => {
-        const p = (currentTime - 28.5) / 4.0;
-        const bZoom = interpolate(p, [0, 1], [1.0, 1.10]);
-        const robotSpr = makeSpring(860);
-        return (
-          <AbsoluteFill style={{ zIndex: 35 }}>
-            <div style={{ width: '100%', height: '100%', transform: `scale(${bZoom})`, overflow: 'hidden' }}>
-              <Img
-                src={staticFile('library/broll/broll_robot_factory.jpg')}
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-            </div>
-            {/* Warning Robotic Tag */}
-            <div
-              style={{
-                position: 'absolute',
-                top: 200,
-                left: 50,
-                right: 50,
-                display: 'flex',
-                justifyContent: 'center',
-                transform: `scale(${interpolate(robotSpr, [0, 1], [0.88, 1.0])})`,
-                opacity: robotSpr,
-              }}
-            >
-              <div
-                style={{
-                  background: 'rgba(15, 23, 42, 0.95)',
-                  border: '2px solid #F43F5E',
-                  borderRadius: 24,
-                  padding: '20px 36px',
-                  textAlign: 'center',
-                  boxShadow: '0 0 40px rgba(244, 63, 94, 0.5)',
-                }}
-              >
-                <div style={{ color: '#F43F5E', fontWeight: 800, fontSize: 18, letterSpacing: 2 }}>CẠM BẪY HỌC NGHỀ</div>
-                <div style={{ color: '#FFFFFF', fontWeight: 900, fontSize: 36, marginTop: 4 }}>"THỢ DÙNG TOOL" ⚙️</div>
-                <div style={{ color: '#94A3B8', fontSize: 18, marginTop: 4 }}>Chỉ bấm nút cơ học - Thiếu tư duy nghiệp vụ</div>
-              </div>
-            </div>
-          </AbsoluteFill>
-        );
-      })()}
-
-      {/* B-ROLL 4: SINGER WITH STAGE MIC (44.0s - 49.5s) */}
-      {broll4Active && (() => {
-        const p = (currentTime - 44.0) / 5.5;
-        const bZoom = interpolate(p, [0, 1], [1.0, 1.09]);
-        const micSpr = makeSpring(1325);
-        return (
-          <AbsoluteFill style={{ zIndex: 35 }}>
-            <div style={{ width: '100%', height: '100%', transform: `scale(${bZoom})`, overflow: 'hidden' }}>
-              <Img
-                src={staticFile('library/broll/broll_singer_mic.jpg')}
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-            </div>
-            {/* Golden Quote Pill */}
-            <div
-              style={{
-                position: 'absolute',
-                bottom: 240,
-                left: 50,
-                right: 50,
-                display: 'flex',
-                justifyContent: 'center',
-                transform: `translateY(${(1 - micSpr) * 40}px)`,
-                opacity: micSpr,
-              }}
-            >
-              <div
-                style={{
-                  background: 'rgba(15, 23, 42, 0.92)',
-                  border: '2px solid #FACC15',
-                  borderRadius: 24,
-                  padding: '24px 38px',
-                  textAlign: 'center',
-                  boxShadow: '0 0 50px rgba(250, 204, 21, 0.4), 0 20px 60px rgba(0,0,0,0.8)',
-                }}
-              >
-                <div style={{ color: '#FACC15', fontWeight: 800, fontSize: 20, letterSpacing: 2 }}>ẨN DỤ SẮC BÉN 🎙️</div>
-                <div style={{ color: '#FFFFFF', fontWeight: 900, fontSize: 32, marginTop: 6, fontStyle: 'italic' }}>
-                  "Cầm mic lên không có nghĩa bạn sẽ trở thành ca sĩ!"
-                </div>
-              </div>
-            </div>
-          </AbsoluteFill>
-        );
-      })()}
-
-      {/* B-ROLL 5: STRATEGIC CHESS & ROOT CAUSE LOGIC (58.0s - 63.5s) */}
-      {broll5Active && (() => {
-        const p = (currentTime - 58.0) / 5.5;
-        const bZoom = interpolate(p, [0, 1], [1.02, 1.09]);
-        const chessSpr = makeSpring(1745);
-        return (
-          <AbsoluteFill style={{ zIndex: 35 }}>
-            <div style={{ width: '100%', height: '100%', transform: `scale(${bZoom})`, overflow: 'hidden' }}>
-              <Img
-                src={staticFile('library/broll/broll_strategic_chess.jpg')}
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-            </div>
-            {/* Analytical Root Cause Card */}
-            <div
-              style={{
-                position: 'absolute',
-                top: 200,
-                left: 50,
-                right: 50,
-                display: 'flex',
-                justifyContent: 'center',
-                transform: `scale(${interpolate(chessSpr, [0, 1], [0.88, 1.0])})`,
-                opacity: chessSpr,
-              }}
-            >
-              <div
-                style={{
-                  background: 'rgba(15, 23, 42, 0.94)',
-                  border: '2px solid #38BDF8',
-                  borderRadius: 24,
-                  padding: '24px 40px',
-                  textAlign: 'center',
-                  boxShadow: '0 0 50px rgba(56, 189, 248, 0.4)',
-                }}
-              >
-                <div style={{ color: '#38BDF8', fontWeight: 800, fontSize: 18, letterSpacing: 2 }}>TƯ DUY PHÂN TÍCH GỐC RỄ 💡</div>
-                <div style={{ color: '#FFFFFF', fontWeight: 900, fontSize: 36, marginTop: 4 }}>ROOT CAUSE LÀ GÌ?</div>
-                <div style={{ color: '#94A3B8', fontSize: 19, marginTop: 4 }}>Hiểu sâu bản chất hệ thống thay vì vẽ vỏ bọc</div>
-              </div>
-            </div>
-          </AbsoluteFill>
-        );
-      })()}
-
-      {/* ─── 3. WHITE FLASH & CINEMATIC TRANSITION ─── */}
-      {isFlash && (
-        <AbsoluteFill
-          style={{
-            backgroundColor: 'rgba(255, 255, 255, 0.35)',
-            zIndex: 48,
-            pointerEvents: 'none',
-          }}
-        />
-      )}
-
-      {/* ─── 4. MULTI-LAYER AUDIO PIPELINE (SFX + Ambient BGM) ─── */}
-      <Audio src={staticFile('library/music/clips/lofi-warm.mp3')} volume={0.05} loop />
-
-      {/* Synchronized Foley SFX Library (Clean 48kHz WAV) */}
-      <Sequence from={24} durationInFrames={30}><Audio src={staticFile('sfx/whoosh-soft.wav')} volume={0.35} /></Sequence>
-      <Sequence from={36} durationInFrames={30}><Audio src={staticFile('sfx/stamp-hit.wav')} volume={0.6} /></Sequence>
-      <Sequence from={114} durationInFrames={30}><Audio src={staticFile('sfx/whoosh-reverse.wav')} volume={0.35} /></Sequence>
-      <Sequence from={300} durationInFrames={30}><Audio src={staticFile('sfx/whoosh-soft.wav')} volume={0.35} /></Sequence>
-      <Sequence from={315} durationInFrames={60}><Audio src={staticFile('sfx/keys-typing-soft.wav')} volume={0.4} /></Sequence>
-      <Sequence from={435} durationInFrames={30}><Audio src={staticFile('sfx/whoosh-reverse.wav')} volume={0.35} /></Sequence>
-      <Sequence from={600} durationInFrames={30}><Audio src={staticFile('sfx/bass_thud.wav')} volume={0.5} /></Sequence>
-      <Sequence from={855} durationInFrames={30}><Audio src={staticFile('sfx/glitch-zap.wav')} volume={0.4} /></Sequence>
-      <Sequence from={975} durationInFrames={30}><Audio src={staticFile('sfx/whoosh-reverse.wav')} volume={0.35} /></Sequence>
-      <Sequence from={1320} durationInFrames={45}><Audio src={staticFile('sfx/chime-magic.wav')} volume={0.45} /></Sequence>
-      <Sequence from={1485} durationInFrames={30}><Audio src={staticFile('sfx/whoosh-reverse.wav')} volume={0.35} /></Sequence>
-      <Sequence from={1740} durationInFrames={30}><Audio src={staticFile('sfx/chess-piece-thock.wav')} volume={0.5} /></Sequence>
-      <Sequence from={1905} durationInFrames={30}><Audio src={staticFile('sfx/whoosh-reverse.wav')} volume={0.35} /></Sequence>
-      <Sequence from={4434} durationInFrames={30}><Audio src={staticFile('sfx/pop.wav')} volume={0.5} /></Sequence>
-
-      {/* ─── 5. DYNAMIC GRAPHIC OVERLAYS ON A-ROLL FOOTAGE ─── */}
-
-      {/* BEAT 2: CHECKLIST CARD (4.5s - 9.0s) */}
-      {currentTime >= 4.5 && currentTime <= 9.0 && (() => {
-        const spr = makeSpring(135);
+      {/* BEAT 1: CANDIDATE APPLICATION REVIEW (0.8s - 3.9s) */}
+      {showReviewModal && (() => {
+        const spr = makeSpring(24);
+        const stampSpr = makeSpring(45);
         return (
           <div
             style={{
               position: 'absolute',
-              top: 150,
-              left: 50,
-              right: 50,
-              transform: `translateY(${(1 - spr) * -30}px)`,
+              top: 140,
+              left: 45,
+              right: 45,
+              transform: `translateY(${(1 - spr) * -30}px) scale(${interpolate(spr, [0, 1], [0.92, 1.0])})`,
               opacity: spr,
-              zIndex: 30,
-            }}
-          >
-            <div
-              style={{
-                background: 'rgba(15, 23, 42, 0.94)',
-                borderRadius: 24,
-                padding: '24px 36px',
-                border: '1.5px solid rgba(56, 189, 248, 0.3)',
-                boxShadow: '0 20px 60px rgba(0, 0, 0, 0.7)',
-              }}
-            >
-              <div style={{ fontSize: 18, fontWeight: 800, color: '#38BDF8', letterSpacing: 1.5, textTransform: 'uppercase' }}>
-                HỌC RẤT NHIỀU CÔNG CỤ:
-              </div>
-              <div style={{ marginTop: 12, display: 'flex', flexDirection: 'column', gap: 10 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 24, fontWeight: 700, color: '#FFFFFF' }}>
-                  <span style={{ color: '#10B981' }}>✓</span> Viết User Story & Vẽ Flowchart thành thạo
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 24, fontWeight: 700, color: '#94A3B8' }}>
-                  <span style={{ color: '#10B981' }}>✓</span> Biết dùng Jira, Confluence mượt mà
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 24, fontWeight: 700, color: '#94A3B8' }}>
-                  <span style={{ color: '#10B981' }}>✓</span> Soạn tài liệu Document theo template chuẩn
-                </div>
-              </div>
-            </div>
-          </div>
-        );
-      })()}
-
-      {/* BEAT 3: THE FATAL QUESTION (20.0s - 23.5s) */}
-      {currentTime >= 20.0 && currentTime <= 23.5 && (() => {
-        const spr = makeSpring(600);
-        return (
-          <div
-            style={{
-              position: 'absolute',
-              top: 150,
-              left: 50,
-              right: 50,
-              transform: `translateY(${(1 - spr) * -25}px) scale(${interpolate(spr, [0, 1], [0.88, 1.0])})`,
-              opacity: spr,
-              zIndex: 30,
-            }}
-          >
-            <div
-              style={{
-                background: 'rgba(15, 23, 42, 0.95)',
-                borderRadius: 24,
-                padding: '28px 36px',
-                border: '2px solid rgba(239, 68, 68, 0.6)',
-                boxShadow: '0 0 50px rgba(239, 68, 68, 0.4), 0 20px 60px rgba(0, 0, 0, 0.8)',
-              }}
-            >
-              <div style={{ fontSize: 18, fontWeight: 800, color: '#F87171', letterSpacing: 2, textTransform: 'uppercase' }}>
-                CÂU HỎI PHỎNG VẤN CHUYÊN SÂU 🎯
-              </div>
-              <div style={{ fontSize: 32, fontWeight: 900, color: '#FFFFFF', marginTop: 10, lineHeight: 1.3 }}>
-                "Tại sao trong trường hợp này em lại chọn hỏi câu hỏi đó?"
-              </div>
-            </div>
-          </div>
-        );
-      })()}
-
-      {/* BEAT 9: CTA (147.8s - 157.2s) */}
-      {currentTime >= 147.8 && (() => {
-        const spr = makeSpring(4434);
-        return (
-          <div
-            style={{
-              position: 'absolute',
-              top: 150,
-              left: 50,
-              right: 50,
-              transform: `translateY(${(1 - spr) * -25}px) scale(${interpolate(spr, [0, 1], [0.88, 1.0])})`,
-              opacity: spr,
-              zIndex: 40,
+              zIndex: 35,
             }}
           >
             <div
               style={{
                 background: 'rgba(15, 23, 42, 0.96)',
                 borderRadius: 28,
-                padding: '28px 44px',
-                border: '2px solid #38BDF8',
-                boxShadow: '0 0 50px rgba(56, 189, 248, 0.5), 0 20px 70px rgba(0, 0, 0, 0.8)',
-                textAlign: 'center',
+                padding: '28px 32px',
+                border: '1.5px solid rgba(255, 255, 255, 0.15)',
+                boxShadow: '0 25px 70px rgba(0, 0, 0, 0.8)',
               }}
             >
-              <div style={{ fontSize: 20, fontWeight: 800, color: '#38BDF8', letterSpacing: 2, textTransform: 'uppercase' }}>
-                LỘ TRÌNH THỰC CHIẾN CHUYÊN SÂU 🚀
+              {/* Header */}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: 14 }}>
+                <div>
+                  <span style={{ fontSize: 14, color: '#38BDF8', fontWeight: 800, letterSpacing: 1.5 }}>HỆ THỐNG TUYỂN CHỌN</span>
+                  <div style={{ fontSize: 24, fontWeight: 900, color: '#FFFFFF', marginTop: 2 }}>Hồ Sơ Ứng Viên: Interview Master</div>
+                </div>
+                <div style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38BDF8', padding: '6px 14px', borderRadius: 20, fontSize: 13, fontWeight: 700 }}>
+                  Kỳ Đánh Giá 2026
+                </div>
               </div>
-              <div style={{ fontSize: 36, fontWeight: 900, color: '#FFFFFF', marginTop: 8 }}>
-                Comment "IM" để nhận lịch Mock Interview 1-1
+
+              {/* Skills checklist */}
+              <div style={{ marginTop: 18, display: 'flex', flexDirection: 'column', gap: 10 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 18, color: '#CBD5E1' }}>
+                  <span>Kỹ năng thao tác Jira & Confluence:</span>
+                  <span style={{ color: '#10B981', fontWeight: 800 }}>✓ Đạt yêu cầu</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 18, color: '#CBD5E1' }}>
+                  <span>Viết User Story & Vẽ Flowchart:</span>
+                  <span style={{ color: '#10B981', fontWeight: 800 }}>✓ Đạt yêu cầu</span>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 18, color: '#CBD5E1' }}>
+                  <span>Tư duy phân tích nghiệp vụ thực tế:</span>
+                  <span style={{ color: '#EF4444', fontWeight: 800 }}>✕ Chưa đạt</span>
+                </div>
+              </div>
+
+              {/* Red Review Stamp */}
+              <div
+                style={{
+                  marginTop: 20,
+                  transform: `scale(${interpolate(stampSpr, [0, 1], [1.3, 1.0])}) rotate(-3deg)`,
+                  opacity: stampSpr,
+                  background: 'rgba(239, 68, 68, 0.15)',
+                  border: '2.5px solid #EF4444',
+                  borderRadius: 16,
+                  padding: '12px 20px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: 12,
+                }}
+              >
+                <span style={{ color: '#EF4444', fontSize: 22, fontWeight: 900, letterSpacing: 2, fontFamily: FONT_DISPLAY }}>
+                  TỪ CHỐI ĐẦU VÀO • CẦN CỦNG CỐ TƯ DUY
+                </span>
               </div>
             </div>
           </div>
         );
       })()}
 
-      {/* ─── 6. KINETIC WORD-BY-WORD POP SUBTITLE PILL (ELIMINATES STIFFNESS) ─── */}
+      {/* BEAT 2: REAL JIRA KANBAN & BPMN FLOWCHART CUTAWAY (9.8s - 15.2s) */}
+      {showJiraBpmBoard && (() => {
+        const p = (currentTime - 9.8) / 5.4;
+        const bZoom = interpolate(p, [0, 1], [1.0, 1.06]);
+        const panY = interpolate(p, [0, 1], [0, -10]);
+        const ticketSpr = makeSpring(300);
+        return (
+          <AbsoluteFill style={{ zIndex: 35 }}>
+            {/* Real workspace photographic backdrop */}
+            <div style={{ width: '100%', height: '100%', transform: `scale(${bZoom}) translateY(${panY}px)`, overflow: 'hidden' }}>
+              <Img
+                src={staticFile('library/workspace/w1-establishing.jpg')}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.55)' }}
+              />
+            </div>
+
+            {/* Ultra-sharp Real UI Mockup */}
+            <div
+              style={{
+                position: 'absolute',
+                top: 130,
+                left: 40,
+                right: 40,
+                transform: `scale(${interpolate(ticketSpr, [0, 1], [0.92, 1.0])})`,
+                opacity: ticketSpr,
+              }}
+            >
+              <div
+                style={{
+                  background: 'rgba(15, 23, 42, 0.97)',
+                  borderRadius: 24,
+                  border: '1.5px solid rgba(56, 189, 248, 0.4)',
+                  padding: '24px 28px',
+                  boxShadow: '0 25px 60px rgba(0,0,0,0.85)',
+                }}
+              >
+                {/* Jira Card */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <span style={{ background: '#2563EB', color: '#FFFFFF', padding: '4px 10px', borderRadius: 6, fontSize: 13, fontWeight: 900 }}>
+                    JIRA TICKET
+                  </span>
+                  <span style={{ color: '#94A3B8', fontSize: 15, fontWeight: 700 }}>[PROJ-104] Payment Flow Story</span>
+                </div>
+                <div style={{ color: '#FFFFFF', fontSize: 22, fontWeight: 800, marginTop: 8 }}>
+                  Viết User Story & Vẽ BPMN Flowchart theo Template
+                </div>
+
+                {/* Flowchart Diagram SVG */}
+                <div style={{ marginTop: 18, background: 'rgba(30, 41, 59, 0.8)', borderRadius: 16, padding: '16px 20px', border: '1px solid rgba(255,255,255,0.08)' }}>
+                  <div style={{ fontSize: 13, color: '#38BDF8', fontWeight: 800, letterSpacing: 1, marginBottom: 12 }}>
+                    BPMN PROCESS FLOW:
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+                    <div style={{ background: '#0284C7', color: '#FFF', padding: '8px 12px', borderRadius: 8, fontSize: 14, fontWeight: 700 }}>
+                      Khách Hàng Đặt Mua
+                    </div>
+                    <span style={{ color: '#38BDF8', fontSize: 18, fontWeight: 900 }}>➔</span>
+                    <div style={{ background: '#F59E0B', color: '#FFF', padding: '8px 12px', borderRadius: 8, fontSize: 14, fontWeight: 700 }}>
+                      Kiểm Tra OTP?
+                    </div>
+                    <span style={{ color: '#38BDF8', fontSize: 18, fontWeight: 900 }}>➔</span>
+                    <div style={{ background: '#10B981', color: '#FFF', padding: '8px 12px', borderRadius: 8, fontSize: 14, fontWeight: 700 }}>
+                      Hoàn Tất Đơn
+                    </div>
+                  </div>
+                </div>
+
+                {/* Footer notes */}
+                <div style={{ marginTop: 16, display: 'flex', gap: 10 }}>
+                  <span style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38BDF8', padding: '6px 14px', borderRadius: 20, fontSize: 14, fontWeight: 700 }}>
+                    ✓ Đầy đủ template
+                  </span>
+                  <span style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#10B981', padding: '6px 14px', borderRadius: 20, fontSize: 14, fontWeight: 700 }}>
+                    ✓ Sơ đồ mạch lạc
+                  </span>
+                </div>
+              </div>
+            </div>
+          </AbsoluteFill>
+        );
+      })()}
+
+      {/* BEAT 3: THE FATAL QUESTION CARD (19.8s - 23.5s) */}
+      {showQuestionCard && (() => {
+        const spr = makeSpring(594);
+        return (
+          <div
+            style={{
+              position: 'absolute',
+              top: 150,
+              left: 45,
+              right: 45,
+              transform: `translateY(${(1 - spr) * -25}px) scale(${interpolate(spr, [0, 1], [0.9, 1.0])})`,
+              opacity: spr,
+              zIndex: 35,
+            }}
+          >
+            <div
+              style={{
+                background: 'rgba(15, 23, 42, 0.96)',
+                borderRadius: 26,
+                padding: '28px 36px',
+                border: '2px solid rgba(239, 68, 68, 0.65)',
+                boxShadow: '0 0 50px rgba(239, 68, 68, 0.4), 0 25px 70px rgba(0, 0, 0, 0.85)',
+              }}
+            >
+              <div style={{ fontSize: 16, fontWeight: 900, color: '#F87171', letterSpacing: 2, textTransform: 'uppercase' }}>
+                CÂU HỎI PHỎNG VẤN CHUYÊN SÂU 🎯
+              </div>
+              <div style={{ fontSize: 30, fontWeight: 900, color: '#FFFFFF', marginTop: 10, lineHeight: 1.35 }}>
+                "Tại sao trong trường hợp này em lại chọn hỏi câu hỏi đó?"
+              </div>
+              <div style={{ marginTop: 14, color: '#94A3B8', fontSize: 17, fontStyle: 'italic' }}>
+                ➔ Ứng viên lúng túng vì chỉ làm theo thói quen mẫu, thiếu tư duy phản biện.
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* BEAT 4: THỢ DÙNG TOOL VS NGƯỜI LÀM PHÂN TÍCH (28.2s - 32.5s) */}
+      {showThoVsBaCard && (() => {
+        const spr = makeSpring(846);
+        return (
+          <div
+            style={{
+              position: 'absolute',
+              top: 130,
+              left: 45,
+              right: 45,
+              transform: `scale(${interpolate(spr, [0, 1], [0.9, 1.0])})`,
+              opacity: spr,
+              zIndex: 35,
+            }}
+          >
+            <div
+              style={{
+                background: 'rgba(15, 23, 42, 0.97)',
+                borderRadius: 26,
+                padding: '24px 30px',
+                border: '1.5px solid rgba(255, 255, 255, 0.15)',
+                boxShadow: '0 25px 70px rgba(0,0,0,0.85)',
+              }}
+            >
+              <div style={{ fontSize: 15, fontWeight: 800, color: '#FACC15', letterSpacing: 1.5, textTransform: 'uppercase' }}>
+                THỰC TẾ ĐÁNG BÁO ĐỘNG
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginTop: 16 }}>
+                {/* Column 1 */}
+                <div style={{ background: 'rgba(239, 68, 68, 0.12)', border: '1.5px solid rgba(239, 68, 68, 0.4)', borderRadius: 16, padding: '16px 18px' }}>
+                  <div style={{ color: '#EF4444', fontWeight: 900, fontSize: 18 }}>THỢ DÙNG TOOL</div>
+                  <div style={{ color: '#CBD5E1', fontSize: 15, marginTop: 8, lineHeight: 1.4 }}>
+                    • Chỉ bấm nút cơ học<br/>
+                    • Điền theo template<br/>
+                    • Dễ bị AI thay thế
+                  </div>
+                </div>
+                {/* Column 2 */}
+                <div style={{ background: 'rgba(16, 185, 129, 0.12)', border: '1.5px solid rgba(16, 185, 129, 0.4)', borderRadius: 16, padding: '16px 18px' }}>
+                  <div style={{ color: '#10B981', fontWeight: 900, fontSize: 18 }}>NGƯỜI PHÂN TÍCH</div>
+                  <div style={{ color: '#CBD5E1', fontSize: 15, marginTop: 8, lineHeight: 1.4 }}>
+                    • Hiểu bản chất bài toán<br/>
+                    • Đặt câu hỏi đúng<br/>
+                    • Giá trị bền vững
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* BEAT 5: TOOLS MISCONCEPTION CHIPS (34.0s - 41.5s) */}
+      {showToolsChecklist && (() => {
+        const spr = makeSpring(1020);
+        return (
+          <div
+            style={{
+              position: 'absolute',
+              top: 150,
+              left: 45,
+              right: 45,
+              transform: `translateY(${(1 - spr) * -20}px)`,
+              opacity: spr,
+              zIndex: 35,
+            }}
+          >
+            <div
+              style={{
+                background: 'rgba(15, 23, 42, 0.95)',
+                borderRadius: 24,
+                padding: '24px 32px',
+                border: '1.5px solid rgba(56, 189, 248, 0.35)',
+                boxShadow: '0 20px 60px rgba(0,0,0,0.8)',
+              }}
+            >
+              <div style={{ fontSize: 16, fontWeight: 800, color: '#38BDF8', letterSpacing: 1.5 }}>
+                ẢO TƯỞNG PHỔ BIẾN CỦA NGƯỜI MỚI:
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 14 }}>
+                <span style={{ background: 'rgba(255,255,255,0.08)', color: '#F1F5F9', padding: '8px 16px', borderRadius: 20, fontSize: 16, fontWeight: 700 }}>
+                  Vẽ Flowchart đẹp 📐
+                </span>
+                <span style={{ background: 'rgba(255,255,255,0.08)', color: '#F1F5F9', padding: '8px 16px', borderRadius: 20, fontSize: 16, fontWeight: 700 }}>
+                  User Story template 📝
+                </span>
+                <span style={{ background: 'rgba(255,255,255,0.08)', color: '#F1F5F9', padding: '8px 16px', borderRadius: 20, fontSize: 16, fontWeight: 700 }}>
+                  Thạo Jira & Figma ⚙️
+                </span>
+              </div>
+              <div style={{ marginTop: 14, color: '#EF4444', fontSize: 18, fontWeight: 800 }}>
+                ≠ Đủ để trở thành một Business Analyst thực thụ!
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* BEAT 6: SINGER & MICROPHONE METAPHOR (44.0s - 50.2s) */}
+      {showMicAnalogy && (() => {
+        const spr = makeSpring(1320);
+        return (
+          <div
+            style={{
+              position: 'absolute',
+              bottom: 240,
+              left: 45,
+              right: 45,
+              transform: `translateY(${(1 - spr) * 30}px)`,
+              opacity: spr,
+              zIndex: 35,
+            }}
+          >
+            <div
+              style={{
+                background: 'rgba(15, 23, 42, 0.96)',
+                borderRadius: 26,
+                padding: '24px 34px',
+                border: '2px solid rgba(250, 204, 21, 0.7)',
+                boxShadow: '0 0 50px rgba(250, 204, 21, 0.35), 0 25px 70px rgba(0,0,0,0.85)',
+                textAlign: 'center',
+              }}
+            >
+              <div style={{ color: '#FACC15', fontWeight: 900, fontSize: 16, letterSpacing: 2 }}>
+                ẨN DỤ SẮC BÉN 🎙️
+              </div>
+              <div style={{ color: '#FFFFFF', fontWeight: 900, fontSize: 28, marginTop: 8, fontStyle: 'italic', lineHeight: 1.35 }}>
+                "Cầm mic lên không có nghĩa bạn sẽ trở thành ca sĩ!"
+              </div>
+              <div style={{ color: '#94A3B8', fontSize: 17, marginTop: 8 }}>
+                Biết dùng công cụ không có nghĩa bạn đã biết làm phân tích kinh doanh.
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* BEAT 8: ROOT CAUSE & PROBLEM SOLVER (57.0s - 63.8s) */}
+      {showRootCauseCard && (() => {
+        const spr = makeSpring(1710);
+        return (
+          <div
+            style={{
+              position: 'absolute',
+              top: 140,
+              left: 45,
+              right: 45,
+              transform: `scale(${interpolate(spr, [0, 1], [0.9, 1.0])})`,
+              opacity: spr,
+              zIndex: 35,
+            }}
+          >
+            <div
+              style={{
+                background: 'rgba(15, 23, 42, 0.96)',
+                borderRadius: 26,
+                padding: '26px 34px',
+                border: '2px solid #38BDF8',
+                boxShadow: '0 0 50px rgba(56, 189, 248, 0.4), 0 25px 70px rgba(0,0,0,0.85)',
+              }}
+            >
+              <div style={{ color: '#38BDF8', fontWeight: 900, fontSize: 16, letterSpacing: 2 }}>
+                TƯ DUY BA THỰC THỤ 💡
+              </div>
+              <div style={{ color: '#FFFFFF', fontWeight: 900, fontSize: 26, marginTop: 10 }}>
+                3 Câu Hỏi Cốt Lõi BA Luôn Tự Hỏi:
+              </div>
+              <div style={{ marginTop: 12, display: 'flex', flexDirection: 'column', gap: 8, color: '#E2E8F0', fontSize: 18, fontWeight: 700 }}>
+                <div>1. Tại sao khách hàng cần tính năng này?</div>
+                <div>2. Root cause (nguyên nhân gốc rễ) là gì?</div>
+                <div>3. Có giải pháp nào tối ưu hơn không?</div>
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* BEAT 9: SYSTEM IMPACT ANALYSIS (64.5s - 68.5s) */}
+      {showImpactAnalysis && (() => {
+        const spr = makeSpring(1935);
+        return (
+          <div
+            style={{
+              position: 'absolute',
+              top: 150,
+              left: 45,
+              right: 45,
+              transform: `translateY(${(1 - spr) * -20}px)`,
+              opacity: spr,
+              zIndex: 35,
+            }}
+          >
+            <div
+              style={{
+                background: 'rgba(15, 23, 42, 0.95)',
+                borderRadius: 24,
+                padding: '24px 32px',
+                border: '1.5px solid rgba(245, 158, 11, 0.6)',
+                boxShadow: '0 20px 60px rgba(0,0,0,0.8)',
+              }}
+            >
+              <div style={{ color: '#F59E0B', fontWeight: 900, fontSize: 16, letterSpacing: 2 }}>
+                SYSTEM IMPACT ANALYSIS 🔍
+              </div>
+              <div style={{ color: '#FFFFFF', fontWeight: 900, fontSize: 24, marginTop: 8 }}>
+                Thay đổi này ảnh hưởng gì đến toàn hệ thống?
+              </div>
+              <div style={{ marginTop: 10, color: '#94A3B8', fontSize: 16 }}>
+                Database • API tích hợp • Luồng người dùng • Hiệu năng
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* BEAT 10 & 11: DEFINITION OF BA (74.5s - 78.2s) */}
+      {showDefinitionCard && (() => {
+        const spr = makeSpring(2235);
+        return (
+          <div
+            style={{
+              position: 'absolute',
+              top: 150,
+              left: 45,
+              right: 45,
+              transform: `scale(${interpolate(spr, [0, 1], [0.9, 1.0])})`,
+              opacity: spr,
+              zIndex: 35,
+            }}
+          >
+            <div
+              style={{
+                background: 'rgba(15, 23, 42, 0.96)',
+                borderRadius: 26,
+                padding: '26px 36px',
+                border: '2px solid #10B981',
+                boxShadow: '0 0 50px rgba(16, 185, 129, 0.4), 0 25px 70px rgba(0,0,0,0.85)',
+                textAlign: 'center',
+              }}
+            >
+              <div style={{ color: '#10B981', fontWeight: 900, fontSize: 16, letterSpacing: 2 }}>
+                BẢN CHẤT CỐT LÕI CỦA NGHỀ BA
+              </div>
+              <div style={{ color: '#FFFFFF', fontWeight: 900, fontSize: 30, marginTop: 10, lineHeight: 1.35 }}>
+                "Giải quyết bài toán kinh doanh bằng công nghệ"
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* BEAT 12-14: THE AI ERA & TOOLS VS MINDSET (84.0s - 94.0s) */}
+      {showAiEraCard && (() => {
+        const spr = makeSpring(2520);
+        return (
+          <div
+            style={{
+              position: 'absolute',
+              top: 140,
+              left: 45,
+              right: 45,
+              transform: `translateY(${(1 - spr) * -20}px)`,
+              opacity: spr,
+              zIndex: 35,
+            }}
+          >
+            <div
+              style={{
+                background: 'rgba(15, 23, 42, 0.96)',
+                borderRadius: 26,
+                padding: '26px 32px',
+                border: '1.5px solid rgba(56, 189, 248, 0.4)',
+                boxShadow: '0 25px 70px rgba(0,0,0,0.85)',
+              }}
+            >
+              <div style={{ color: '#38BDF8', fontWeight: 900, fontSize: 15, letterSpacing: 1.5 }}>
+                THỜI ĐẠI AI & XU HƯỚNG TẤT YẾU 🤖
+              </div>
+              <div style={{ marginTop: 14, display: 'flex', flexDirection: 'column', gap: 10 }}>
+                <div style={{ background: 'rgba(255,255,255,0.06)', borderRadius: 14, padding: '12px 18px' }}>
+                  <span style={{ color: '#FACC15', fontWeight: 800, fontSize: 16 }}>Học Tool:</span>
+                  <span style={{ color: '#E2E8F0', fontSize: 16, marginLeft: 8 }}>Chỉ mất vài tuần đến 1 tháng (Dễ bị AI thay thế)</span>
+                </div>
+                <div style={{ background: 'rgba(56, 189, 248, 0.12)', borderRadius: 14, padding: '12px 18px', border: '1px solid rgba(56, 189, 248, 0.3)' }}>
+                  <span style={{ color: '#38BDF8', fontWeight: 800, fontSize: 16 }}>Tư Duy Phân Tích:</span>
+                  <span style={{ color: '#FFFFFF', fontSize: 16, marginLeft: 8 }}>Cần rất nhiều thời gian mài giũa thực tế!</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* BEAT 16: THE MISSING LINK OF SELF-TAUGHT BA (105.0s - 113.5s) */}
+      {showMissingLinkCard && (() => {
+        const spr = makeSpring(3150);
+        return (
+          <div
+            style={{
+              position: 'absolute',
+              top: 140,
+              left: 45,
+              right: 45,
+              transform: `scale(${interpolate(spr, [0, 1], [0.9, 1.0])})`,
+              opacity: spr,
+              zIndex: 35,
+            }}
+          >
+            <div
+              style={{
+                background: 'rgba(15, 23, 42, 0.96)',
+                borderRadius: 26,
+                padding: '26px 34px',
+                border: '1.5px solid rgba(239, 68, 68, 0.5)',
+                boxShadow: '0 25px 70px rgba(0,0,0,0.85)',
+              }}
+            >
+              <div style={{ color: '#EF4444', fontWeight: 900, fontSize: 15, letterSpacing: 2 }}>
+                LỖ HỔNG CỦA VIỆC TỰ HỌC ⚠️
+              </div>
+              <div style={{ color: '#FFFFFF', fontWeight: 900, fontSize: 24, marginTop: 8 }}>
+                Thiếu người giải thích cơ chế & nguyên lý phía sau mỗi quyết định
+              </div>
+              <div style={{ color: '#94A3B8', fontSize: 16, marginTop: 8 }}>
+                ➔ Dẫn đến khả năng phân tích bị yếu khi đối diện phỏng vấn chuyên sâu.
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* BEAT 17: INTERVIEW MASTER 3 PILLARS (115.5s - 126.5s) */}
+      {showInterviewMasterPillars && (() => {
+        const spr = makeSpring(3465);
+        return (
+          <div
+            style={{
+              position: 'absolute',
+              top: 130,
+              left: 45,
+              right: 45,
+              transform: `translateY(${(1 - spr) * -20}px)`,
+              opacity: spr,
+              zIndex: 35,
+            }}
+          >
+            <div
+              style={{
+                background: 'rgba(15, 23, 42, 0.97)',
+                borderRadius: 26,
+                padding: '24px 30px',
+                border: '2px solid rgba(56, 189, 248, 0.5)',
+                boxShadow: '0 0 50px rgba(56, 189, 248, 0.35), 0 25px 70px rgba(0,0,0,0.85)',
+              }}
+            >
+              <div style={{ color: '#38BDF8', fontWeight: 900, fontSize: 15, letterSpacing: 2 }}>
+                CHƯƠNG TRÌNH INTERVIEW MASTER 🎯
+              </div>
+              <div style={{ marginTop: 14, display: 'flex', flexDirection: 'column', gap: 10 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, color: '#FFFFFF', fontSize: 18, fontWeight: 700 }}>
+                  <span style={{ color: '#10B981' }}>✓</span> Mock Interview 1-1 phản biện chuyên sâu
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, color: '#FFFFFF', fontSize: 18, fontWeight: 700 }}>
+                  <span style={{ color: '#10B981' }}>✓</span> Tối ưu hồ sơ ứng tuyển & Portfolio thực chiến
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, color: '#FFFFFF', fontSize: 18, fontWeight: 700 }}>
+                  <span style={{ color: '#10B981' }}>✓</span> Chiến lược tìm việc & chinh phục nhà tuyển dụng
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* BEAT 18: WRONG FOCUS REALIZATION (139.5s - 147.0s) */}
+      {showWrongFocusCard && (() => {
+        const spr = makeSpring(4185);
+        return (
+          <div
+            style={{
+              position: 'absolute',
+              top: 150,
+              left: 45,
+              right: 45,
+              transform: `scale(${interpolate(spr, [0, 1], [0.9, 1.0])})`,
+              opacity: spr,
+              zIndex: 35,
+            }}
+          >
+            <div
+              style={{
+                background: 'rgba(15, 23, 42, 0.96)',
+                borderRadius: 26,
+                padding: '26px 36px',
+                border: '2px solid rgba(250, 204, 21, 0.8)',
+                boxShadow: '0 0 50px rgba(250, 204, 21, 0.35), 0 25px 70px rgba(0,0,0,0.85)',
+                textAlign: 'center',
+              }}
+            >
+              <div style={{ color: '#FACC15', fontWeight: 900, fontSize: 16, letterSpacing: 2 }}>
+                NHÌN LẠI BẢN THÂN
+              </div>
+              <div style={{ color: '#FFFFFF', fontWeight: 900, fontSize: 28, marginTop: 10, lineHeight: 1.35 }}>
+                "Không phải bạn chưa đủ cố gắng, mà là bạn đang HỌC SAI TRỌNG TÂM!"
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* BEAT 19: EXACT SPOKEN CTA - COMMENT EMAIL (148.2s - 157.2s) */}
+      {showCtaCard && (() => {
+        const spr = makeSpring(4446);
+        return (
+          <div
+            style={{
+              position: 'absolute',
+              top: 140,
+              left: 45,
+              right: 45,
+              transform: `scale(${interpolate(spr, [0, 1], [0.9, 1.0])})`,
+              opacity: spr,
+              zIndex: 40,
+            }}
+          >
+            <div
+              style={{
+                background: 'rgba(15, 23, 42, 0.97)',
+                borderRadius: 28,
+                padding: '28px 40px',
+                border: '2.5px solid #38BDF8',
+                boxShadow: '0 0 60px rgba(56, 189, 248, 0.5), 0 25px 80px rgba(0, 0, 0, 0.9)',
+                textAlign: 'center',
+              }}
+            >
+              <div style={{ fontSize: 16, fontWeight: 900, color: '#38BDF8', letterSpacing: 2, textTransform: 'uppercase' }}>
+                HÀNH ĐỘNG NGAY HÔM NAY 🚀
+              </div>
+              <div style={{ fontSize: 32, fontWeight: 900, color: '#FFFFFF', marginTop: 8 }}>
+                COMMENT "EMAIL" DƯỚI VIDEO NÀY
+              </div>
+              <div style={{ color: '#94A3B8', fontSize: 18, marginTop: 8 }}>
+                Để hẹn lịch Mock Interview & Đánh giá chi tiết lộ trình BA phù hợp nhất dành cho bạn!
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+
+      {/* ─── 3. SUBTLE CINEMATIC FLASH TRANSITION (Only at major visual cutaways) ─── */}
+      {isCutawayEntry && (
+        <AbsoluteFill
+          style={{
+            backgroundColor: 'rgba(255, 255, 255, 0.22)',
+            zIndex: 45,
+            pointerEvents: 'none',
+          }}
+        />
+      )}
+
+      {/* ─── 4. SUBTLE & NATURAL AUDIO PIPELINE ─── */}
+      {/* Gentle Ambient Lofi BGM (Kept soft so voice is crisp) */}
+      <Audio src={staticFile('library/music/clips/lofi-warm.mp3')} volume={0.05} loop />
+
+      {/* Organic, Subtle Documentary Sound Effects (Gentle volumes: 0.15 - 0.22) */}
+      {/* Beat 1: Review Modal */}
+      <Sequence from={24} durationInFrames={30}><Audio src={staticFile('sfx/ui-click-soft.wav')} volume={0.20} /></Sequence>
+      <Sequence from={45} durationInFrames={30}><Audio src={staticFile('sfx/impact-soft.wav')} volume={0.22} /></Sequence>
+
+      {/* Beat 2: Jira Board & BPMN */}
+      <Sequence from={294} durationInFrames={30}><Audio src={staticFile('sfx/whoosh-soft.wav')} volume={0.16} /></Sequence>
+      <Sequence from={300} durationInFrames={60}><Audio src={staticFile('sfx/keys-typing-soft.wav')} volume={0.18} /></Sequence>
+
+      {/* Beat 3: The Fatal Question */}
+      <Sequence from={594} durationInFrames={30}><Audio src={staticFile('sfx/impact-soft.wav')} volume={0.20} /></Sequence>
+
+      {/* Beat 4: Comparison Card */}
+      <Sequence from={846} durationInFrames={30}><Audio src={staticFile('sfx/ui-click-soft.wav')} volume={0.18} /></Sequence>
+
+      {/* Beat 6: Mic Analogy */}
+      <Sequence from={1320} durationInFrames={30}><Audio src={staticFile('sfx/warm-shimmer.wav')} volume={0.18} /></Sequence>
+
+      {/* Beat 8: Root Cause */}
+      <Sequence from={1710} durationInFrames={30}><Audio src={staticFile('sfx/page-flip.wav')} volume={0.20} /></Sequence>
+
+      {/* Beat 10: Definition of BA */}
+      <Sequence from={2235} durationInFrames={30}><Audio src={staticFile('sfx/warm-shimmer.wav')} volume={0.20} /></Sequence>
+
+      {/* Beat 12: AI Era */}
+      <Sequence from={2520} durationInFrames={30}><Audio src={staticFile('sfx/ui-click-soft.wav')} volume={0.16} /></Sequence>
+
+      {/* Beat 17: Interview Master Pillars */}
+      <Sequence from={3465} durationInFrames={30}><Audio src={staticFile('sfx/page-flip.wav')} volume={0.18} /></Sequence>
+
+      {/* Beat 19: CTA */}
+      <Sequence from={4446} durationInFrames={30}><Audio src={staticFile('sfx/sparkle-soft.wav')} volume={0.22} /></Sequence>
+
+      {/* ─── 5. KINETIC WORD-BY-WORD POP SUBTITLE PILL (100% ACCURATE TO SPEECH) ─── */}
       {activeSub && (() => {
         const subDuration = Math.max(0.1, activeSub.e - activeSub.s);
         const progress = Math.max(0, Math.min(1, (currentTime - activeSub.s) / subDuration));
@@ -545,7 +871,7 @@ export const BaInterviewEditorialMaster: React.FC = () => {
           <div
             style={{
               position: 'absolute',
-              bottom: 130,
+              bottom: 120,
               left: 40,
               right: 40,
               display: 'flex',
@@ -555,11 +881,11 @@ export const BaInterviewEditorialMaster: React.FC = () => {
           >
             <div
               style={{
-                background: 'rgba(11, 17, 33, 0.94)',
-                padding: '18px 30px',
+                background: 'rgba(11, 17, 33, 0.95)',
+                padding: '18px 28px',
                 borderRadius: 24,
                 border: '1px solid rgba(255, 255, 255, 0.16)',
-                boxShadow: '0 16px 48px rgba(0, 0, 0, 0.7)',
+                boxShadow: '0 16px 48px rgba(0, 0, 0, 0.75)',
                 textAlign: 'center',
                 maxWidth: 980,
                 display: 'flex',
