@@ -153,7 +153,23 @@ const BROLL_CLIPS: BRollClip[] = [
   },
 ];
 
-export const LifeFirstBusinessMaster: React.FC = () => {
+export interface LifeFirstBusinessMasterProps {
+  enableBRoll?: boolean;
+  visualMode?: 'broll' | 'text_only' | 'pip';
+  activeBRollIds?: number[];
+  enableSFX?: boolean;
+  enableBGM?: boolean;
+  primaryColor?: string;
+  accentColor?: string;
+}
+
+export const LifeFirstBusinessMaster: React.FC<LifeFirstBusinessMasterProps> = ({
+  enableBRoll = true,
+  visualMode = 'broll',
+  activeBRollIds = [0, 1, 2, 3, 4, 5, 6, 7],
+  enableSFX = true,
+  enableBGM = true,
+}) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const currentTime = frame / fps;
@@ -242,7 +258,8 @@ export const LifeFirstBusinessMaster: React.FC = () => {
       </AbsoluteFill>
 
       {/* ─── 1.5 DYNAMIC FORMAL B-ROLL CUTAWAYS (LIVELY EDITORIAL B-ROLL) ─── */}
-      {BROLL_CLIPS.map((clip, idx) => {
+      {enableBRoll && visualMode !== 'text_only' && BROLL_CLIPS.map((clip, idx) => {
+        if (!activeBRollIds.includes(idx)) return null;
         const startFrame = Math.round(clip.s * fps);
         const endFrame = Math.round(clip.e * fps);
         if (frame < startFrame || frame > endFrame) return null;
@@ -894,22 +911,28 @@ export const LifeFirstBusinessMaster: React.FC = () => {
 
       {/* ─── 4. NATURAL & SUBTLE AUDIO PIPELINE ─── */}
       {/* Warm Ambient Lofi Background Music */}
-      <Audio src={staticFile('library/music/clips/lofi-warm.mp3')} volume={0.05} loop />
+      {enableBGM && (
+        <Audio src={staticFile('library/music/clips/lofi-warm.mp3')} volume={0.05} loop />
+      )}
 
       {/* Gentle & Organic SFX at Section Entries (Volume 0.16 - 0.20) */}
-      <Sequence from={18} durationInFrames={30}><Audio src={staticFile('sfx/ui-click-soft.wav')} volume={0.20} /></Sequence>
-      <Sequence from={186} durationInFrames={30}><Audio src={staticFile('sfx/page-flip.wav')} volume={0.18} /></Sequence>
-      <Sequence from={366} durationInFrames={30}><Audio src={staticFile('sfx/warm-shimmer.wav')} volume={0.18} /></Sequence>
-      <Sequence from={585} durationInFrames={30}><Audio src={staticFile('sfx/impact-soft.wav')} volume={0.18} /></Sequence>
-      <Sequence from={780} durationInFrames={30}><Audio src={staticFile('sfx/ui-click-soft.wav')} volume={0.18} /></Sequence>
-      <Sequence from={1020} durationInFrames={30}><Audio src={staticFile('sfx/ui-click-soft.wav')} volume={0.18} /></Sequence>
-      <Sequence from={1230} durationInFrames={30}><Audio src={staticFile('sfx/warm-shimmer.wav')} volume={0.18} /></Sequence>
-      <Sequence from={1485} durationInFrames={30}><Audio src={staticFile('sfx/sparkle-soft.wav')} volume={0.20} /></Sequence>
-      <Sequence from={1866} durationInFrames={30}><Audio src={staticFile('sfx/page-flip.wav')} volume={0.18} /></Sequence>
-      <Sequence from={2010} durationInFrames={30}><Audio src={staticFile('sfx/whoosh-soft.wav')} volume={0.16} /></Sequence>
-      <Sequence from={2490} durationInFrames={30}><Audio src={staticFile('sfx/warm-shimmer.wav')} volume={0.18} /></Sequence>
-      <Sequence from={2895} durationInFrames={30}><Audio src={staticFile('sfx/page-flip.wav')} volume={0.18} /></Sequence>
-      <Sequence from={3180} durationInFrames={30}><Audio src={staticFile('sfx/sparkle-soft.wav')} volume={0.22} /></Sequence>
+      {enableSFX && (
+        <>
+          <Sequence from={18} durationInFrames={30}><Audio src={staticFile('sfx/ui-click-soft.wav')} volume={0.20} /></Sequence>
+          <Sequence from={186} durationInFrames={30}><Audio src={staticFile('sfx/page-flip.wav')} volume={0.18} /></Sequence>
+          <Sequence from={366} durationInFrames={30}><Audio src={staticFile('sfx/warm-shimmer.wav')} volume={0.18} /></Sequence>
+          <Sequence from={585} durationInFrames={30}><Audio src={staticFile('sfx/impact-soft.wav')} volume={0.18} /></Sequence>
+          <Sequence from={780} durationInFrames={30}><Audio src={staticFile('sfx/ui-click-soft.wav')} volume={0.18} /></Sequence>
+          <Sequence from={1020} durationInFrames={30}><Audio src={staticFile('sfx/ui-click-soft.wav')} volume={0.18} /></Sequence>
+          <Sequence from={1230} durationInFrames={30}><Audio src={staticFile('sfx/warm-shimmer.wav')} volume={0.18} /></Sequence>
+          <Sequence from={1485} durationInFrames={30}><Audio src={staticFile('sfx/sparkle-soft.wav')} volume={0.20} /></Sequence>
+          <Sequence from={1866} durationInFrames={30}><Audio src={staticFile('sfx/page-flip.wav')} volume={0.18} /></Sequence>
+          <Sequence from={2010} durationInFrames={30}><Audio src={staticFile('sfx/whoosh-soft.wav')} volume={0.16} /></Sequence>
+          <Sequence from={2490} durationInFrames={30}><Audio src={staticFile('sfx/warm-shimmer.wav')} volume={0.18} /></Sequence>
+          <Sequence from={2895} durationInFrames={30}><Audio src={staticFile('sfx/page-flip.wav')} volume={0.18} /></Sequence>
+          <Sequence from={3180} durationInFrames={30}><Audio src={staticFile('sfx/sparkle-soft.wav')} volume={0.22} /></Sequence>
+        </>
+      )}
 
       {/* ─── 5. KINETIC WORD-BY-WORD POP SUBTITLE PILL (100% ACCURATE) ─── */}
       {activeSub && (() => {
