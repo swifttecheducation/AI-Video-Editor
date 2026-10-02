@@ -99,3 +99,6 @@ tools/build_reels_aesthetic_v2.py
 tools/gen_*.py
 tools/polish_*.py
 tools/scratch/
+
+# Imported Raw Engines Archive
+imported_engines/
