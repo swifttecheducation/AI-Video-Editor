@@ -225,7 +225,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 transform: `scale(${spr1}) translateY(${waveFloat(0)}px)`,
                 opacity: spr1,
                 fontFamily: FONT_DISPLAY,
-                fontSize: 66,
+                fontSize: 74,
                 fontWeight: 800,
                 color: BRAND.ivory,
                 lineHeight: 1.15,
@@ -242,12 +242,12 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 transform: `scale(${spr2}) translateY(${waveFloat(8)}px)`,
                 opacity: spr2,
                 fontFamily: FONT_DISPLAY,
-                fontSize: 62,
+                fontSize: 68,
                 fontStyle: 'italic',
                 fontWeight: 600,
                 color: BRAND.ivory,
                 lineHeight: 1.15,
-                marginTop: 4,
+                marginTop: 6,
                 textShadow: '0 3px 20px rgba(0,0,0,0.98), 0 6px 36px rgba(0,0,0,0.90)',
               }}
             >
@@ -260,11 +260,11 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 transform: `scale(${spr3}) translateY(${waveFloat(16)}px)`,
                 opacity: spr3,
                 fontFamily: FONT_DISPLAY,
-                fontSize: 68,
+                fontSize: 74,
                 fontWeight: 900,
                 color: BRAND.ivory,
                 lineHeight: 1.15,
-                marginTop: 6,
+                marginTop: 8,
                 textShadow: '0 3px 20px rgba(0,0,0,0.98), 0 6px 36px rgba(0,0,0,0.90)',
               }}
             >
@@ -285,7 +285,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
           <div
             style={{
               position: 'absolute',
-              top: 220,
+              top: 210,
               left: 40,
               right: 40,
               zIndex: 35,
@@ -301,7 +301,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 transform: `scale(${sprTop}) translateY(${waveFloat(0)}px)`,
                 opacity: sprTop,
                 fontFamily: FONT_DISPLAY,
-                fontSize: 58,
+                fontSize: 66,
                 fontWeight: 900,
                 color: BRAND.ivory,
                 textShadow: '0 3px 20px rgba(0,0,0,0.98), 0 6px 36px rgba(0,0,0,0.90)',
@@ -312,7 +312,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
               }}
             >
               <span style={{ color: BRAND.ivory }}>Sia</span>
-              <span style={{ color: BRAND.oliveLight, fontSize: 36 }}>•</span>
+              <span style={{ color: BRAND.oliveLight, fontSize: 40 }}>•</span>
               <span>Mẹ của nhóc 2 tuổi</span>
             </div>
 
@@ -322,7 +322,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 transform: `scale(${sprSub}) translateY(${waveFloat(10)}px)`,
                 opacity: sprSub,
                 fontFamily: FONT_DISPLAY,
-                fontSize: 44,
+                fontSize: 50,
                 fontStyle: 'italic',
                 fontWeight: 500,
                 color: BRAND.beige,
@@ -346,7 +346,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
           <div
             style={{
               position: 'absolute',
-              top: 200,
+              top: 180,
               left: 40,
               right: 40,
               zIndex: 35,
@@ -361,7 +361,7 @@ export const LifeFirstBusinessMaster: React.FC = () => {
             <div
               style={{
                 fontFamily: FONT_BODY,
-                fontSize: 20,
+                fontSize: 30,
                 fontWeight: 800,
                 color: BRAND.oliveLight,
                 letterSpacing: 4,
@@ -369,11 +369,11 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 textShadow: '0 2px 10px rgba(0,0,0,0.9)',
                 display: 'flex',
                 alignItems: 'center',
-                gap: 12,
+                gap: 16,
               }}
             >
               <span>SERIES: LIFE-FIRST BUSINESS</span>
-              <span style={{ background: BRAND.wineBright, color: BRAND.ivory, padding: '3px 12px', borderRadius: 8, fontSize: 14, fontWeight: 900 }}>TẬP 03</span>
+              <span style={{ background: BRAND.wineBright, color: BRAND.ivory, padding: '5px 16px', borderRadius: 8, fontSize: 20, fontWeight: 900 }}>TẬP 03</span>
             </div>
 
             <div
@@ -381,15 +381,15 @@ export const LifeFirstBusinessMaster: React.FC = () => {
                 transform: `scale(${sprMain}) translateY(${waveFloat(6)}px)`,
                 opacity: sprMain,
                 fontFamily: FONT_DISPLAY,
-                fontSize: 54,
+                fontSize: 66,
                 fontWeight: 900,
                 color: BRAND.ivory,
-                marginTop: 12,
+                marginTop: 14,
                 textShadow: '0 3px 20px rgba(0,0,0,0.98)',
               }}
             >
               <span style={{ color: BRAND.oliveLight, fontStyle: 'italic' }}>CUỘC SỐNG TRƯỚC</span>
-              <span style={{ margin: '0 16px', color: BRAND.beige, fontSize: 44 }}>➔</span>
+              <span style={{ margin: '0 16px', color: BRAND.beige, fontSize: 52 }}>➔</span>
               <span>BUSINESS SAU</span>
             </div>
 
@@ -397,10 +397,10 @@ export const LifeFirstBusinessMaster: React.FC = () => {
               style={{
                 fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_HANDWRITING,
                 color: BRAND.beige,
-                fontSize: 40,
-                marginTop: 8,
+                fontSize: 70,
+                marginTop: 12,
                 transform: `rotate(-2deg) translateY(${waveFloat(12)}px)`,
-                textShadow: '0 2px 14px rgba(0,0,0,0.95)',
+                textShadow: '0 2px 18px rgba(0,0,0,0.98), 0 4px 30px rgba(0,0,0,0.90)',
               }}
             >
               bắt đầu từ lối sống bạn muốn ~
@@ -1127,13 +1127,13 @@ export const LifeFirstBusinessMaster: React.FC = () => {
       <Sequence from={2880} durationInFrames={30}><Audio src={staticFile('sfx/page-flip.wav')} volume={0.18} /></Sequence>
       <Sequence from={3153} durationInFrames={30}><Audio src={staticFile('sfx/sparkle-soft.wav')} volume={0.22} /></Sequence>
 
-      {/* ─── 4. SUBTITLES: TẦM CỔ ÁO / NGỰC (Y ~ 1160px), FONT BE VIETNAM PRO (BODY FONT TRONG BRAND GUIDE), WARM IVORY ─── */}
+      {/* ─── 4. SUBTITLES: DƯỚI CỔ ÁO / TẦM NGỰC (Y = 1300px), FONT SVN-CHICKEN NOODLE SOUP, WARM IVORY ─── */}
       {activeSub && (() => {
         return (
           <div
             style={{
               position: 'absolute',
-              top: 1160,
+              top: 1300,
               left: 40,
               right: 40,
               display: 'flex',
@@ -1146,14 +1146,13 @@ export const LifeFirstBusinessMaster: React.FC = () => {
             <div
               style={{
                 textAlign: 'center',
-                maxWidth: 820,
+                maxWidth: 860,
                 fontFamily: "'SVN-Chicken Noodle Soup', " + FONT_BODY,
-                fontSize: 64,
-                fontSize: 54,
+                fontSize: 66,
                 fontWeight: 700,
                 color: BRAND.ivory, // Warm Ivory per Brand Guide
                 lineHeight: 1.25,
-                textShadow: '0 3px 18px rgba(0,0,0,0.98), 0 6px 36px rgba(0,0,0,0.90)',
+                textShadow: '0 3px 20px rgba(0,0,0,0.98), 0 6px 36px rgba(0,0,0,0.90)',
                 letterSpacing: 0.2,
               }}
             >
