@@ -1,131 +1,130 @@
-# 🎬 AI Video Editor — Automated Viral Short-Form & Editorial Studio
+# 🎬 AI Video Editor & Reels Automation Engine v3.0 (Hybrid Edition)
 
-> **Transform raw talking-head footage into high-retention, viral short-form videos with AI-driven editorial intelligence, acoustic voice-emphasis detection, and programmatic Remotion visual motion.**
+> **Commercial-Grade Autonomous Video Editing Engine**  
+> Direct integration with **CapCut Desktop** (Native Multi-Track Projects) & **Remotion React Studio** (60fps GPU Graphics), powered by **Computer-Vision Chin-Lock**, **Performance Hook Engineering**, and **Broadcast-Standard Audio (EBU R128 -14 LUFS)**.
 
 [![GitHub](https://img.shields.io/badge/GitHub-swifttecheducation%2FAI--Video--Editor-blue?logo=github)](https://github.com/swifttecheducation/AI-Video-Editor)
 [![Remotion](https://img.shields.io/badge/Powered%20By-Remotion%204-red)](https://remotion.dev)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-yellow)](https://python.org)
+[![CapCut](https://img.shields.io/badge/CapCut-Desktop%20Native-00C4CC)](https://www.capcut.com)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
 ---
 
-## 🌟 Key Features
+## 🌟 Architecture Overview (Hybrid Super-Engine)
 
-### 1. 🎛️ Feature Toggles (User-Controlled Customization)
-Every aspect of the production pipeline can be enabled or disabled via configuration or the interactive web UI:
-- **`auto_rough_cut`**: AI detects repeated takes, stumbles, and filler words, keeping only the best delivery.
-- **`silence_trimmer`**: Eliminates dead pauses (>0.4s) to create punchy, high-retention pacing.
-- **`voice_emphasis_fx`**: **Acoustic AI detects when the speaker stresses words/syllables and triggers punchy micro-zooms, spring text pops, and visual sweeps.**
-- **`auto_sfx_sync`**: Procedurally syncs sound effects (pops, whooshes, dings, bass thuds) down to the exact millisecond.
-- **`smart_bgm`**: Background music selection with intelligent voice-ducking (-22dB under speech).
-- **`cinema_color`**: Film-grade skin-tone grading and BT.709 Hable tonemapping.
-- **`loudnorm_ebu_r128`**: Broadcast-standard loudness normalization (-14 LUFS, -1.0 dB True Peak).
-- **`export_capcut_draft`**: Generates a native CapCut desktop project draft for optional manual tweaking.
+Unlike generic web AI tools that only export flattened, uneditable single-track MP4s, this engine is a **Local Autonomous Editing Engine** that manipulates CapCut Desktop timeline data natively while providing a high-performance React graphics rendering pipeline.
 
----
-
-### 2. ⚡ Acoustic Voice-Emphasis Detection Engine
-Generic tools only do basic text subtitles. Our engine uses **Acoustic Signal Processing (`scipy` / `librosa`)** coupled with word-level speech boundaries:
 ```
-Audio Signal (.wav)
-       │
-       ├─────────────────────────────────────────┐
-       ▼                                         ▼
-[RMS Energy Dynamics]                  [F0 Pitch Tracking]
-- Computes sliding envelope            - Autocorrelation / spectral peaks
-- Detects energy spikes (Z > 1.3)      - Detects sudden pitch inflections
-       │                                         │
-       └────────────────────┬────────────────────┘
-                            ▼
-           [Emphasis Score Calculation]
-           - Identifies emphatic syllable boundaries
-                            ▼
-    [Automated Micro-Effects Triggered at Exact Millisecond]
-    💥 Micro-Zoom Punch-in (1.0 -> 1.06 -> 1.0 in 6 frames)
-    ✨ Kinetic Spring Pop & Glowing Neon Highlight
-    🔊 Synchronized Micro-SFX (Pop, Whoosh, Bass Thud)
+                         ┌─────────────────────────────┐
+                         │   DIRECTOR (Bạn ra lệnh)    │
+                         └──────────────┬──────────────┘
+                                        │
+                               [ inbox/ (Video thô) ]
+                                        │
+                    ┌───────────────────┴───────────────────┐
+                    ▼                                       ▼
+  ┌───────────────────────────────────┐   ┌───────────────────────────────────┐
+  │   1. AUDIO & ROUGH CUT PASS       │   │    2. VISUAL & COMPOSITION PASS   │
+  │ • WhisperX (large-v3, GPU RTX)    │   │ • OpenCV YuNet Chin-Lock          │
+  │ • Auto-cắt dead air & flubs       │   │ • Semantic B-Roll Matcher (AI)    │
+  │ • EBU R128 (-14 LUFS) Audio Norm  │   │ • Cover / Thumbnail Detector      │
+  └─────────────────┬─────────────────┘   └─────────────────┬─────────────────┘
+                    └───────────────────┬───────────────────┘
+                                        │
+                    ┌───────────────────┴───────────────────┐
+                    ▼                                       ▼
+  ┌───────────────────────────────────┐   ┌───────────────────────────────────┐
+  │    3. NATIVE VECTCUT CAPCUT       │   │ 4. REMOTION REACT GRAPHICS STUDIO │
+  │ • Local Server (Port 9001)        │   │ • 60fps GPU-Accelerated React     │
+  │ • Sinh project CapCut rời lớp     │   │ • Handheld Sway & Zoom Punch-In   │
+  │ • File: draft_content.json        │   │ • Web Dashboard xem Blueprint     │
+  └─────────────────┬─────────────────┘   └─────────────────┬─────────────────┘
+                    └───────────────────┬───────────────────┘
+                                        │
+                    ┌───────────────────┴───────────────────┐
+                    ▼                                       ▼
+         [ CapCut Desktop Draft ]                [ Production Render MP4 ]
+         (Dự án mở, sửa từng chữ)                (Chuẩn 4K/1080p đăng ngay)
 ```
 
 ---
 
-### 3. 🖥️ Interactive Review Widget (`web/index.html`)
-A sleek, standalone web interface inspired by modern creator workflows:
-- **Sentence Pacing Tracker:** Displays duration for each line to identify dragging points.
-- **Action Controls per Sentence:**
-  - 🗑️ **Delete:** Discard bloopers or awkward sentences.
-  - 📎 **Attach Asset:** Link custom screenshots, diagrams, or b-roll at exact timestamps.
-  - 📝 **AI Note:** Direct Claude/Gemini on how to style a specific moment without prompt engineering.
-  - 🎨 **Layout Selector:** Choose between Checklist Card, Versus Contrast (A vs B), Fatal Question + Warning, or Full-screen Takeover.
+## 🚀 7 Core Innovations on v3.0
+
+1. **Dual-Output Architecture**: Programmatic 60fps rendering in Remotion OR 1-click generation of fully editable, multi-track **CapCut Desktop** drafts.
+2. **AI Chin-Lock Subtitle System**: Uses OpenCV YuNet (`media/models/face_detection_yunet_2023mar.onnx`) to dynamically lock subtitles below the presenter's collar line (`top: 1300px` / `y: -0.36`), completely preventing face/mouth overlap.
+3. **Performance Hook Engine**: Data-backed hook formulation enforcing 3 allowed shapes (`hook_card`, `eyebrow_headline`, `headline_subhead`) with anti-mirroring lexical validation.
+4. **Dual Register Editing**: Automatically scales visual intensity between **Confessional** (intimate, authentic, quiet) and **Teaching/Explainer** (loaded cards, B-roll takeovers, handwriting lists, paired SFX).
+5. **Interactive Web Dashboard (`web/`)**: Real-time synchronized video player, scene breakdown (*Visual Blueprint*), and per-scene B-roll vs text-only toggles.
+6. **Broadcast Audio Standards (EBU R128 -14 LUFS)**: 2-pass `loudnorm` filter guaranteeing punchy, clear speech that never gets compressed or penalized by TikTok/Reels algorithms.
+7. **Vietnamese Native Typography Engine**: Pre-configured with premium fonts (`SVN-Chicken Noodle Soup`, `Alegreya`, `Be Vietnam Pro`) with intelligent diacritic line-wrapping.
 
 ---
 
-### 4. 🎨 Studio-Grade Remotion Motion Graphics
-All graphic elements are authored in **React (Remotion)** with spring physics, glassmorphism, dynamic glowing borders, and word-synchronized states:
-- **No Premature Reveals:** Elements remain neutral while introductory speech is delivered, activating only when the specific trigger word is spoken.
-- **Brand Home Base:** Configurable primary colors, accent colors, typography, and default CTAs (e.g., "Comment IM").
+## 📖 Master Documentation
+
+Detailed operation guides, command tables, and technical specs are documented in:
+* **[Master Engine Manual (Vietnamese Full Guide)](docs/MASTER_ENGINE_MANUAL.md)**
+* **[Commercial Template Package Guide](templates/reels-automation-engine/MANUAL.md)**
 
 ---
 
-## 🚀 Quickstart
+## ⚡ Quick Start
 
-### Prerequisites
-- **Python 3.10+** (with `scipy`, `numpy`, `imageio-ffmpeg`)
-- **Node.js 18+** & `npm`
-- **FFmpeg** on system PATH
+### 1. Requirements
+* Windows 10/11 or macOS
+* Python 3.10+
+* Node.js 18+
+* FFmpeg on system PATH
+* CapCut Desktop (International or Jianying)
 
-### Installation
-
+### 2. Run End-to-End Master Pipeline (CLI)
 ```bash
-# Clone the repository
-git clone https://github.com/swifttecheducation/AI-Video-Editor.git
-cd AI-Video-Editor
+# Execute master automated reel build and export directly to CapCut Desktop
+python engine/reels_engine_cli.py \
+  --name "LifeFirst_Commercial_Project" \
+  --video "videos/life-first-business/master.mp4" \
+  --subtitles "data/subtitles_life_first_business.json" \
+  --register "teaching" \
+  --hook-shape "eyebrow_headline" \
+  --headline "bắt đầu từ lối sống bạn muốn ~" \
+  --subhead "LIFE FIRST BUSINESS" \
+  --export "capcut"
+```
+The draft is immediately created and visible on your CapCut Desktop home screen!
 
-# Install Python dependencies
-pip install -r requirements.txt
+### 3. Launch Local CapCut Draft Server (Port 9001)
+Double-click `start_capcut_server.bat` or run:
+```bash
+python engine/vectcut/capcut_server.py
+```
 
-# Install Remotion dependencies
+### 4. Interactive Live Preview in Remotion Studio
+```bash
 cd remotion
 npm install
-npm run gen
-cd ..
+npm run studio
 ```
+Open `http://localhost:3000/ReelsTemplateMaster` in your browser.
 
-### Running the Pipeline
+---
 
-```bash
-# Execute end-to-end video processing with default toggles
-python pipeline.py --video path/to/your/raw_video.mp4 --context "Topic context or CTA prompt"
+## 📦 Commercial Distribution Package
 
-# Launch the interactive web review dashboard
-python -m http.server 8080 --directory web
-# Open http://localhost:8080 in your browser
+The turnkey commercial distribution package is available in:
+```text
+templates/reels-automation-engine/
+├── config/              # Token-driven brand guide (colors, fonts, safe zones)
+├── engine/              # Core VectCut, Chin-Lock, and Hook modules
+├── media/               # CC0 sound design library & YuNet AI models
+├── src/                 # Reusable Remotion components
+├── start_capcut_server.bat # 1-click startup script
+├── MANUAL.md            # Complete user & developer manual
+└── README.md            # Quickstart guide
 ```
 
 ---
 
-## 📁 Project Structure
-
-```
-AI-Video-Editor/
-├── pipeline.py                 # Unified master pipeline orchestrator
-├── web/
-│   └── index.html             # Interactive Review Widget & Toggle Studio
-├── tools/
-│   ├── voice_emphasis_detector.py # Acoustic energy & pitch inflection detector
-│   ├── sfx_manager.py         # Procedural sound effect synthesizer & manager
-│   ├── build_master.py        # FFmpeg assembly, color grading & audio mastering
-│   └── transcribe_clips.py    # Word-level speech alignment & transcript extraction
-├── remotion/
-│   ├── src/
-│   │   ├── shots/             # React Remotion motion graphic templates
-│   │   │   └── my-video/      # Custom card templates (Checklist, Versus, Fatal Q)
-│   │   └── index.ts           # Root video compositions
-│   └── public/sfx/            # Generated procedural UI sound effects
-└── media/projects/            # Project directories & master cuts
-```
-
----
-
-## 🤝 Contributing & License
-Contributions, feedback, and pull requests are welcome!
-Licensed under the [MIT License](LICENSE).
+## 📜 License
+MIT License. Commercial packaging rights reserved.
