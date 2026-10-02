@@ -1,12 +1,27 @@
-# 🎬 MASTER MANUAL: REELS EDITING ENGINE v2.0
-> **Hệ thống Tự động hóa Video Độc quyền (Local Autonomous Editing Engine)**  
-> *Dành cho Creator Economy, Solopreneur và Agency Sản xuất Video Ngắn Chuyên Nghiệp*
+# 🎬 REELS EDITING ENGINE v3.0 (HYBRID SUPER-ENGINE)
+# CẨM NANG TOÀN DIỆN & TÀI LIỆU KỸ THUẬT VẬN HÀNH DÀNH CHO MASTER EDITOR
+
+> **Phiên bản**: v3.0 Commercial Hybrid Edition  
+> **Kiến trúc**: Local Autonomous Editing Engine (CapCut Native + Remotion React Studio + Web UI)  
+> **Hỗ trợ tối ưu**: Windows & macOS | 100% Tiếng Việt có dấu & Quốc tế | Phát thanh EBU R128 -14 LUFS
 
 ---
 
-## PHẦN 1: BÊN TRONG ENGINE NÀY CÓ NHỮNG GÌ? (KIẾN TRÚC HỆ THỐNG)
+## 📑 MỤC LỤC
+1. [PHẦN 1: BÊN TRONG ENGINE CÓ NHỮNG GÌ? (KIẾN TRÚC HỆ THỐNG HYBRID)](#phần-1-bên-trong-engine-có-những-gì-kiến-trúc-hệ-thống-hybrid)
+2. [PHẦN 2: 7 ĐỘT PHÁ CẢI TIẾN ĐỘC QUYỀN TRÊN BẢN v3.0](#phần-2-7-đột-phá-cải-tiến-độc-quyền-trên-bản-v30)
+3. [PHẦN 3: 4 ĐỊNH DẠNG VIDEO CHÍNH (FORMATS)](#phần-3-4-định-dạng-video-chính-formats)
+4. [PHẦN 4: 4 MỨC ĐỘ HOÀN THIỆN CỦA BẢN DỰNG (DONENESS)](#phần-4-4-mức-độ-hoàn-thiện-của-bản-dựng-doneness)
+5. [PHẦN 5: BẢNG LỆNH ĐIỀU KHIỂN DÀNH CHO MASTER EDITOR (CHAT COMMANDS)](#phần-5-bảng-lệnh-điều-khiển-dành-cho-master-editor-chat-commands)
+6. [PHẦN 6: BỘ LỆNH TINH CHỈNH CHUYÊN SÂU (`/studio`)](#phần-6-bộ-lệnh-tinh-chỉnh-chuyên-sâu-studio)
+7. [PHẦN 7: 2 TUYỆT CHIÊU CỦA MASTER EDITOR (DIRECT IN FOOTAGE & SELF-LEARNING)](#phần-7-2-tuyệt-chiêu-của-master-editor)
+8. [PHẦN 8: HƯỚNG DẪN DÒNG LỆNH THỰC THI (CLI & QUICK START)](#phần-8-hướng-dẫn-dòng-lệnh-thực-thi-cli--quick-start)
 
-Khác với các công cụ web AI đóng gói sẵn (chỉ cho phép xuất video MP4 cứng), Reels Editing Engine là một **hệ thống tự động hóa cục bộ (Local Autonomous Editing Engine)** can thiệp trực tiếp vào cấu trúc timeline của **CapCut Desktop** và tích hợp trình render đồ họa động chuyên nghiệp.
+---
+
+## PHẦN 1: BÊN TRONG ENGINE CÓ NHỮNG GÌ? (KIẾN TRÚC HỆ THỐNG HYBRID)
+
+Khác với các công cụ web AI đóng gói sẵn (chỉ cho phép xuất video MP4 cứng một track), **Reels Editing Engine v3.0** là một **hệ thống tự động hóa cục bộ (Local Autonomous Editing Engine)** can thiệp trực tiếp vào cấu trúc timeline của **CapCut Desktop** và tích hợp đồng thời trình render đồ họa động chuyên nghiệp **Remotion React Engine**.
 
 ```
                          ┌─────────────────────────────┐
@@ -19,96 +34,128 @@ Khác với các công cụ web AI đóng gói sẵn (chỉ cho phép xuất vid
                     ▼                                       ▼
   ┌───────────────────────────────────┐   ┌───────────────────────────────────┐
   │   1. AUDIO & ROUGH CUT PASS       │   │    2. VISUAL & COMPOSITION PASS   │
-  │ • WhisperX (large-v3, GPU)        │   │ • OpenCV Chin-Lock (Safe Zone)    │
-  │ • Auto-cắt dead air & flubs       │   │ • Cover / Thumbnail Detector      │
-  │ • Audio Ducking & Volume Norm     │   │ • B-Roll Cut-Grid Alignment       │
+  │ • WhisperX (large-v3, GPU RTX)    │   │ • OpenCV YuNet Chin-Lock          │
+  │ • Auto-cắt dead air & flubs       │   │ • Semantic B-Roll Matcher (AI)    │
+  │ • EBU R128 (-14 LUFS) Audio Norm  │   │ • Cover / Thumbnail Detector      │
   └─────────────────┬─────────────────┘   └─────────────────┬─────────────────┘
                     └───────────────────┬───────────────────┘
                                         │
                     ┌───────────────────┴───────────────────┐
                     ▼                                       ▼
   ┌───────────────────────────────────┐   ┌───────────────────────────────────┐
-  │     3. VECTCUT CAPCUT ENGINE      │   │ 4. HYPERFRAMES / REMOTION ENGINE  │
-  │ • Local Server (Port 9001)        │   │ • Chrome Headless 60fps           │
-  │ • Sinh project CapCut rời lớp     │   │ • Animated Typography             │
-  │ • File: draft_content.json        │   │ • Full-screen Takeover / Cards    │
+  │    3. NATIVE VECTCUT CAPCUT       │   │ 4. REMOTION REACT GRAPHICS STUDIO │
+  │ • Local Server (Port 9001)        │   │ • 60fps GPU-Accelerated React     │
+  │ • Sinh project CapCut rời lớp     │   │ • Handheld Sway & Zoom Punch-In   │
+  │ • File: draft_content.json        │   │ • Web Dashboard xem Blueprint     │
   └─────────────────┬─────────────────┘   └─────────────────┬─────────────────┘
                     └───────────────────┬───────────────────┘
                                         │
                     ┌───────────────────┴───────────────────┐
                     ▼                                       ▼
-         [ CapCut Draft ]                        [ Final Render MP4 ]
-         (Chỉnh sửa tự do)                       (Đăng ngay 100%)
+         [ CapCut Desktop Draft ]                [ Production Render MP4 ]
+         (Dự án mở, sửa từng chữ)                (Chuẩn 4K/1080p đăng ngay)
 ```
 
 ### Các module công nghệ cốt lõi:
 
-1. **WhisperX + PyTorch (GPU / CPU Transcription)** (`tools/transcribe.py`, `engine/clean_cut.py`):
+1. **WhisperX + PyTorch GPU Engine** (`tools/transcribe.py`, `engine/clean_cut.py`):
    - Nhận diện giọng nói chính xác từng mili-giây.
-   - **Cơ chế lọc thông minh**: Nếu bạn nói vấp một câu 2–3 lần, nó sẽ tự động nhận diện và chỉ giữ lại take cuối cùng, tự động cắt bỏ mọi đoạn im lặng thừa (*dead air*).
-
-2. **OpenCV Facial Detection** (`engine/chin_lock.py` & `engine/subject_guard.py`):
-   - Theo dõi khuôn mặt và cằm bằng model YuNet để tự động căn chỉnh khung hình dọc 9:16.
-   - Đảm bảo mắt và mặt luôn nằm ở "vùng an toàn" (*Safe Zone*), không bị che bởi nút Like, Comment hay tên tài khoản của TikTok/Instagram.
-
+   - **Cơ chế lọc thông minh**: Nếu người nói vấp một câu 2–3 lần, hệ thống tự động nhận diện và chỉ giữ lại take nói tốt cuối cùng, tự động cắt sạch mọi đoạn im lặng thừa (*dead air*).
+2. **OpenCV Facial Detection & Chin-Lock** (`engine/chin_lock.py` & `engine/subject_guard.py`):
+   - Sử dụng model AI YuNet (`media/models/face_detection_yunet_2023mar.onnx`) để theo dõi chuyển động khuôn mặt và cằm theo từng frame.
+   - Giữ phụ đề luôn ở vị trí an toàn **ngay dưới cổ áo** (`y = chin + 40px` / `top: 1300px`), không bao giờ bị che miệng, cằm hay trang phục.
 3. **VectCut API Engine** (`engine/vectcut/` & `engine/capcut_builder.py`):
-   - **Vũ khí bí mật của engine**: Máy chủ Python cục bộ điều khiển cấu trúc dữ liệu của CapCut (`pyJianYingDraft`).
-   - Thay vì nung (bake) chữ vào video, nó tạo ra một **dự án CapCut đầy đủ lớp (Tracks)**: video gốc, video B-roll, các track chữ riêng, track sticker riêng, track hiệu ứng âm thanh (SFX) riêng. Bạn có thể mở CapCut lên và bấm vào từng chữ để sửa!
-
-4. **HyperFrames & Remotion Motion Graphics Renderer** (`remotion/`):
-   - Sử dụng React và Headless Chrome để render các thẻ đồ họa chuyển động 60fps, số nhảy (count-up), chữ xếp lớp (takeover) với tiêu chuẩn thẩm mỹ cao.
-
+   - Điều khiển trực tiếp cấu trúc dữ liệu của CapCut Desktop (`pyJianYingDraft`).
+   - Tạo ra dự án CapCut đa timeline hoàn chỉnh: Track video chính, track B-roll, track Hook, track phụ đề, track danh sách viết tay và track SFX.
+4. **Remotion React Graphics Engine** (`remotion/`):
+   - Dựng hoạt họa động học 60fps bằng React, tạo hiệu ứng chuyển động rung lắc cầm tay chân thực (*Handheld Drift*) và giật zoom nhấn điểm (*Punch-In*).
 5. **Creative Vault & Style Packs** (`engine/vault/` & `config/brand.default.json`):
-   - Tích hợp sẵn thư viện SFX đồng bộ (tiếng click, pop, whoosh, type-writer, ding).
-   - 3 phong cách định hình thương hiệu chuẩn: **Butter** (nhẹ nhàng, ấm áp), **Editorial** (tạp chí, sang trọng), **Playful** (năng động, vui tươi), và **LifeFirst-Brand** độc quyền.
+   - Thư viện âm thanh CC0 thương mại đồng bộ.
+   - Hệ thống font chữ phân định rõ ràng theo vai trò: Tiêu đề (*Headline*), Suy nghĩ/Phụ đề (*Thought/Caption*), Nhãn phân loại (*Chrome*).
 
 ---
 
-## PHẦN 2: 3 ĐỊNH DẠNG VIDEO CHÍNH (FORMATS)
+## PHẦN 2: 7 ĐỘT PHÁ CẢI TIẾN ĐỘC QUYỀN TRÊN BẢN v3.0
 
-Khi bắt đầu một video, bạn chọn 1 trong các định dạng sau:
+So với bộ engine gốc chỉ chạy tốt trên Mac dòng lệnh, phiên bản v3.0 tích hợp các cải tiến độc quyền:
 
-| Định dạng | Mô tả chuyên môn | Khi nào nên dùng? |
+### 1. Kiến trúc kép "Dual-Output" (CapCut Desktop + Remotion Studio)
+* Người dùng không bị bó buộc vào 1 phần mềm. Vừa có thể mở file dự án trong **CapCut Desktop** để biên tập thủ công, vừa có thể bật **Remotion React Studio** trên trình duyệt để preview trực tiếp từng frame và xuất video tự động bằng code.
+
+### 2. Web UI Dashboard Trực Quan (`web/`)
+* Cung cấp giao diện web hiện đại:
+  * Trình phát video preview đồng bộ timeline.
+  * **Visual Blueprint**: Bảng phân rã kịch bản chi tiết từng phân cảnh (*scene breakdown*).
+  * Nút chuyển đổi nhanh chế độ B-Roll hoặc Text-Only cho từng câu thoại.
+
+### 3. Bộ giải thuật Phụ đề tối ưu 100% Tiếng Việt (Vietnamese Typography Engine)
+* Tích hợp và cấu hình sẵn các bộ font thương mại Việt hóa đẳng cấp: **`SVN-Chicken Noodle Soup`**, **`Alegreya`**, **`Be Vietnam Pro`**.
+* Thuật toán bẻ dòng (*line-wrap*) thông minh theo cụm ngữ nghĩa 2–4 từ tiếng Việt, triệt tiêu hoàn toàn lỗi rớt từ mồ côi (*orphan word*) và lỗi font có dấu (`ư, ơ, ê, dấu hỏi, dấu ngã`).
+
+### 4. Tương thích tuyệt đối với Windows & CapCut Quốc tế
+* Tự động xử lý bảng mã `UTF-8` toàn diện (loại bỏ hoàn toàn lỗi crash mã hóa `cp1252` trên Windows).
+* Cơ chế **Resilient Font Fallback**: Khi CapCut thiếu font nội bộ, hệ thống tự động ánh xạ sang font tương thích gần nhất mà không làm dừng tiến trình.
+* Hỗ trợ lưu trữ linh hoạt cả ổ đĩa `C:` (`%LOCALAPPDATA%`) lẫn ổ đĩa `D:` (`D:\CapCut Drafts`).
+
+### 5. Tiêu chuẩn Âm thanh Phát thanh Quốc tế (EBU R128 -14 LUFS)
+* Tự động chạy thuật toán lọc âm 2-pass qua FFmpeg `loudnorm`:
+  * `Integrated Loudness`: `-14 LUFS` (Chuẩn vàng của TikTok, Instagram Reels, YouTube Shorts).
+  * `Loudness Range (LRA)`: `7 LU`.
+  * `True Peak`: `-1.0 dB`.
+  * Giúp giọng nói luôn trong trẻo, to rõ và không bao giờ bị nền tảng bóp âm lượng.
+
+### 6. AI Semantic B-Roll Matcher (Khớp B-Roll theo ngữ nghĩa)
+* Không cắt B-roll ngẫu nhiên. Module `tools/semantic_broll_matcher.py` đọc ngữ nghĩa câu thoại từ Whisper để tự động chọn đúng cảnh B-roll tương ứng (ví dụ: đoạn nói về tài chính ghép cảnh bàn bạc/hợp đồng, đoạn nói về con cái ghép cảnh mẹ con).
+
+### 7. Gói thương mại độc lập Turn-Key (`templates/reels-automation-engine/`)
+* Đóng gói sạch sẽ, độc lập, có thể mang đi chuyển giao, cài đặt cho đối tác hoặc kinh doanh dịch vụ video tự động hóa. Kèm script khởi động 1-click `start_capcut_server.bat`.
+
+---
+
+## PHẦN 3: 4 ĐỊNH DẠNG VIDEO CHÍNH (FORMATS)
+
+Khi bắt đầu một video, đạo diễn chọn 1 trong 4 định dạng:
+
+| Định dạng | Mô tả chuyên môn | Ứng dụng thực tế |
 |---|---|---|
-| **Yap** | Video nói trực diện camera (Talking-head). Tự động chia làm 2 cấp độ:<br>• **Confessional**: Tâm sự mộc mạc, tiết chế tối đa đồ họa.<br>• **Teaching/Explainer**: Nhiều sticker, thẻ số liệu, b-roll cắt xen, SFX dày. | Chia sẻ kiến thức, tâm sự, xây dựng nhân hiệu cá nhân. |
-| **Voiceover** | Video không lộ mặt nói (Faceless/Cinematic). Engine dùng thuật toán `vo_cutgrid.py` ghép giọng đọc của bạn với kho B-roll theo nhịp điệu cảm xúc. | Kể chuyện, vlog phong cách sống, du lịch, quote truyền cảm hứng. |
-| **Animation** | Video đồ họa động hoàn toàn không cần quay phim. Chỉ cần kịch bản chữ, engine sẽ biến thành typography chuyển động, thẻ đồ họa và hiệu ứng thị giác. | Giới thiệu tính năng, tips nhanh, thông báo, video thuần chữ. |
-| **B-Roll Reels** | Đưa vào 1 thư mục chứa nhiều clip B-roll, engine sẽ tự cắt và sản xuất hàng loạt video dạng quote/hook ngắn để đăng dần. | Đăng bài số lượng lớn (batch content). |
+| **Yap** | Video nói trực diện camera (Talking-head). Tự động chia làm 2 cấp độ:<br>• **Confessional**: Tâm sự mộc mạc, tiết chế đồ họa, chân thực.<br>• **Teaching/Explainer**: Đồ họa dày, thẻ số liệu, b-roll cắt xen, SFX sinh động. | Chia sẻ kiến thức, tâm sự, xây dựng nhân hiệu cá nhân. |
+| **Voiceover** | Video không lộ mặt nói (Faceless/Cinematic). Thuật toán `vo_cutgrid.py` ghép giọng đọc của bạn với kho B-roll theo nhịp điệu cảm xúc. | Kể chuyện, vlog phong cách sống, du lịch, quote truyền cảm hứng. |
+| **Animation** | Video đồ họa động hoàn toàn không cần quay phim. Chỉ cần kịch bản chữ, engine sẽ biến thành typography chuyển động và thẻ đồ họa. | Giới thiệu tính năng, tips nhanh, thông báo, video thuần chữ. |
+| **B-Roll Reels** | Đưa vào 1 thư mục chứa nhiều clip B-roll, engine sẽ tự động cắt và sản xuất hàng loạt video dạng quote/hook ngắn để đăng dần. | Đăng bài số lượng lớn (batch content automation). |
 
 ---
 
-## PHẦN 3: ĐỘ HOÀN THIỆN CỦA BẢN DỰNG (DONENESS)
+## PHẦN 4: 4 MỨC ĐỘ HOÀN THIỆN CỦA BẢN DỰNG (DONENESS)
 
-Bạn quyết định mình muốn can thiệp bao nhiêu vào sản phẩm:
+Người dùng quyết định mức độ can thiệp vào sản phẩm:
 
 * **Raw**: Engine chỉ cắt gọt thô, gỡ tạp âm/đoạn thừa, tạo phụ đề text cơ bản trong CapCut. Dành cho editor muốn tự tay múa hiệu ứng trong CapCut.
 * **Medium (Khuyên dùng)**: Tạo ra timeline CapCut đã phân tầng đầy đủ các layer thiết kế, sticker, SFX, text. Bạn có thể kéo thả, bật/tắt hoặc chỉnh sửa bất kỳ layer nào.
 * **Well-done**: Engine render hoàn chỉnh thành file `.final.mp4` sẵn sàng đăng ngay mà không cần mở CapCut.
-* **Hands-off**: Chế độ rảnh tay: đưa video vào, AI tự chọn toàn bộ phong cách và trả về video thành phẩm.
+* **Hands-off**: Chế độ rảnh tay: đưa video vào, AI tự chọn toàn bộ phong cách và trả về video thành phẩm hoàn chỉnh.
 
 ---
 
-## PHẦN 4: BẢNG LỆNH ĐIỀU KHIỂN DÀNH CHO MASTER EDITOR
+## PHẦN 5: BẢNG LỆNH ĐIỀU KHIỂN DÀNH CHO MASTER EDITOR (CHAT COMMANDS)
 
-Engine này hoạt động theo nguyên lý **BẠN LÀ ĐẠO DIỄN (DIRECTOR), AI LÀ KỸ THUẬT DỰNG (EDITOR)**. Dưới đây là các câu lệnh bạn chỉ cần gõ vào chat:
+Engine hoạt động theo tôn chỉ: **BẠN LÀ ĐẠO DIỄN (DIRECTOR), AI LÀ KỸ THUẬT DỰNG (EDITOR)**. Dưới đây là các câu lệnh bạn chỉ cần gõ vào chat:
 
-### 1. Lệnh khởi chạy & Định dạng
+### 1. Lệnh Khởi Chạy & Định Dạng
 * `edit this reel`: Yêu cầu engine dựng clip mới nhất vừa bỏ vào thư mục `inbox/`.
 * `edit this video: [đường dẫn file]`: Chỉ định một file video cụ thể ở bất kỳ đâu trên máy.
 * `let's make a Yap`: Chọn dựng kiểu Talking-head.
 * `make my voiceover reel`: Chọn dựng kiểu Voiceover lồng B-roll.
-* `make an animation reel`: Dựng video đồ họa động từ script.
-* `make b-roll reels`: Batch tạo video từ kho B-roll.
+* `make an animation reel`: Dựng video đồ họa động từ kịch bản script.
+* `make b-roll reels`: Batch tạo video từ kho clip B-roll.
 * `keep it raw` / `make it medium` / `make it well-done` / `do it hands-off`: Chọn mức độ hoàn thiện.
 
-### 2. Lệnh kiểm soát Phụ đề (Captions)
-Bạn có thể kết hợp nhiều kiểu phụ đề trong cùng một video:
+### 2. Lệnh Kiểm Soát Phụ Đề (Captions)
 * `make these single-word captions`: Hiện từng từ một thật to ở chính giữa (kiểu Alex Hormozi/MrBeast).
 * `make this karaoke`: Hiện cả câu trên màn hình, từng từ sáng đèn (highlight) theo nhịp đọc.
 * `make this a takeover`: Toàn bộ màn hình phủ kín chữ xếp tầng, nhấn mạnh từ khóa chính vào thời điểm bùng nổ.
 * `I'll do captions in CapCut`: Bỏ qua tạo caption của engine để bạn tự dùng Auto-captions trong CapCut.
 
-### 3. Lệnh đồ họa & Điểm nhấn thị giác (Visual Extras)
+### 3. Lệnh Đồ Họa & Điểm Nhấn Thị Giác (Visual Extras)
 * `put the hook here`: Đặt thẻ tiêu đề giật tít ở 3 giây đầu video.
 * `put the hook behind me`: Tự động tách nền và đẩy tiêu đề ra phía sau lưng nhân vật.
 * `add a thought bubble that says [nội dung]`: Thêm một bong bóng suy nghĩ viết tay bay cạnh đầu.
@@ -118,9 +165,9 @@ Bạn có thể kết hợp nhiều kiểu phụ đề trong cùng một video:
 * `cut me out over this`: Tách người bạn ra khỏi nền và ghép lên nền card/ảnh khác.
 * `drop my star doodle on this word`: Thả hình vẽ doodle/sticker vào đúng từ được nhấn mạnh.
 
-### 4. Lệnh góc máy, Chuyển động & Âm thanh (Motion & Sound)
+### 4. Lệnh Góc Máy, Chuyển Động & Âm Thanh (Motion & Sound)
 * `start with a slow zoom`: Mở đầu video bằng một cú đẩy khung hình (push-in) từ từ để cuốn người xem.
-* `punch in on that word`: Giật zoom nhanh (punch-in) vào một từ mang tính điểm nhấn.
+* `punch in on that word`: Giật zoom nhanh (punch-in 110%) vào một từ mang tính điểm nhấn.
 * `add matched sound effects`: Tự động gắn âm thanh SFX (click, pop, whoosh) khớp chính xác với từng sticker hay chữ xuất hiện.
 * `study my CapCut draft called [tên dự án]`: Chỉ định một project CapCut mẫu chứa các âm thanh SFX bạn thích để engine học thói quen dùng âm thanh của bạn.
 * `add a music bed` / `skip the music`: Thêm hoặc bỏ nhạc nền lofi/ambient nhẹ bên dưới giọng nói.
@@ -128,7 +175,7 @@ Bạn có thể kết hợp nhiều kiểu phụ đề trong cùng một video:
 
 ---
 
-## PHẦN 5: BỘ LỆNH TINH CHỈNH CHUYÊN SÂU (`/studio`)
+## PHẦN 6: BỘ LỆNH TINH CHỈNH CHUYÊN SÂU (`/studio`)
 
 Khi cần tinh chỉnh vi mô cho từng yếu tố hiển thị trên màn hình:
 
@@ -146,35 +193,54 @@ Khi cần tinh chỉnh vi mô cho từng yếu tố hiển thị trên màn hìn
 
 ---
 
-## PHẦN 6: 2 TUYỆT CHIÊU CỦA MASTER EDITOR
+## PHẦN 7: 2 TUYỆT CHIÊU CỦA MASTER EDITOR
 
 ### Tuyệt chiêu 1: Đạo diễn ngay trong lúc quay (Direct in Footage)
 Bạn không cần phải nhớ ghi chú ra giấy. **Khi đang quay video trên điện thoại, bạn có thể nói thẳng câu lệnh vào máy:**
 > *"Đây là tiêu đề giật tít... Chỗ này hãy làm hiệu ứng karaoke... Đây là bảng đếm tiền lên 5 triệu đồng... Chỗ này chuyển sang màn hình takeover..."*
 
-Khi bạn ném video thô này vào `inbox/`, module [`engine/spoken_cues.py`](engine/spoken_cues.py) sẽ **nghe thấy các từ khóa đó** và tự động gắn đúng hiệu ứng vào đúng giây bạn yêu cầu mà bạn không cần phải chat lại một câu nào!
+Khi bạn ném video thô này vào `inbox/`, module `engine/spoken_cues.py` sẽ **nghe thấy các từ khóa đó** và tự động gắn đúng hiệu ứng vào đúng giây bạn yêu cầu mà bạn không cần phải chat lại một câu nào!
 
 ### Tuyệt chiêu 2: Dạy engine học phong cách cá nhân (Self-Learning)
 * `learn my pattern for the next reel`: Bắt engine ghi nhớ thay đổi bạn vừa chỉnh sửa để biến nó thành mặc định cho tất cả các reel sau.
-* `remember this` hoặc `always do it this way`: Khóa cứng một sở thích biên tập vào [`engine/learned.py`](engine/learned.py).
+* `remember this` hoặc `always do it this way`: Khóa cứng một sở thích biên tập vào `engine/learned.py`.
 * `add [từ] to my word list`: Dạy engine các từ ngữ chuyên ngành, tiếng lóng, tên riêng để bộ nhận diện giọng nói không bao giờ gõ sai phụ đề.
 
 ---
 
-## 💻 CLI LỆNH THỰC THI NHANH QUA DÒNG LỆNH
+## PHẦN 8: HƯỚNG DẪN DÒNG LỆNH THỰC THI (CLI & QUICK START)
 
+### 1. Lệnh Dựng Video Nhanh Sang CapCut Desktop (Master CLI)
 ```bash
-# 1. Chạy Master Engine dựng video và xuất sang CapCut
 python engine/reels_engine_cli.py \
-  --name "MyReel_Master" \
-  --video "inbox/master.mp4" \
+  --name "LifeFirst_Commercial_Project" \
+  --video "videos/life-first-business/master.mp4" \
   --subtitles "data/subtitles_life_first_business.json" \
   --register "teaching" \
   --hook-shape "eyebrow_headline" \
   --headline "bắt đầu từ lối sống bạn muốn ~" \
   --subhead "LIFE FIRST BUSINESS" \
   --export "capcut"
-
-# 2. Bật Server CapCut Desktop
-start_capcut_server.bat
 ```
+
+### 2. Khởi Động Server CapCut Cục Bộ (Port 9001)
+* Nhấp đúp chuột vào file: `start_capcut_server.bat`
+* Hoặc chạy lệnh:
+  ```bash
+  python engine/vectcut/capcut_server.py
+  ```
+
+### 3. Mở Trình Xem Remotion React Studio
+```bash
+cd remotion
+npm run studio
+```
+Truy cập: `http://localhost:3000/ReelsTemplateMaster` để xem trước trực tiếp trên web.
+
+### 4. Render Video Hoàn Chỉnh (EBU R128 Audio Norm)
+```bash
+cd remotion
+node scripts/render_life_first.mjs
+python ../tools/postprocess_life_first.py
+```
+File hoàn chỉnh sẽ xuất hiện tại thư mục `out/` và trên Desktop của bạn!
