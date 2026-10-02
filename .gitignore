@@ -86,3 +86,16 @@ test_color_graded.jpg
 
 web/library/
 web/preview.mp4
+
+# Engine & Render Logs
+remotion/render.log
+*.log
+remotion/src/shaabylaFont.ts
+
+# Temporary helper tools
+tools/apply_*.py
+tools/boost_*.py
+tools/build_reels_aesthetic_v2.py
+tools/gen_*.py
+tools/polish_*.py
+tools/scratch/

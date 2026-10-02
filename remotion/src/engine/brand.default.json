@@ -1,0 +1,28 @@
+{
+  "name": "Life-First Business",
+  "palette": {
+    "primaryText": "#F8F5F2",
+    "secondaryText": "#D4CABE",
+    "accentPrimary": "#B91C1C",
+    "accentSecondary": "#9BAA83",
+    "background": "#07090E"
+  },
+  "typography": {
+    "headingFont": "Alegreya, serif",
+    "subtitleFont": "'SVN-Chicken Noodle Soup', 'Be Vietnam Pro', sans-serif",
+    "handwritingFont": "'SVN-Chicken Noodle Soup', cursive",
+    "bodyFont": "'Be Vietnam Pro', sans-serif"
+  },
+  "subtitles": {
+    "positionY": 1300,
+    "fontSize": 66,
+    "fontWeight": 700,
+    "maxWidth": 860,
+    "lineHeight": 1.25,
+    "textShadow": "0 3px 20px rgba(0,0,0,0.98), 0 6px 36px rgba(0,0,0,0.90)"
+  },
+  "header": {
+    "seriesTitle": "SERIES: LIFE-FIRST BUSINESS",
+    "episodeLabel": "TẬP 03"
+  }
+}
